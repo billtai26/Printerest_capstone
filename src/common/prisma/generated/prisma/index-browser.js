@@ -153,7 +153,8 @@ exports.Prisma.UsersScalarFieldEnum = {
   avatar: 'avatar',
   age: 'age',
   created_at: 'created_at',
-  updated_at: 'updated_at'
+  updated_at: 'updated_at',
+  codeChangePass: 'codeChangePass'
 };
 
 exports.Prisma.SortOrder = {
@@ -180,7 +181,8 @@ exports.Prisma.usersOrderByRelevanceFieldEnum = {
   email: 'email',
   password: 'password',
   full_name: 'full_name',
-  avatar: 'avatar'
+  avatar: 'avatar',
+  codeChangePass: 'codeChangePass'
 };
 
 

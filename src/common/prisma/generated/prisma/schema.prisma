@@ -49,15 +49,16 @@ model saved_images {
 }
 
 model users {
-  id           Int            @id @default(autoincrement())
-  email        String         @unique(map: "email") @db.VarChar(255)
-  password     String         @db.VarChar(255)
-  full_name    String?        @db.VarChar(255)
-  avatar       String?        @db.VarChar(255)
-  age          Int?
-  created_at   DateTime?      @default(now()) @db.Timestamp(0)
-  updated_at   DateTime?      @default(now()) @db.Timestamp(0)
-  comments     comments[]
-  images       images[]
-  saved_images saved_images[]
+  id             Int            @id @default(autoincrement())
+  email          String         @unique(map: "email") @db.VarChar(255)
+  password       String         @db.VarChar(255)
+  full_name      String?        @db.VarChar(255)
+  avatar         String?        @db.VarChar(255)
+  age            Int?
+  created_at     DateTime?      @default(now()) @db.Timestamp(0)
+  updated_at     DateTime?      @default(now()) @db.Timestamp(0)
+  codeChangePass String?        @db.VarChar(255)
+  comments       comments[]
+  images         images[]
+  saved_images   saved_images[]
 }

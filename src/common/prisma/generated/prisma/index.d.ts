@@ -4227,6 +4227,7 @@ export namespace Prisma {
     age: number | null
     created_at: Date | null
     updated_at: Date | null
+    codeChangePass: string | null
   }
 
   export type UsersMaxAggregateOutputType = {
@@ -4238,6 +4239,7 @@ export namespace Prisma {
     age: number | null
     created_at: Date | null
     updated_at: Date | null
+    codeChangePass: string | null
   }
 
   export type UsersCountAggregateOutputType = {
@@ -4249,6 +4251,7 @@ export namespace Prisma {
     age: number
     created_at: number
     updated_at: number
+    codeChangePass: number
     _all: number
   }
 
@@ -4272,6 +4275,7 @@ export namespace Prisma {
     age?: true
     created_at?: true
     updated_at?: true
+    codeChangePass?: true
   }
 
   export type UsersMaxAggregateInputType = {
@@ -4283,6 +4287,7 @@ export namespace Prisma {
     age?: true
     created_at?: true
     updated_at?: true
+    codeChangePass?: true
   }
 
   export type UsersCountAggregateInputType = {
@@ -4294,6 +4299,7 @@ export namespace Prisma {
     age?: true
     created_at?: true
     updated_at?: true
+    codeChangePass?: true
     _all?: true
   }
 
@@ -4392,6 +4398,7 @@ export namespace Prisma {
     age: number | null
     created_at: Date | null
     updated_at: Date | null
+    codeChangePass: string | null
     _count: UsersCountAggregateOutputType | null
     _avg: UsersAvgAggregateOutputType | null
     _sum: UsersSumAggregateOutputType | null
@@ -4422,6 +4429,7 @@ export namespace Prisma {
     age?: boolean
     created_at?: boolean
     updated_at?: boolean
+    codeChangePass?: boolean
     comments?: boolean | users$commentsArgs<ExtArgs>
     images?: boolean | users$imagesArgs<ExtArgs>
     saved_images?: boolean | users$saved_imagesArgs<ExtArgs>
@@ -4439,9 +4447,10 @@ export namespace Prisma {
     age?: boolean
     created_at?: boolean
     updated_at?: boolean
+    codeChangePass?: boolean
   }
 
-  export type usersOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "password" | "full_name" | "avatar" | "age" | "created_at" | "updated_at", ExtArgs["result"]["users"]>
+  export type usersOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "password" | "full_name" | "avatar" | "age" | "created_at" | "updated_at" | "codeChangePass", ExtArgs["result"]["users"]>
   export type usersInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     comments?: boolean | users$commentsArgs<ExtArgs>
     images?: boolean | users$imagesArgs<ExtArgs>
@@ -4465,6 +4474,7 @@ export namespace Prisma {
       age: number | null
       created_at: Date | null
       updated_at: Date | null
+      codeChangePass: string | null
     }, ExtArgs["result"]["users"]>
     composites: {}
   }
@@ -4845,6 +4855,7 @@ export namespace Prisma {
     readonly age: FieldRef<"users", 'Int'>
     readonly created_at: FieldRef<"users", 'DateTime'>
     readonly updated_at: FieldRef<"users", 'DateTime'>
+    readonly codeChangePass: FieldRef<"users", 'String'>
   }
     
 
@@ -5339,7 +5350,8 @@ export namespace Prisma {
     avatar: 'avatar',
     age: 'age',
     created_at: 'created_at',
-    updated_at: 'updated_at'
+    updated_at: 'updated_at',
+    codeChangePass: 'codeChangePass'
   };
 
   export type UsersScalarFieldEnum = (typeof UsersScalarFieldEnum)[keyof typeof UsersScalarFieldEnum]
@@ -5381,7 +5393,8 @@ export namespace Prisma {
     email: 'email',
     password: 'password',
     full_name: 'full_name',
-    avatar: 'avatar'
+    avatar: 'avatar',
+    codeChangePass: 'codeChangePass'
   };
 
   export type usersOrderByRelevanceFieldEnum = (typeof usersOrderByRelevanceFieldEnum)[keyof typeof usersOrderByRelevanceFieldEnum]
@@ -5625,6 +5638,7 @@ export namespace Prisma {
     age?: IntNullableFilter<"users"> | number | null
     created_at?: DateTimeNullableFilter<"users"> | Date | string | null
     updated_at?: DateTimeNullableFilter<"users"> | Date | string | null
+    codeChangePass?: StringNullableFilter<"users"> | string | null
     comments?: CommentsListRelationFilter
     images?: ImagesListRelationFilter
     saved_images?: Saved_imagesListRelationFilter
@@ -5639,6 +5653,7 @@ export namespace Prisma {
     age?: SortOrderInput | SortOrder
     created_at?: SortOrderInput | SortOrder
     updated_at?: SortOrderInput | SortOrder
+    codeChangePass?: SortOrderInput | SortOrder
     comments?: commentsOrderByRelationAggregateInput
     images?: imagesOrderByRelationAggregateInput
     saved_images?: saved_imagesOrderByRelationAggregateInput
@@ -5657,6 +5672,7 @@ export namespace Prisma {
     age?: IntNullableFilter<"users"> | number | null
     created_at?: DateTimeNullableFilter<"users"> | Date | string | null
     updated_at?: DateTimeNullableFilter<"users"> | Date | string | null
+    codeChangePass?: StringNullableFilter<"users"> | string | null
     comments?: CommentsListRelationFilter
     images?: ImagesListRelationFilter
     saved_images?: Saved_imagesListRelationFilter
@@ -5671,6 +5687,7 @@ export namespace Prisma {
     age?: SortOrderInput | SortOrder
     created_at?: SortOrderInput | SortOrder
     updated_at?: SortOrderInput | SortOrder
+    codeChangePass?: SortOrderInput | SortOrder
     _count?: usersCountOrderByAggregateInput
     _avg?: usersAvgOrderByAggregateInput
     _max?: usersMaxOrderByAggregateInput
@@ -5690,6 +5707,7 @@ export namespace Prisma {
     age?: IntNullableWithAggregatesFilter<"users"> | number | null
     created_at?: DateTimeNullableWithAggregatesFilter<"users"> | Date | string | null
     updated_at?: DateTimeNullableWithAggregatesFilter<"users"> | Date | string | null
+    codeChangePass?: StringNullableWithAggregatesFilter<"users"> | string | null
   }
 
   export type commentsCreateInput = {
@@ -5869,6 +5887,7 @@ export namespace Prisma {
     age?: number | null
     created_at?: Date | string | null
     updated_at?: Date | string | null
+    codeChangePass?: string | null
     comments?: commentsCreateNestedManyWithoutUsersInput
     images?: imagesCreateNestedManyWithoutUsersInput
     saved_images?: saved_imagesCreateNestedManyWithoutUsersInput
@@ -5883,6 +5902,7 @@ export namespace Prisma {
     age?: number | null
     created_at?: Date | string | null
     updated_at?: Date | string | null
+    codeChangePass?: string | null
     comments?: commentsUncheckedCreateNestedManyWithoutUsersInput
     images?: imagesUncheckedCreateNestedManyWithoutUsersInput
     saved_images?: saved_imagesUncheckedCreateNestedManyWithoutUsersInput
@@ -5896,6 +5916,7 @@ export namespace Prisma {
     age?: NullableIntFieldUpdateOperationsInput | number | null
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    codeChangePass?: NullableStringFieldUpdateOperationsInput | string | null
     comments?: commentsUpdateManyWithoutUsersNestedInput
     images?: imagesUpdateManyWithoutUsersNestedInput
     saved_images?: saved_imagesUpdateManyWithoutUsersNestedInput
@@ -5910,6 +5931,7 @@ export namespace Prisma {
     age?: NullableIntFieldUpdateOperationsInput | number | null
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    codeChangePass?: NullableStringFieldUpdateOperationsInput | string | null
     comments?: commentsUncheckedUpdateManyWithoutUsersNestedInput
     images?: imagesUncheckedUpdateManyWithoutUsersNestedInput
     saved_images?: saved_imagesUncheckedUpdateManyWithoutUsersNestedInput
@@ -5924,6 +5946,7 @@ export namespace Prisma {
     age?: number | null
     created_at?: Date | string | null
     updated_at?: Date | string | null
+    codeChangePass?: string | null
   }
 
   export type usersUpdateManyMutationInput = {
@@ -5934,6 +5957,7 @@ export namespace Prisma {
     age?: NullableIntFieldUpdateOperationsInput | number | null
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    codeChangePass?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type usersUncheckedUpdateManyInput = {
@@ -5945,6 +5969,7 @@ export namespace Prisma {
     age?: NullableIntFieldUpdateOperationsInput | number | null
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    codeChangePass?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -6257,6 +6282,7 @@ export namespace Prisma {
     age?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
+    codeChangePass?: SortOrder
   }
 
   export type usersAvgOrderByAggregateInput = {
@@ -6273,6 +6299,7 @@ export namespace Prisma {
     age?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
+    codeChangePass?: SortOrder
   }
 
   export type usersMinOrderByAggregateInput = {
@@ -6284,6 +6311,7 @@ export namespace Prisma {
     age?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
+    codeChangePass?: SortOrder
   }
 
   export type usersSumOrderByAggregateInput = {
@@ -6790,6 +6818,7 @@ export namespace Prisma {
     age?: number | null
     created_at?: Date | string | null
     updated_at?: Date | string | null
+    codeChangePass?: string | null
     images?: imagesCreateNestedManyWithoutUsersInput
     saved_images?: saved_imagesCreateNestedManyWithoutUsersInput
   }
@@ -6803,6 +6832,7 @@ export namespace Prisma {
     age?: number | null
     created_at?: Date | string | null
     updated_at?: Date | string | null
+    codeChangePass?: string | null
     images?: imagesUncheckedCreateNestedManyWithoutUsersInput
     saved_images?: saved_imagesUncheckedCreateNestedManyWithoutUsersInput
   }
@@ -6857,6 +6887,7 @@ export namespace Prisma {
     age?: NullableIntFieldUpdateOperationsInput | number | null
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    codeChangePass?: NullableStringFieldUpdateOperationsInput | string | null
     images?: imagesUpdateManyWithoutUsersNestedInput
     saved_images?: saved_imagesUpdateManyWithoutUsersNestedInput
   }
@@ -6870,6 +6901,7 @@ export namespace Prisma {
     age?: NullableIntFieldUpdateOperationsInput | number | null
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    codeChangePass?: NullableStringFieldUpdateOperationsInput | string | null
     images?: imagesUncheckedUpdateManyWithoutUsersNestedInput
     saved_images?: saved_imagesUncheckedUpdateManyWithoutUsersNestedInput
   }
@@ -6937,6 +6969,7 @@ export namespace Prisma {
     age?: number | null
     created_at?: Date | string | null
     updated_at?: Date | string | null
+    codeChangePass?: string | null
     comments?: commentsCreateNestedManyWithoutUsersInput
     saved_images?: saved_imagesCreateNestedManyWithoutUsersInput
   }
@@ -6950,6 +6983,7 @@ export namespace Prisma {
     age?: number | null
     created_at?: Date | string | null
     updated_at?: Date | string | null
+    codeChangePass?: string | null
     comments?: commentsUncheckedCreateNestedManyWithoutUsersInput
     saved_images?: saved_imagesUncheckedCreateNestedManyWithoutUsersInput
   }
@@ -7026,6 +7060,7 @@ export namespace Prisma {
     age?: NullableIntFieldUpdateOperationsInput | number | null
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    codeChangePass?: NullableStringFieldUpdateOperationsInput | string | null
     comments?: commentsUpdateManyWithoutUsersNestedInput
     saved_images?: saved_imagesUpdateManyWithoutUsersNestedInput
   }
@@ -7039,6 +7074,7 @@ export namespace Prisma {
     age?: NullableIntFieldUpdateOperationsInput | number | null
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    codeChangePass?: NullableStringFieldUpdateOperationsInput | string | null
     comments?: commentsUncheckedUpdateManyWithoutUsersNestedInput
     saved_images?: saved_imagesUncheckedUpdateManyWithoutUsersNestedInput
   }
@@ -7077,6 +7113,7 @@ export namespace Prisma {
     age?: number | null
     created_at?: Date | string | null
     updated_at?: Date | string | null
+    codeChangePass?: string | null
     comments?: commentsCreateNestedManyWithoutUsersInput
     images?: imagesCreateNestedManyWithoutUsersInput
   }
@@ -7090,6 +7127,7 @@ export namespace Prisma {
     age?: number | null
     created_at?: Date | string | null
     updated_at?: Date | string | null
+    codeChangePass?: string | null
     comments?: commentsUncheckedCreateNestedManyWithoutUsersInput
     images?: imagesUncheckedCreateNestedManyWithoutUsersInput
   }
@@ -7144,6 +7182,7 @@ export namespace Prisma {
     age?: NullableIntFieldUpdateOperationsInput | number | null
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    codeChangePass?: NullableStringFieldUpdateOperationsInput | string | null
     comments?: commentsUpdateManyWithoutUsersNestedInput
     images?: imagesUpdateManyWithoutUsersNestedInput
   }
@@ -7157,6 +7196,7 @@ export namespace Prisma {
     age?: NullableIntFieldUpdateOperationsInput | number | null
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    codeChangePass?: NullableStringFieldUpdateOperationsInput | string | null
     comments?: commentsUncheckedUpdateManyWithoutUsersNestedInput
     images?: imagesUncheckedUpdateManyWithoutUsersNestedInput
   }
