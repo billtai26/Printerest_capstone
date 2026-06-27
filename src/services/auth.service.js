@@ -38,19 +38,11 @@ export const authService = {
     const accessToken = signAccessToken(payload)
     const refreshToken = signRefreshToken(payload)
 
-    return {
-      accessToken,
-      refreshToken,
-      user: {
-        id: existingUser.id,
-        fullName: existingUser.fullName,
-        email: existingUser.email,
-      },
-    }
+    return { accessToken, refreshToken }
   },
 
   async register(req) {
-    const { email, password, fullName } = req.body
+    const { email, password, full_name } = req.body
 
     const existingUser = await prisma.users.findUnique({
       where: { email: email },
@@ -66,7 +58,7 @@ export const authService = {
       data: {
         email: email,
         password: hashPassword,
-        fullName: fullName,
+        full_name: full_name,
       },
     })
 

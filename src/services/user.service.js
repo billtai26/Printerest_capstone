@@ -17,12 +17,12 @@ export const userService = {
   // PUT thông tin cá nhân của user
   async updateProfile(req) {
     const userId = req.user.userId
-    const { fullName, avatar, age } = req.body
+    const { full_name, avatar, age } = req.body
 
     return await prisma.users.update({
       where: { id: userId },
       data: {
-        fullName,
+        full_name,
         avatar,
         age: age ? Number(age) : undefined,
       },

@@ -1,9 +1,8 @@
-
 /**
  * Client
-**/
+ **/
 
-import * as runtime from './runtime/client.js';
+import * as runtime from './runtime/client.js'
 import $Types = runtime.Types // general types
 import $Public = runtime.Types.Public
 import $Utils = runtime.Types.Utils
@@ -12,25 +11,24 @@ import $Result = runtime.Types.Result
 
 export type PrismaPromise<T> = $Public.PrismaPromise<T>
 
-
 /**
  * Model comments
- * 
+ *
  */
 export type comments = $Result.DefaultSelection<Prisma.$commentsPayload>
 /**
  * Model images
- * 
+ *
  */
 export type images = $Result.DefaultSelection<Prisma.$imagesPayload>
 /**
  * Model saved_images
- * 
+ *
  */
 export type saved_images = $Result.DefaultSelection<Prisma.$saved_imagesPayload>
 /**
  * Model users
- * 
+ *
  */
 export type users = $Result.DefaultSelection<Prisma.$usersPayload>
 
@@ -52,12 +50,16 @@ export type users = $Result.DefaultSelection<Prisma.$usersPayload>
  */
 export class PrismaClient<
   ClientOptions extends Prisma.PrismaClientOptions = Prisma.PrismaClientOptions,
-  const U = 'log' extends keyof ClientOptions ? ClientOptions['log'] extends Array<Prisma.LogLevel | Prisma.LogDefinition> ? Prisma.GetEvents<ClientOptions['log']> : never : never,
-  ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  const U = 'log' extends keyof ClientOptions
+    ? ClientOptions['log'] extends Array<Prisma.LogLevel | Prisma.LogDefinition>
+      ? Prisma.GetEvents<ClientOptions['log']>
+      : never
+    : never,
+  ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
 > {
   [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['other'] }
 
-    /**
+  /**
    * ##  Prisma Client ʲˢ
    *
    * Type-safe database client for TypeScript & Node.js
@@ -74,20 +76,27 @@ export class PrismaClient<
    * Read more in our [docs](https://pris.ly/d/client).
    */
 
-  constructor(optionsArg ?: Prisma.Subset<ClientOptions, Prisma.PrismaClientOptions>);
-  $on<V extends U>(eventType: V, callback: (event: V extends 'query' ? Prisma.QueryEvent : Prisma.LogEvent) => void): PrismaClient;
+  constructor(
+    optionsArg?: Prisma.Subset<ClientOptions, Prisma.PrismaClientOptions>,
+  )
+  $on<V extends U>(
+    eventType: V,
+    callback: (
+      event: V extends 'query' ? Prisma.QueryEvent : Prisma.LogEvent,
+    ) => void,
+  ): PrismaClient
 
   /**
    * Connect with the database
    */
-  $connect(): $Utils.JsPromise<void>;
+  $connect(): $Utils.JsPromise<void>
 
   /**
    * Disconnect from the database
    */
-  $disconnect(): $Utils.JsPromise<void>;
+  $disconnect(): $Utils.JsPromise<void>
 
-/**
+  /**
    * Executes a prepared raw query and returns the number of affected rows.
    * @example
    * ```
@@ -96,7 +105,10 @@ export class PrismaClient<
    *
    * Read more in our [docs](https://pris.ly/d/raw-queries).
    */
-  $executeRaw<T = unknown>(query: TemplateStringsArray | Prisma.Sql, ...values: any[]): Prisma.PrismaPromise<number>;
+  $executeRaw<T = unknown>(
+    query: TemplateStringsArray | Prisma.Sql,
+    ...values: any[]
+  ): Prisma.PrismaPromise<number>
 
   /**
    * Executes a raw query and returns the number of affected rows.
@@ -108,7 +120,10 @@ export class PrismaClient<
    *
    * Read more in our [docs](https://pris.ly/d/raw-queries).
    */
-  $executeRawUnsafe<T = unknown>(query: string, ...values: any[]): Prisma.PrismaPromise<number>;
+  $executeRawUnsafe<T = unknown>(
+    query: string,
+    ...values: any[]
+  ): Prisma.PrismaPromise<number>
 
   /**
    * Performs a prepared raw query and returns the `SELECT` data.
@@ -119,7 +134,10 @@ export class PrismaClient<
    *
    * Read more in our [docs](https://pris.ly/d/raw-queries).
    */
-  $queryRaw<T = unknown>(query: TemplateStringsArray | Prisma.Sql, ...values: any[]): Prisma.PrismaPromise<T>;
+  $queryRaw<T = unknown>(
+    query: TemplateStringsArray | Prisma.Sql,
+    ...values: any[]
+  ): Prisma.PrismaPromise<T>
 
   /**
    * Performs a raw query and returns the `SELECT` data.
@@ -131,8 +149,10 @@ export class PrismaClient<
    *
    * Read more in our [docs](https://pris.ly/d/raw-queries).
    */
-  $queryRawUnsafe<T = unknown>(query: string, ...values: any[]): Prisma.PrismaPromise<T>;
-
+  $queryRawUnsafe<T = unknown>(
+    query: string,
+    ...values: any[]
+  ): Prisma.PrismaPromise<T>
 
   /**
    * Allows the running of a sequence of read/write operations that are guaranteed to either succeed or fail as a whole.
@@ -144,56 +164,80 @@ export class PrismaClient<
    *   prisma.user.create({ data: { name: 'Alice' } }),
    * ])
    * ```
-   * 
+   *
    * Read more in our [docs](https://www.prisma.io/docs/orm/prisma-client/queries/transactions).
    */
-  $transaction<P extends Prisma.PrismaPromise<any>[]>(arg: [...P], options?: { maxWait?: number, timeout?: number, isolationLevel?: Prisma.TransactionIsolationLevel }): $Utils.JsPromise<runtime.Types.Utils.UnwrapTuple<P>>
+  $transaction<P extends Prisma.PrismaPromise<any>[]>(
+    arg: [...P],
+    options?: {
+      maxWait?: number
+      timeout?: number
+      isolationLevel?: Prisma.TransactionIsolationLevel
+    },
+  ): $Utils.JsPromise<runtime.Types.Utils.UnwrapTuple<P>>
 
-  $transaction<R>(fn: (prisma: Omit<PrismaClient, runtime.ITXClientDenyList>) => $Utils.JsPromise<R>, options?: { maxWait?: number, timeout?: number, isolationLevel?: Prisma.TransactionIsolationLevel }): $Utils.JsPromise<R>
+  $transaction<R>(
+    fn: (
+      prisma: Omit<PrismaClient, runtime.ITXClientDenyList>,
+    ) => $Utils.JsPromise<R>,
+    options?: {
+      maxWait?: number
+      timeout?: number
+      isolationLevel?: Prisma.TransactionIsolationLevel
+    },
+  ): $Utils.JsPromise<R>
 
-  $extends: $Extensions.ExtendsHook<"extends", Prisma.TypeMapCb<ClientOptions>, ExtArgs, $Utils.Call<Prisma.TypeMapCb<ClientOptions>, {
-    extArgs: ExtArgs
-  }>>
+  $extends: $Extensions.ExtendsHook<
+    'extends',
+    Prisma.TypeMapCb<ClientOptions>,
+    ExtArgs,
+    $Utils.Call<
+      Prisma.TypeMapCb<ClientOptions>,
+      {
+        extArgs: ExtArgs
+      }
+    >
+  >
 
-      /**
+  /**
    * `prisma.comments`: Exposes CRUD operations for the **comments** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Comments
-    * const comments = await prisma.comments.findMany()
-    * ```
-    */
-  get comments(): Prisma.commentsDelegate<ExtArgs, ClientOptions>;
+   * Example usage:
+   * ```ts
+   * // Fetch zero or more Comments
+   * const comments = await prisma.comments.findMany()
+   * ```
+   */
+  get comments(): Prisma.commentsDelegate<ExtArgs, ClientOptions>
 
   /**
    * `prisma.images`: Exposes CRUD operations for the **images** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Images
-    * const images = await prisma.images.findMany()
-    * ```
-    */
-  get images(): Prisma.imagesDelegate<ExtArgs, ClientOptions>;
+   * Example usage:
+   * ```ts
+   * // Fetch zero or more Images
+   * const images = await prisma.images.findMany()
+   * ```
+   */
+  get images(): Prisma.imagesDelegate<ExtArgs, ClientOptions>
 
   /**
    * `prisma.saved_images`: Exposes CRUD operations for the **saved_images** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Saved_images
-    * const saved_images = await prisma.saved_images.findMany()
-    * ```
-    */
-  get saved_images(): Prisma.saved_imagesDelegate<ExtArgs, ClientOptions>;
+   * Example usage:
+   * ```ts
+   * // Fetch zero or more Saved_images
+   * const saved_images = await prisma.saved_images.findMany()
+   * ```
+   */
+  get saved_images(): Prisma.saved_imagesDelegate<ExtArgs, ClientOptions>
 
   /**
    * `prisma.users`: Exposes CRUD operations for the **users** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Users
-    * const users = await prisma.users.findMany()
-    * ```
-    */
-  get users(): Prisma.usersDelegate<ExtArgs, ClientOptions>;
+   * Example usage:
+   * ```ts
+   * // Fetch zero or more Users
+   * const users = await prisma.users.findMany()
+   * ```
+   */
+  get users(): Prisma.usersDelegate<ExtArgs, ClientOptions>
 }
 
 export namespace Prisma {
@@ -224,8 +268,6 @@ export namespace Prisma {
   export import raw = runtime.raw
   export import Sql = runtime.Sql
 
-
-
   /**
    * Decimal.js
    */
@@ -234,8 +276,8 @@ export namespace Prisma {
   export type DecimalJsLike = runtime.DecimalJsLike
 
   /**
-  * Extensions
-  */
+   * Extensions
+   */
   export import Extension = $Extensions.UserArgs
   export import getExtensionContext = runtime.Extensions.getExtensionContext
   export import Args = $Public.Args
@@ -258,7 +300,6 @@ export namespace Prisma {
    * Utility Types
    */
 
-
   export import Bytes = runtime.Bytes
   export import JsonObject = runtime.JsonObject
   export import JsonArray = runtime.JsonArray
@@ -274,36 +315,36 @@ export namespace Prisma {
    */
   namespace NullTypes {
     /**
-    * Type of `Prisma.DbNull`.
-    *
-    * You cannot use other instances of this class. Please use the `Prisma.DbNull` value.
-    *
-    * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
-    */
+     * Type of `Prisma.DbNull`.
+     *
+     * You cannot use other instances of this class. Please use the `Prisma.DbNull` value.
+     *
+     * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
+     */
     class DbNull {
       private DbNull: never
       private constructor()
     }
 
     /**
-    * Type of `Prisma.JsonNull`.
-    *
-    * You cannot use other instances of this class. Please use the `Prisma.JsonNull` value.
-    *
-    * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
-    */
+     * Type of `Prisma.JsonNull`.
+     *
+     * You cannot use other instances of this class. Please use the `Prisma.JsonNull` value.
+     *
+     * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
+     */
     class JsonNull {
       private JsonNull: never
       private constructor()
     }
 
     /**
-    * Type of `Prisma.AnyNull`.
-    *
-    * You cannot use other instances of this class. Please use the `Prisma.AnyNull` value.
-    *
-    * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
-    */
+     * Type of `Prisma.AnyNull`.
+     *
+     * You cannot use other instances of this class. Please use the `Prisma.AnyNull` value.
+     *
+     * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
+     */
     class AnyNull {
       private AnyNull: never
       private constructor()
@@ -344,22 +385,24 @@ export namespace Prisma {
   /**
    * Get the type of the value, that the Promise holds.
    */
-  export type PromiseType<T extends PromiseLike<any>> = T extends PromiseLike<infer U> ? U : T;
+  export type PromiseType<T extends PromiseLike<any>> =
+    T extends PromiseLike<infer U> ? U : T
 
   /**
    * Get the return type of a function which returns a Promise.
    */
-  export type PromiseReturnType<T extends (...args: any) => $Utils.JsPromise<any>> = PromiseType<ReturnType<T>>
+  export type PromiseReturnType<
+    T extends (...args: any) => $Utils.JsPromise<any>,
+  > = PromiseType<ReturnType<T>>
 
   /**
    * From T, pick a set of properties whose keys are in the union K
    */
   type Prisma__Pick<T, K extends keyof T> = {
-      [P in K]: T[P];
-  };
+    [P in K]: T[P]
+  }
 
-
-  export type Enumerable<T> = T | Array<T>;
+  export type Enumerable<T> = T | Array<T>
 
   export type RequiredKeys<T> = {
     [K in keyof T]-?: {} extends Prisma__Pick<T, K> ? never : K
@@ -376,8 +419,8 @@ export namespace Prisma {
    * @desc From `T` pick properties that exist in `U`. Simple version of Intersection
    */
   export type Subset<T, U> = {
-    [key in keyof T]: key extends keyof U ? T[key] : never;
-  };
+    [key in keyof T]: key extends keyof U ? T[key] : never
+  }
 
   /**
    * SelectSubset
@@ -386,12 +429,11 @@ export namespace Prisma {
    */
   export type SelectSubset<T, U> = {
     [key in keyof T]: key extends keyof U ? T[key] : never
-  } &
-    (T extends SelectAndInclude
-      ? 'Please either choose `select` or `include`.'
-      : T extends SelectAndOmit
-        ? 'Please either choose `select` or `omit`.'
-        : {})
+  } & (T extends SelectAndInclude
+    ? 'Please either choose `select` or `include`.'
+    : T extends SelectAndOmit
+      ? 'Please either choose `select` or `omit`.'
+      : {})
 
   /**
    * Subset + Intersection
@@ -399,37 +441,35 @@ export namespace Prisma {
    */
   export type SubsetIntersection<T, U, K> = {
     [key in keyof T]: key extends keyof U ? T[key] : never
-  } &
-    K
+  } & K
 
-  type Without<T, U> = { [P in Exclude<keyof T, keyof U>]?: never };
+  type Without<T, U> = { [P in Exclude<keyof T, keyof U>]?: never }
 
   /**
    * XOR is needed to have a real mutually exclusive union type
    * https://stackoverflow.com/questions/42123407/does-typescript-support-mutually-exclusive-types
    */
-  type XOR<T, U> =
-    T extends object ?
-    U extends object ?
-      (Without<T, U> & U) | (Without<U, T> & T)
-    : U : T
-
+  type XOR<T, U> = T extends object
+    ? U extends object
+      ? (Without<T, U> & U) | (Without<U, T> & T)
+      : U
+    : T
 
   /**
    * Is T a Record?
    */
-  type IsObject<T extends any> = T extends Array<any>
-  ? False
-  : T extends Date
-  ? False
-  : T extends Uint8Array
-  ? False
-  : T extends BigInt
-  ? False
-  : T extends object
-  ? True
-  : False
-
+  type IsObject<T extends any> =
+    T extends Array<any>
+      ? False
+      : T extends Date
+        ? False
+        : T extends Uint8Array
+          ? False
+          : T extends BigInt
+            ? False
+            : T extends object
+              ? True
+              : False
 
   /**
    * If it's T[], return T
@@ -450,11 +490,7 @@ export namespace Prisma {
 
   type EitherLoose<O extends object, K extends Key> = ComputeRaw<__Either<O, K>>
 
-  type _Either<
-    O extends object,
-    K extends Key,
-    strict extends Boolean
-  > = {
+  type _Either<O extends object, K extends Key, strict extends Boolean> = {
     1: EitherStrict<O, K>
     0: EitherLoose<O, K>
   }[strict]
@@ -462,7 +498,7 @@ export namespace Prisma {
   type Either<
     O extends object,
     K extends Key,
-    strict extends Boolean = 1
+    strict extends Boolean = 1,
   > = O extends unknown ? _Either<O, K, strict> : never
 
   export type Union = any
@@ -479,50 +515,69 @@ export namespace Prisma {
     : never
 
   export type Overwrite<O extends object, O1 extends object> = {
-      [K in keyof O]: K extends keyof O1 ? O1[K] : O[K];
-  } & {};
+    [K in keyof O]: K extends keyof O1 ? O1[K] : O[K]
+  } & {}
 
-  type _Merge<U extends object> = IntersectOf<Overwrite<U, {
-      [K in keyof U]-?: At<U, K>;
-  }>>;
+  type _Merge<U extends object> = IntersectOf<
+    Overwrite<
+      U,
+      {
+        [K in keyof U]-?: At<U, K>
+      }
+    >
+  >
 
-  type Key = string | number | symbol;
-  type AtBasic<O extends object, K extends Key> = K extends keyof O ? O[K] : never;
-  type AtStrict<O extends object, K extends Key> = O[K & keyof O];
-  type AtLoose<O extends object, K extends Key> = O extends unknown ? AtStrict<O, K> : never;
-  export type At<O extends object, K extends Key, strict extends Boolean = 1> = {
-      1: AtStrict<O, K>;
-      0: AtLoose<O, K>;
-  }[strict];
+  type Key = string | number | symbol
+  type AtBasic<O extends object, K extends Key> = K extends keyof O
+    ? O[K]
+    : never
+  type AtStrict<O extends object, K extends Key> = O[K & keyof O]
+  type AtLoose<O extends object, K extends Key> = O extends unknown
+    ? AtStrict<O, K>
+    : never
+  export type At<
+    O extends object,
+    K extends Key,
+    strict extends Boolean = 1,
+  > = {
+    1: AtStrict<O, K>
+    0: AtLoose<O, K>
+  }[strict]
 
-  export type ComputeRaw<A extends any> = A extends Function ? A : {
-    [K in keyof A]: A[K];
-  } & {};
+  export type ComputeRaw<A extends any> = A extends Function
+    ? A
+    : {
+        [K in keyof A]: A[K]
+      } & {}
 
   export type OptionalFlat<O> = {
-    [K in keyof O]?: O[K];
-  } & {};
+    [K in keyof O]?: O[K]
+  } & {}
 
   type _Record<K extends keyof any, T> = {
-    [P in K]: T;
-  };
+    [P in K]: T
+  }
 
   // cause typescript not to expand types and preserve names
-  type NoExpand<T> = T extends unknown ? T : never;
+  type NoExpand<T> = T extends unknown ? T : never
 
   // this type assumes the passed object is entirely optional
   type AtLeast<O extends object, K extends string> = NoExpand<
     O extends unknown
-    ? | (K extends keyof O ? { [P in K]: O[P] } & O : O)
-      | {[P in keyof O as P extends K ? P : never]-?: O[P]} & O
-    : never>;
+      ?
+          | (K extends keyof O ? { [P in K]: O[P] } & O : O)
+          | ({ [P in keyof O as P extends K ? P : never]-?: O[P] } & O)
+      : never
+  >
 
-  type _Strict<U, _U = U> = U extends unknown ? U & OptionalFlat<_Record<Exclude<Keys<_U>, keyof U>, never>> : never;
+  type _Strict<U, _U = U> = U extends unknown
+    ? U & OptionalFlat<_Record<Exclude<Keys<_U>, keyof U>, never>>
+    : never
 
-  export type Strict<U extends object> = ComputeRaw<_Strict<U>>;
+  export type Strict<U extends object> = ComputeRaw<_Strict<U>>
   /** End Helper Types for "Merge" **/
 
-  export type Merge<U extends object> = ComputeRaw<_Merge<Strict<U>>>;
+  export type Merge<U extends object> = ComputeRaw<_Merge<Strict<U>>>
 
   /**
   A [[Boolean]]
@@ -547,8 +602,8 @@ export namespace Prisma {
   export type Extends<A1 extends any, A2 extends any> = [A1] extends [never]
     ? 0 // anything `never` is false
     : A1 extends A2
-    ? 1
-    : 0
+      ? 1
+      : 0
 
   export type Has<U extends Union, U1 extends Union> = Not<
     Extends<Exclude<U1, U>, U1>
@@ -567,25 +622,23 @@ export namespace Prisma {
 
   export type Keys<U extends Union> = U extends unknown ? keyof U : never
 
-  type Cast<A, B> = A extends B ? A : B;
+  type Cast<A, B> = A extends B ? A : B
 
-  export const type: unique symbol;
-
-
+  export const type: unique symbol
 
   /**
    * Used by group by
    */
 
-  export type GetScalarType<T, O> = O extends object ? {
-    [P in keyof T]: P extends keyof O
-      ? O[P]
-      : never
-  } : never
+  export type GetScalarType<T, O> = O extends object
+    ? {
+        [P in keyof T]: P extends keyof O ? O[P] : never
+      }
+    : never
 
   type FieldPaths<
     T,
-    U = Omit<T, '_avg' | '_sum' | '_count' | '_min' | '_max'>
+    U = Omit<T, '_avg' | '_sum' | '_count' | '_min' | '_max'>,
   > = IsObject<T> extends True ? U : T
 
   type GetHavingFields<T> = {
@@ -597,11 +650,13 @@ export namespace Prisma {
         // based on the brilliant idea of Pierre-Antoine Mills
         // https://github.com/microsoft/TypeScript/issues/30188#issuecomment-478938437
         T[K] extends infer TK
-        ? GetHavingFields<UnEnumerate<TK> extends object ? Merge<UnEnumerate<TK>> : never>
+        ? GetHavingFields<
+            UnEnumerate<TK> extends object ? Merge<UnEnumerate<TK>> : never
+          >
         : never
       : {} extends FieldPaths<T[K]>
-      ? never
-      : K
+        ? never
+        : K
   }[keyof T]
 
   /**
@@ -614,40 +669,52 @@ export namespace Prisma {
   /**
    * Like `Pick`, but additionally can also accept an array of keys
    */
-  type PickEnumerable<T, K extends Enumerable<keyof T> | keyof T> = Prisma__Pick<T, MaybeTupleToUnion<K>>
+  type PickEnumerable<
+    T,
+    K extends Enumerable<keyof T> | keyof T,
+  > = Prisma__Pick<T, MaybeTupleToUnion<K>>
 
   /**
    * Exclude all keys with underscores
    */
-  type ExcludeUnderscoreKeys<T extends string> = T extends `_${string}` ? never : T
-
+  type ExcludeUnderscoreKeys<T extends string> = T extends `_${string}`
+    ? never
+    : T
 
   export type FieldRef<Model, FieldType> = runtime.FieldRef<Model, FieldType>
 
-  type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRef<Model, FieldType>
-
+  type FieldRefInputType<Model, FieldType> = Model extends never
+    ? never
+    : FieldRef<Model, FieldType>
 
   export const ModelName: {
-    comments: 'comments',
-    images: 'images',
-    saved_images: 'saved_images',
+    comments: 'comments'
+    images: 'images'
+    saved_images: 'saved_images'
     users: 'users'
-  };
+  }
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
 
-
-
-  interface TypeMapCb<ClientOptions = {}> extends $Utils.Fn<{extArgs: $Extensions.InternalArgs }, $Utils.Record<string, any>> {
-    returns: Prisma.TypeMap<this['params']['extArgs'], ClientOptions extends { omit: infer OmitOptions } ? OmitOptions : {}>
+  interface TypeMapCb<ClientOptions = {}> extends $Utils.Fn<
+    { extArgs: $Extensions.InternalArgs },
+    $Utils.Record<string, any>
+  > {
+    returns: Prisma.TypeMap<
+      this['params']['extArgs'],
+      ClientOptions extends { omit: infer OmitOptions } ? OmitOptions : {}
+    >
   }
 
-  export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> = {
+  export type TypeMap<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+    GlobalOmitOptions = {},
+  > = {
     globalOmitOptions: {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "comments" | "images" | "saved_images" | "users"
+      modelProps: 'comments' | 'images' | 'saved_images' | 'users'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -845,7 +912,9 @@ export namespace Prisma {
           }
           count: {
             args: Prisma.saved_imagesCountArgs<ExtArgs>
-            result: $Utils.Optional<Saved_imagesCountAggregateOutputType> | number
+            result:
+              | $Utils.Optional<Saved_imagesCountAggregateOutputType>
+              | number
           }
         }
       }
@@ -921,25 +990,29 @@ export namespace Prisma {
       payload: any
       operations: {
         $executeRaw: {
-          args: [query: TemplateStringsArray | Prisma.Sql, ...values: any[]],
+          args: [query: TemplateStringsArray | Prisma.Sql, ...values: any[]]
           result: any
         }
         $executeRawUnsafe: {
-          args: [query: string, ...values: any[]],
+          args: [query: string, ...values: any[]]
           result: any
         }
         $queryRaw: {
-          args: [query: TemplateStringsArray | Prisma.Sql, ...values: any[]],
+          args: [query: TemplateStringsArray | Prisma.Sql, ...values: any[]]
           result: any
         }
         $queryRawUnsafe: {
-          args: [query: string, ...values: any[]],
+          args: [query: string, ...values: any[]]
           result: any
         }
       }
     }
   }
-  export const defineExtension: $Extensions.ExtendsHook<"define", Prisma.TypeMapCb, $Extensions.DefaultArgs>
+  export const defineExtension: $Extensions.ExtendsHook<
+    'define',
+    Prisma.TypeMapCb,
+    $Extensions.DefaultArgs
+  >
   export type DefaultPrismaClient = PrismaClient
   export type ErrorFormat = 'pretty' | 'colorless' | 'minimal'
   export interface PrismaClientOptions {
@@ -952,7 +1025,7 @@ export namespace Prisma {
      * ```
      * // Shorthand for `emit: 'stdout'`
      * log: ['query', 'info', 'warn', 'error']
-     * 
+     *
      * // Emit as events only
      * log: [
      *   { emit: 'event', level: 'query' },
@@ -960,14 +1033,14 @@ export namespace Prisma {
      *   { emit: 'event', level: 'warn' }
      *   { emit: 'event', level: 'error' }
      * ]
-     * 
+     *
      * / Emit as events and log to stdout
      * og: [
      *  { emit: 'stdout', level: 'query' },
      *  { emit: 'stdout', level: 'info' },
      *  { emit: 'stdout', level: 'warn' }
      *  { emit: 'stdout', level: 'error' }
-     * 
+     *
      * ```
      * Read more in our [docs](https://pris.ly/d/logging).
      */
@@ -992,7 +1065,7 @@ export namespace Prisma {
     accelerateUrl?: string
     /**
      * Global configuration for omitting model fields by default.
-     * 
+     *
      * @example
      * ```
      * const prisma = new PrismaClient({
@@ -1008,7 +1081,7 @@ export namespace Prisma {
     /**
      * SQL commenter plugins that add metadata to SQL queries as comments.
      * Comments follow the sqlcommenter format: https://google.github.io/sqlcommenter/
-     * 
+     *
      * @example
      * ```
      * const prisma = new PrismaClient({
@@ -1036,15 +1109,14 @@ export namespace Prisma {
     emit: 'stdout' | 'event'
   }
 
-  export type CheckIsLogLevel<T> = T extends LogLevel ? T : never;
+  export type CheckIsLogLevel<T> = T extends LogLevel ? T : never
 
   export type GetLogType<T> = CheckIsLogLevel<
     T extends LogDefinition ? T['level'] : T
-  >;
+  >
 
-  export type GetEvents<T extends any[]> = T extends Array<LogLevel | LogDefinition>
-    ? GetLogType<T[number]>
-    : never;
+  export type GetEvents<T extends any[]> =
+    T extends Array<LogLevel | LogDefinition> ? GetLogType<T[number]> : never
 
   export type QueryEvent = {
     timestamp: Date
@@ -1060,7 +1132,6 @@ export namespace Prisma {
     target: string
   }
   /* End Types for Logging */
-
 
   export type PrismaAction =
     | 'findUnique'
@@ -1086,12 +1157,17 @@ export namespace Prisma {
     | 'groupBy'
 
   // tested in getLogLevel.test.ts
-  export function getLogLevel(log: Array<LogLevel | LogDefinition>): LogLevel | undefined;
+  export function getLogLevel(
+    log: Array<LogLevel | LogDefinition>,
+  ): LogLevel | undefined
 
   /**
    * `PrismaClient` proxy available in interactive transactions.
    */
-  export type TransactionClient = Omit<Prisma.DefaultPrismaClient, runtime.ITXClientDenyList>
+  export type TransactionClient = Omit<
+    Prisma.DefaultPrismaClient,
+    runtime.ITXClientDenyList
+  >
 
   export type Datasource = {
     url?: string
@@ -1100,7 +1176,6 @@ export namespace Prisma {
   /**
    * Count Types
    */
-
 
   /**
    * Count Type ImagesCountOutputType
@@ -1111,7 +1186,9 @@ export namespace Prisma {
     saved_images: number
   }
 
-  export type ImagesCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ImagesCountOutputTypeSelect<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
     comments?: boolean | ImagesCountOutputTypeCountCommentsArgs
     saved_images?: boolean | ImagesCountOutputTypeCountSaved_imagesArgs
   }
@@ -1120,7 +1197,9 @@ export namespace Prisma {
   /**
    * ImagesCountOutputType without action
    */
-  export type ImagesCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ImagesCountOutputTypeDefaultArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
     /**
      * Select specific fields to fetch from the ImagesCountOutputType
      */
@@ -1130,17 +1209,20 @@ export namespace Prisma {
   /**
    * ImagesCountOutputType without action
    */
-  export type ImagesCountOutputTypeCountCommentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ImagesCountOutputTypeCountCommentsArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
     where?: commentsWhereInput
   }
 
   /**
    * ImagesCountOutputType without action
    */
-  export type ImagesCountOutputTypeCountSaved_imagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ImagesCountOutputTypeCountSaved_imagesArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
     where?: saved_imagesWhereInput
   }
-
 
   /**
    * Count Type UsersCountOutputType
@@ -1152,7 +1234,9 @@ export namespace Prisma {
     saved_images: number
   }
 
-  export type UsersCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UsersCountOutputTypeSelect<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
     comments?: boolean | UsersCountOutputTypeCountCommentsArgs
     images?: boolean | UsersCountOutputTypeCountImagesArgs
     saved_images?: boolean | UsersCountOutputTypeCountSaved_imagesArgs
@@ -1162,7 +1246,9 @@ export namespace Prisma {
   /**
    * UsersCountOutputType without action
    */
-  export type UsersCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UsersCountOutputTypeDefaultArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
     /**
      * Select specific fields to fetch from the UsersCountOutputType
      */
@@ -1172,24 +1258,29 @@ export namespace Prisma {
   /**
    * UsersCountOutputType without action
    */
-  export type UsersCountOutputTypeCountCommentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UsersCountOutputTypeCountCommentsArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
     where?: commentsWhereInput
   }
 
   /**
    * UsersCountOutputType without action
    */
-  export type UsersCountOutputTypeCountImagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UsersCountOutputTypeCountImagesArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
     where?: imagesWhereInput
   }
 
   /**
    * UsersCountOutputType without action
    */
-  export type UsersCountOutputTypeCountSaved_imagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UsersCountOutputTypeCountSaved_imagesArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
     where?: saved_imagesWhereInput
   }
-
 
   /**
    * Models
@@ -1244,7 +1335,6 @@ export namespace Prisma {
     _all: number
   }
 
-
   export type CommentsAvgAggregateInputType = {
     id?: true
     user_id?: true
@@ -1282,81 +1372,86 @@ export namespace Prisma {
     _all?: true
   }
 
-  export type CommentsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CommentsAggregateArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
     /**
      * Filter which comments to aggregate.
      */
     where?: commentsWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
+     *
      * Determine the order of comments to fetch.
      */
-    orderBy?: commentsOrderByWithRelationInput | commentsOrderByWithRelationInput[]
+    orderBy?:
+      | commentsOrderByWithRelationInput
+      | commentsOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
+     *
      * Sets the start position
      */
     cursor?: commentsWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Take `±n` comments from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Skip the first `n` comments.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
+     *
      * Count returned comments
-    **/
+     **/
     _count?: true | CommentsCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
+     *
      * Select which fields to average
-    **/
+     **/
     _avg?: CommentsAvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
+     *
      * Select which fields to sum
-    **/
+     **/
     _sum?: CommentsSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
+     *
      * Select which fields to find the minimum value
-    **/
+     **/
     _min?: CommentsMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
+     *
      * Select which fields to find the maximum value
-    **/
+     **/
     _max?: CommentsMaxAggregateInputType
   }
 
   export type GetCommentsAggregateType<T extends CommentsAggregateArgs> = {
-        [P in keyof T & keyof AggregateComments]: P extends '_count' | 'count'
+    [P in keyof T & keyof AggregateComments]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
         : GetScalarType<T[P], AggregateComments[P]>
       : GetScalarType<T[P], AggregateComments[P]>
   }
 
-
-
-
-  export type commentsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type commentsGroupByArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
     where?: commentsWhereInput
-    orderBy?: commentsOrderByWithAggregationInput | commentsOrderByWithAggregationInput[]
+    orderBy?:
+      | commentsOrderByWithAggregationInput
+      | commentsOrderByWithAggregationInput[]
     by: CommentsScalarFieldEnum[] | CommentsScalarFieldEnum
     having?: commentsScalarWhereWithAggregatesInput
     take?: number
@@ -1381,11 +1476,11 @@ export namespace Prisma {
     _max: CommentsMaxAggregateOutputType | null
   }
 
-  type GetCommentsGroupByPayload<T extends commentsGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<CommentsGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof CommentsGroupByOutputType))]: P extends '_count'
+  type GetCommentsGroupByPayload<T extends commentsGroupByArgs> =
+    Prisma.PrismaPromise<
+      Array<
+        PickEnumerable<CommentsGroupByOutputType, T['by']> & {
+          [P in keyof T & keyof CommentsGroupByOutputType]: P extends '_count'
             ? T[P] extends boolean
               ? number
               : GetScalarType<T[P], CommentsGroupByOutputType[P]>
@@ -1394,18 +1489,20 @@ export namespace Prisma {
       >
     >
 
-
-  export type commentsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    content?: boolean
-    user_id?: boolean
-    image_id?: boolean
-    created_at?: boolean
-    users?: boolean | usersDefaultArgs<ExtArgs>
-    images?: boolean | imagesDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["comments"]>
-
-
+  export type commentsSelect<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = $Extensions.GetSelect<
+    {
+      id?: boolean
+      content?: boolean
+      user_id?: boolean
+      image_id?: boolean
+      created_at?: boolean
+      users?: boolean | usersDefaultArgs<ExtArgs>
+      images?: boolean | imagesDefaultArgs<ExtArgs>
+    },
+    ExtArgs['result']['comments']
+  >
 
   export type commentsSelectScalar = {
     id?: boolean
@@ -1415,37 +1512,58 @@ export namespace Prisma {
     created_at?: boolean
   }
 
-  export type commentsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "content" | "user_id" | "image_id" | "created_at", ExtArgs["result"]["comments"]>
-  export type commentsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type commentsOmit<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = $Extensions.GetOmit<
+    'id' | 'content' | 'user_id' | 'image_id' | 'created_at',
+    ExtArgs['result']['comments']
+  >
+  export type commentsInclude<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
     users?: boolean | usersDefaultArgs<ExtArgs>
     images?: boolean | imagesDefaultArgs<ExtArgs>
   }
 
-  export type $commentsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "comments"
+  export type $commentsPayload<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    name: 'comments'
     objects: {
       users: Prisma.$usersPayload<ExtArgs>
       images: Prisma.$imagesPayload<ExtArgs>
     }
-    scalars: $Extensions.GetPayloadResult<{
-      id: number
-      content: string
-      user_id: number
-      image_id: number
-      created_at: Date | null
-    }, ExtArgs["result"]["comments"]>
+    scalars: $Extensions.GetPayloadResult<
+      {
+        id: number
+        content: string
+        user_id: number
+        image_id: number
+        created_at: Date | null
+      },
+      ExtArgs['result']['comments']
+    >
     composites: {}
   }
 
-  type commentsGetPayload<S extends boolean | null | undefined | commentsDefaultArgs> = $Result.GetResult<Prisma.$commentsPayload, S>
+  type commentsGetPayload<
+    S extends boolean | null | undefined | commentsDefaultArgs,
+  > = $Result.GetResult<Prisma.$commentsPayload, S>
 
-  type commentsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<commentsFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: CommentsCountAggregateInputType | true
+  type commentsCountArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = Omit<commentsFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+    select?: CommentsCountAggregateInputType | true
+  }
+
+  export interface commentsDelegate<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+    GlobalOmitOptions = {},
+  > {
+    [K: symbol]: {
+      types: Prisma.TypeMap<ExtArgs>['model']['comments']
+      meta: { name: 'comments' }
     }
-
-  export interface commentsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['comments'], meta: { name: 'comments' } }
     /**
      * Find zero or one Comments that matches the filter.
      * @param {commentsFindUniqueArgs} args - Arguments to find a Comments
@@ -1457,7 +1575,19 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUnique<T extends commentsFindUniqueArgs>(args: SelectSubset<T, commentsFindUniqueArgs<ExtArgs>>): Prisma__commentsClient<$Result.GetResult<Prisma.$commentsPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends commentsFindUniqueArgs>(
+      args: SelectSubset<T, commentsFindUniqueArgs<ExtArgs>>,
+    ): Prisma__commentsClient<
+      $Result.GetResult<
+        Prisma.$commentsPayload<ExtArgs>,
+        T,
+        'findUnique',
+        GlobalOmitOptions
+      > | null,
+      null,
+      ExtArgs,
+      GlobalOmitOptions
+    >
 
     /**
      * Find one Comments that matches the filter or throw an error with `error.code='P2025'`
@@ -1471,7 +1601,19 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUniqueOrThrow<T extends commentsFindUniqueOrThrowArgs>(args: SelectSubset<T, commentsFindUniqueOrThrowArgs<ExtArgs>>): Prisma__commentsClient<$Result.GetResult<Prisma.$commentsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends commentsFindUniqueOrThrowArgs>(
+      args: SelectSubset<T, commentsFindUniqueOrThrowArgs<ExtArgs>>,
+    ): Prisma__commentsClient<
+      $Result.GetResult<
+        Prisma.$commentsPayload<ExtArgs>,
+        T,
+        'findUniqueOrThrow',
+        GlobalOmitOptions
+      >,
+      never,
+      ExtArgs,
+      GlobalOmitOptions
+    >
 
     /**
      * Find the first Comments that matches the filter.
@@ -1486,7 +1628,19 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirst<T extends commentsFindFirstArgs>(args?: SelectSubset<T, commentsFindFirstArgs<ExtArgs>>): Prisma__commentsClient<$Result.GetResult<Prisma.$commentsPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends commentsFindFirstArgs>(
+      args?: SelectSubset<T, commentsFindFirstArgs<ExtArgs>>,
+    ): Prisma__commentsClient<
+      $Result.GetResult<
+        Prisma.$commentsPayload<ExtArgs>,
+        T,
+        'findFirst',
+        GlobalOmitOptions
+      > | null,
+      null,
+      ExtArgs,
+      GlobalOmitOptions
+    >
 
     /**
      * Find the first Comments that matches the filter or
@@ -1502,7 +1656,19 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirstOrThrow<T extends commentsFindFirstOrThrowArgs>(args?: SelectSubset<T, commentsFindFirstOrThrowArgs<ExtArgs>>): Prisma__commentsClient<$Result.GetResult<Prisma.$commentsPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends commentsFindFirstOrThrowArgs>(
+      args?: SelectSubset<T, commentsFindFirstOrThrowArgs<ExtArgs>>,
+    ): Prisma__commentsClient<
+      $Result.GetResult<
+        Prisma.$commentsPayload<ExtArgs>,
+        T,
+        'findFirstOrThrow',
+        GlobalOmitOptions
+      >,
+      never,
+      ExtArgs,
+      GlobalOmitOptions
+    >
 
     /**
      * Find zero or more Comments that matches the filter.
@@ -1512,15 +1678,24 @@ export namespace Prisma {
      * @example
      * // Get all Comments
      * const comments = await prisma.comments.findMany()
-     * 
+     *
      * // Get first 10 Comments
      * const comments = await prisma.comments.findMany({ take: 10 })
-     * 
+     *
      * // Only select the `id`
      * const commentsWithIdOnly = await prisma.comments.findMany({ select: { id: true } })
-     * 
+     *
      */
-    findMany<T extends commentsFindManyArgs>(args?: SelectSubset<T, commentsFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$commentsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends commentsFindManyArgs>(
+      args?: SelectSubset<T, commentsFindManyArgs<ExtArgs>>,
+    ): Prisma.PrismaPromise<
+      $Result.GetResult<
+        Prisma.$commentsPayload<ExtArgs>,
+        T,
+        'findMany',
+        GlobalOmitOptions
+      >
+    >
 
     /**
      * Create a Comments.
@@ -1532,9 +1707,21 @@ export namespace Prisma {
      *     // ... data to create a Comments
      *   }
      * })
-     * 
+     *
      */
-    create<T extends commentsCreateArgs>(args: SelectSubset<T, commentsCreateArgs<ExtArgs>>): Prisma__commentsClient<$Result.GetResult<Prisma.$commentsPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends commentsCreateArgs>(
+      args: SelectSubset<T, commentsCreateArgs<ExtArgs>>,
+    ): Prisma__commentsClient<
+      $Result.GetResult<
+        Prisma.$commentsPayload<ExtArgs>,
+        T,
+        'create',
+        GlobalOmitOptions
+      >,
+      never,
+      ExtArgs,
+      GlobalOmitOptions
+    >
 
     /**
      * Create many Comments.
@@ -1546,9 +1733,11 @@ export namespace Prisma {
      *     // ... provide data here
      *   ]
      * })
-     *     
+     *
      */
-    createMany<T extends commentsCreateManyArgs>(args?: SelectSubset<T, commentsCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends commentsCreateManyArgs>(
+      args?: SelectSubset<T, commentsCreateManyArgs<ExtArgs>>,
+    ): Prisma.PrismaPromise<BatchPayload>
 
     /**
      * Delete a Comments.
@@ -1560,9 +1749,21 @@ export namespace Prisma {
      *     // ... filter to delete one Comments
      *   }
      * })
-     * 
+     *
      */
-    delete<T extends commentsDeleteArgs>(args: SelectSubset<T, commentsDeleteArgs<ExtArgs>>): Prisma__commentsClient<$Result.GetResult<Prisma.$commentsPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends commentsDeleteArgs>(
+      args: SelectSubset<T, commentsDeleteArgs<ExtArgs>>,
+    ): Prisma__commentsClient<
+      $Result.GetResult<
+        Prisma.$commentsPayload<ExtArgs>,
+        T,
+        'delete',
+        GlobalOmitOptions
+      >,
+      never,
+      ExtArgs,
+      GlobalOmitOptions
+    >
 
     /**
      * Update one Comments.
@@ -1577,9 +1778,21 @@ export namespace Prisma {
      *     // ... provide data here
      *   }
      * })
-     * 
+     *
      */
-    update<T extends commentsUpdateArgs>(args: SelectSubset<T, commentsUpdateArgs<ExtArgs>>): Prisma__commentsClient<$Result.GetResult<Prisma.$commentsPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends commentsUpdateArgs>(
+      args: SelectSubset<T, commentsUpdateArgs<ExtArgs>>,
+    ): Prisma__commentsClient<
+      $Result.GetResult<
+        Prisma.$commentsPayload<ExtArgs>,
+        T,
+        'update',
+        GlobalOmitOptions
+      >,
+      never,
+      ExtArgs,
+      GlobalOmitOptions
+    >
 
     /**
      * Delete zero or more Comments.
@@ -1591,9 +1804,11 @@ export namespace Prisma {
      *     // ... provide filter here
      *   }
      * })
-     * 
+     *
      */
-    deleteMany<T extends commentsDeleteManyArgs>(args?: SelectSubset<T, commentsDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends commentsDeleteManyArgs>(
+      args?: SelectSubset<T, commentsDeleteManyArgs<ExtArgs>>,
+    ): Prisma.PrismaPromise<BatchPayload>
 
     /**
      * Update zero or more Comments.
@@ -1610,9 +1825,11 @@ export namespace Prisma {
      *     // ... provide data here
      *   }
      * })
-     * 
+     *
      */
-    updateMany<T extends commentsUpdateManyArgs>(args: SelectSubset<T, commentsUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends commentsUpdateManyArgs>(
+      args: SelectSubset<T, commentsUpdateManyArgs<ExtArgs>>,
+    ): Prisma.PrismaPromise<BatchPayload>
 
     /**
      * Create or update one Comments.
@@ -1631,8 +1848,19 @@ export namespace Prisma {
      *   }
      * })
      */
-    upsert<T extends commentsUpsertArgs>(args: SelectSubset<T, commentsUpsertArgs<ExtArgs>>): Prisma__commentsClient<$Result.GetResult<Prisma.$commentsPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
+    upsert<T extends commentsUpsertArgs>(
+      args: SelectSubset<T, commentsUpsertArgs<ExtArgs>>,
+    ): Prisma__commentsClient<
+      $Result.GetResult<
+        Prisma.$commentsPayload<ExtArgs>,
+        T,
+        'upsert',
+        GlobalOmitOptions
+      >,
+      never,
+      ExtArgs,
+      GlobalOmitOptions
+    >
 
     /**
      * Count the number of Comments.
@@ -1646,7 +1874,7 @@ export namespace Prisma {
      *     // ... the filter for the Comments we want to count
      *   }
      * })
-    **/
+     **/
     count<T extends commentsCountArgs>(
       args?: Subset<T, commentsCountArgs>,
     ): Prisma.PrismaPromise<
@@ -1680,8 +1908,10 @@ export namespace Prisma {
      *   },
      *   take: 10,
      * })
-    **/
-    aggregate<T extends CommentsAggregateArgs>(args: Subset<T, CommentsAggregateArgs>): Prisma.PrismaPromise<GetCommentsAggregateType<T>>
+     **/
+    aggregate<T extends CommentsAggregateArgs>(
+      args: Subset<T, CommentsAggregateArgs>,
+    ): Prisma.PrismaPromise<GetCommentsAggregateType<T>>
 
     /**
      * Group by Comments.
@@ -1689,18 +1919,18 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * @param {commentsGroupByArgs} args - Group by arguments.
      * @example
-     * // Group by city, order by createdAt, get count
+     * // Group by city, order by created_at, get count
      * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
+     *   by: ['city', 'created_at'],
      *   orderBy: {
-     *     createdAt: true
+     *     created_at: true
      *   },
      *   _count: {
      *     _all: true
      *   },
      * })
-     * 
-    **/
+     *
+     **/
     groupBy<
       T extends commentsGroupByArgs,
       HasSelectOrTake extends Or<
@@ -1710,59 +1940,66 @@ export namespace Prisma {
       OrderByArg extends True extends HasSelectOrTake
         ? { orderBy: commentsGroupByArgs['orderBy'] }
         : { orderBy?: commentsGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      OrderFields extends ExcludeUnderscoreKeys<
+        Keys<MaybeTupleToUnion<T['orderBy']>>
+      >,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
       HavingFields extends GetHavingFields<T['having']>,
       HavingValid extends Has<ByFields, HavingFields>,
       ByEmpty extends T['by'] extends never[] ? True : False,
       InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
+        ? `Error: "by" must not be empty.`
+        : HavingValid extends False
+          ? {
+              [P in HavingFields]: P extends ByFields
                 ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, commentsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCommentsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the comments model
-   */
-  readonly fields: commentsFieldRefs;
+                : P extends string
+                  ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+                  : [
+                      Error,
+                      'Field ',
+                      P,
+                      ` in "having" needs to be provided in "by"`,
+                    ]
+            }[HavingFields]
+          : 'take' extends Keys<T>
+            ? 'orderBy' extends Keys<T>
+              ? ByValid extends True
+                ? {}
+                : {
+                    [P in OrderFields]: P extends ByFields
+                      ? never
+                      : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+                  }[OrderFields]
+              : 'Error: If you provide "take", you also need to provide "orderBy"'
+            : 'skip' extends Keys<T>
+              ? 'orderBy' extends Keys<T>
+                ? ByValid extends True
+                  ? {}
+                  : {
+                      [P in OrderFields]: P extends ByFields
+                        ? never
+                        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+                    }[OrderFields]
+                : 'Error: If you provide "skip", you also need to provide "orderBy"'
+              : ByValid extends True
+                ? {}
+                : {
+                    [P in OrderFields]: P extends ByFields
+                      ? never
+                      : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+                  }[OrderFields],
+    >(
+      args: SubsetIntersection<T, commentsGroupByArgs, OrderByArg> &
+        InputErrors,
+    ): {} extends InputErrors
+      ? GetCommentsGroupByPayload<T>
+      : Prisma.PrismaPromise<InputErrors>
+    /**
+     * Fields of the comments model
+     */
+    readonly fields: commentsFieldRefs
   }
 
   /**
@@ -1771,23 +2008,68 @@ export namespace Prisma {
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__commentsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    users<T extends usersDefaultArgs<ExtArgs> = {}>(args?: Subset<T, usersDefaultArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    images<T extends imagesDefaultArgs<ExtArgs> = {}>(args?: Subset<T, imagesDefaultArgs<ExtArgs>>): Prisma__imagesClient<$Result.GetResult<Prisma.$imagesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  export interface Prisma__commentsClient<
+    T,
+    Null = never,
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+    GlobalOmitOptions = {},
+  > extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise'
+    users<T extends usersDefaultArgs<ExtArgs> = {}>(
+      args?: Subset<T, usersDefaultArgs<ExtArgs>>,
+    ): Prisma__usersClient<
+      | $Result.GetResult<
+          Prisma.$usersPayload<ExtArgs>,
+          T,
+          'findUniqueOrThrow',
+          GlobalOmitOptions
+        >
+      | Null,
+      Null,
+      ExtArgs,
+      GlobalOmitOptions
+    >
+    images<T extends imagesDefaultArgs<ExtArgs> = {}>(
+      args?: Subset<T, imagesDefaultArgs<ExtArgs>>,
+    ): Prisma__imagesClient<
+      | $Result.GetResult<
+          Prisma.$imagesPayload<ExtArgs>,
+          T,
+          'findUniqueOrThrow',
+          GlobalOmitOptions
+        >
+      | Null,
+      Null,
+      ExtArgs,
+      GlobalOmitOptions
+    >
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
      * @param onrejected The callback to execute when the Promise is rejected.
      * @returns A Promise for the completion of which ever callback is executed.
      */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    then<TResult1 = T, TResult2 = never>(
+      onfulfilled?:
+        | ((value: T) => TResult1 | PromiseLike<TResult1>)
+        | undefined
+        | null,
+      onrejected?:
+        | ((reason: any) => TResult2 | PromiseLike<TResult2>)
+        | undefined
+        | null,
+    ): $Utils.JsPromise<TResult1 | TResult2>
     /**
      * Attaches a callback for only the rejection of the Promise.
      * @param onrejected The callback to execute when the Promise is rejected.
      * @returns A Promise for the completion of the callback.
      */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    catch<TResult = never>(
+      onrejected?:
+        | ((reason: any) => TResult | PromiseLike<TResult>)
+        | undefined
+        | null,
+    ): $Utils.JsPromise<T | TResult>
     /**
      * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
      * resolved value cannot be modified from the callback.
@@ -1797,26 +2079,24 @@ export namespace Prisma {
     finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
   }
 
-
-
-
   /**
    * Fields of the comments model
    */
   interface commentsFieldRefs {
-    readonly id: FieldRef<"comments", 'Int'>
-    readonly content: FieldRef<"comments", 'String'>
-    readonly user_id: FieldRef<"comments", 'Int'>
-    readonly image_id: FieldRef<"comments", 'Int'>
-    readonly created_at: FieldRef<"comments", 'DateTime'>
+    readonly id: FieldRef<'comments', 'Int'>
+    readonly content: FieldRef<'comments', 'String'>
+    readonly user_id: FieldRef<'comments', 'Int'>
+    readonly image_id: FieldRef<'comments', 'Int'>
+    readonly created_at: FieldRef<'comments', 'DateTime'>
   }
-    
 
   // Custom InputTypes
   /**
    * comments findUnique
    */
-  export type commentsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type commentsFindUniqueArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
     /**
      * Select specific fields to fetch from the comments
      */
@@ -1838,7 +2118,9 @@ export namespace Prisma {
   /**
    * comments findUniqueOrThrow
    */
-  export type commentsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type commentsFindUniqueOrThrowArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
     /**
      * Select specific fields to fetch from the comments
      */
@@ -1860,7 +2142,9 @@ export namespace Prisma {
   /**
    * comments findFirst
    */
-  export type commentsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type commentsFindFirstArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
     /**
      * Select specific fields to fetch from the comments
      */
@@ -1879,31 +2163,33 @@ export namespace Prisma {
     where?: commentsWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
+     *
      * Determine the order of comments to fetch.
      */
-    orderBy?: commentsOrderByWithRelationInput | commentsOrderByWithRelationInput[]
+    orderBy?:
+      | commentsOrderByWithRelationInput
+      | commentsOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
+     *
      * Sets the position for searching for comments.
      */
     cursor?: commentsWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Take `±n` comments from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Skip the first `n` comments.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
+     *
      * Filter by unique combinations of comments.
      */
     distinct?: CommentsScalarFieldEnum | CommentsScalarFieldEnum[]
@@ -1912,7 +2198,9 @@ export namespace Prisma {
   /**
    * comments findFirstOrThrow
    */
-  export type commentsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type commentsFindFirstOrThrowArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
     /**
      * Select specific fields to fetch from the comments
      */
@@ -1931,31 +2219,33 @@ export namespace Prisma {
     where?: commentsWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
+     *
      * Determine the order of comments to fetch.
      */
-    orderBy?: commentsOrderByWithRelationInput | commentsOrderByWithRelationInput[]
+    orderBy?:
+      | commentsOrderByWithRelationInput
+      | commentsOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
+     *
      * Sets the position for searching for comments.
      */
     cursor?: commentsWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Take `±n` comments from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Skip the first `n` comments.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
+     *
      * Filter by unique combinations of comments.
      */
     distinct?: CommentsScalarFieldEnum | CommentsScalarFieldEnum[]
@@ -1964,7 +2254,9 @@ export namespace Prisma {
   /**
    * comments findMany
    */
-  export type commentsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type commentsFindManyArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
     /**
      * Select specific fields to fetch from the comments
      */
@@ -1983,31 +2275,33 @@ export namespace Prisma {
     where?: commentsWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
+     *
      * Determine the order of comments to fetch.
      */
-    orderBy?: commentsOrderByWithRelationInput | commentsOrderByWithRelationInput[]
+    orderBy?:
+      | commentsOrderByWithRelationInput
+      | commentsOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
+     *
      * Sets the position for listing comments.
      */
     cursor?: commentsWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Take `±n` comments from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Skip the first `n` comments.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
+     *
      * Filter by unique combinations of comments.
      */
     distinct?: CommentsScalarFieldEnum | CommentsScalarFieldEnum[]
@@ -2016,7 +2310,9 @@ export namespace Prisma {
   /**
    * comments create
    */
-  export type commentsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type commentsCreateArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
     /**
      * Select specific fields to fetch from the comments
      */
@@ -2038,7 +2334,9 @@ export namespace Prisma {
   /**
    * comments createMany
    */
-  export type commentsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type commentsCreateManyArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
     /**
      * The data used to create many comments.
      */
@@ -2049,7 +2347,9 @@ export namespace Prisma {
   /**
    * comments update
    */
-  export type commentsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type commentsUpdateArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
     /**
      * Select specific fields to fetch from the comments
      */
@@ -2075,7 +2375,9 @@ export namespace Prisma {
   /**
    * comments updateMany
    */
-  export type commentsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type commentsUpdateManyArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
     /**
      * The data used to update comments.
      */
@@ -2093,7 +2395,9 @@ export namespace Prisma {
   /**
    * comments upsert
    */
-  export type commentsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type commentsUpsertArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
     /**
      * Select specific fields to fetch from the comments
      */
@@ -2123,7 +2427,9 @@ export namespace Prisma {
   /**
    * comments delete
    */
-  export type commentsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type commentsDeleteArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
     /**
      * Select specific fields to fetch from the comments
      */
@@ -2145,7 +2451,9 @@ export namespace Prisma {
   /**
    * comments deleteMany
    */
-  export type commentsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type commentsDeleteManyArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
     /**
      * Filter which comments to delete
      */
@@ -2159,7 +2467,9 @@ export namespace Prisma {
   /**
    * comments without action
    */
-  export type commentsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type commentsDefaultArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
     /**
      * Select specific fields to fetch from the comments
      */
@@ -2173,7 +2483,6 @@ export namespace Prisma {
      */
     include?: commentsInclude<ExtArgs> | null
   }
-
 
   /**
    * Model images
@@ -2228,7 +2537,6 @@ export namespace Prisma {
     _all: number
   }
 
-
   export type ImagesAvgAggregateInputType = {
     id?: true
     user_id?: true
@@ -2270,81 +2578,84 @@ export namespace Prisma {
     _all?: true
   }
 
-  export type ImagesAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ImagesAggregateArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
     /**
      * Filter which images to aggregate.
      */
     where?: imagesWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
+     *
      * Determine the order of images to fetch.
      */
     orderBy?: imagesOrderByWithRelationInput | imagesOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
+     *
      * Sets the start position
      */
     cursor?: imagesWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Take `±n` images from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Skip the first `n` images.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
+     *
      * Count returned images
-    **/
+     **/
     _count?: true | ImagesCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
+     *
      * Select which fields to average
-    **/
+     **/
     _avg?: ImagesAvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
+     *
      * Select which fields to sum
-    **/
+     **/
     _sum?: ImagesSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
+     *
      * Select which fields to find the minimum value
-    **/
+     **/
     _min?: ImagesMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
+     *
      * Select which fields to find the maximum value
-    **/
+     **/
     _max?: ImagesMaxAggregateInputType
   }
 
   export type GetImagesAggregateType<T extends ImagesAggregateArgs> = {
-        [P in keyof T & keyof AggregateImages]: P extends '_count' | 'count'
+    [P in keyof T & keyof AggregateImages]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
         : GetScalarType<T[P], AggregateImages[P]>
       : GetScalarType<T[P], AggregateImages[P]>
   }
 
-
-
-
-  export type imagesGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type imagesGroupByArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
     where?: imagesWhereInput
-    orderBy?: imagesOrderByWithAggregationInput | imagesOrderByWithAggregationInput[]
+    orderBy?:
+      | imagesOrderByWithAggregationInput
+      | imagesOrderByWithAggregationInput[]
     by: ImagesScalarFieldEnum[] | ImagesScalarFieldEnum
     having?: imagesScalarWhereWithAggregatesInput
     take?: number
@@ -2371,11 +2682,11 @@ export namespace Prisma {
     _max: ImagesMaxAggregateOutputType | null
   }
 
-  type GetImagesGroupByPayload<T extends imagesGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<ImagesGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof ImagesGroupByOutputType))]: P extends '_count'
+  type GetImagesGroupByPayload<T extends imagesGroupByArgs> =
+    Prisma.PrismaPromise<
+      Array<
+        PickEnumerable<ImagesGroupByOutputType, T['by']> & {
+          [P in keyof T & keyof ImagesGroupByOutputType]: P extends '_count'
             ? T[P] extends boolean
               ? number
               : GetScalarType<T[P], ImagesGroupByOutputType[P]>
@@ -2384,22 +2695,24 @@ export namespace Prisma {
       >
     >
 
-
-  export type imagesSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    title?: boolean
-    description?: boolean
-    url?: boolean
-    user_id?: boolean
-    created_at?: boolean
-    updated_at?: boolean
-    comments?: boolean | images$commentsArgs<ExtArgs>
-    users?: boolean | usersDefaultArgs<ExtArgs>
-    saved_images?: boolean | images$saved_imagesArgs<ExtArgs>
-    _count?: boolean | ImagesCountOutputTypeDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["images"]>
-
-
+  export type imagesSelect<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = $Extensions.GetSelect<
+    {
+      id?: boolean
+      title?: boolean
+      description?: boolean
+      url?: boolean
+      user_id?: boolean
+      created_at?: boolean
+      updated_at?: boolean
+      comments?: boolean | images$commentsArgs<ExtArgs>
+      users?: boolean | usersDefaultArgs<ExtArgs>
+      saved_images?: boolean | images$saved_imagesArgs<ExtArgs>
+      _count?: boolean | ImagesCountOutputTypeDefaultArgs<ExtArgs>
+    },
+    ExtArgs['result']['images']
+  >
 
   export type imagesSelectScalar = {
     id?: boolean
@@ -2411,42 +2724,69 @@ export namespace Prisma {
     updated_at?: boolean
   }
 
-  export type imagesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "url" | "user_id" | "created_at" | "updated_at", ExtArgs["result"]["images"]>
-  export type imagesInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type imagesOmit<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = $Extensions.GetOmit<
+    | 'id'
+    | 'title'
+    | 'description'
+    | 'url'
+    | 'user_id'
+    | 'created_at'
+    | 'updated_at',
+    ExtArgs['result']['images']
+  >
+  export type imagesInclude<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
     comments?: boolean | images$commentsArgs<ExtArgs>
     users?: boolean | usersDefaultArgs<ExtArgs>
     saved_images?: boolean | images$saved_imagesArgs<ExtArgs>
     _count?: boolean | ImagesCountOutputTypeDefaultArgs<ExtArgs>
   }
 
-  export type $imagesPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "images"
+  export type $imagesPayload<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    name: 'images'
     objects: {
       comments: Prisma.$commentsPayload<ExtArgs>[]
       users: Prisma.$usersPayload<ExtArgs>
       saved_images: Prisma.$saved_imagesPayload<ExtArgs>[]
     }
-    scalars: $Extensions.GetPayloadResult<{
-      id: number
-      title: string | null
-      description: string | null
-      url: string
-      user_id: number
-      created_at: Date | null
-      updated_at: Date | null
-    }, ExtArgs["result"]["images"]>
+    scalars: $Extensions.GetPayloadResult<
+      {
+        id: number
+        title: string | null
+        description: string | null
+        url: string
+        user_id: number
+        created_at: Date | null
+        updated_at: Date | null
+      },
+      ExtArgs['result']['images']
+    >
     composites: {}
   }
 
-  type imagesGetPayload<S extends boolean | null | undefined | imagesDefaultArgs> = $Result.GetResult<Prisma.$imagesPayload, S>
+  type imagesGetPayload<
+    S extends boolean | null | undefined | imagesDefaultArgs,
+  > = $Result.GetResult<Prisma.$imagesPayload, S>
 
-  type imagesCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<imagesFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: ImagesCountAggregateInputType | true
+  type imagesCountArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = Omit<imagesFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+    select?: ImagesCountAggregateInputType | true
+  }
+
+  export interface imagesDelegate<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+    GlobalOmitOptions = {},
+  > {
+    [K: symbol]: {
+      types: Prisma.TypeMap<ExtArgs>['model']['images']
+      meta: { name: 'images' }
     }
-
-  export interface imagesDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['images'], meta: { name: 'images' } }
     /**
      * Find zero or one Images that matches the filter.
      * @param {imagesFindUniqueArgs} args - Arguments to find a Images
@@ -2458,7 +2798,19 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUnique<T extends imagesFindUniqueArgs>(args: SelectSubset<T, imagesFindUniqueArgs<ExtArgs>>): Prisma__imagesClient<$Result.GetResult<Prisma.$imagesPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends imagesFindUniqueArgs>(
+      args: SelectSubset<T, imagesFindUniqueArgs<ExtArgs>>,
+    ): Prisma__imagesClient<
+      $Result.GetResult<
+        Prisma.$imagesPayload<ExtArgs>,
+        T,
+        'findUnique',
+        GlobalOmitOptions
+      > | null,
+      null,
+      ExtArgs,
+      GlobalOmitOptions
+    >
 
     /**
      * Find one Images that matches the filter or throw an error with `error.code='P2025'`
@@ -2472,7 +2824,19 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUniqueOrThrow<T extends imagesFindUniqueOrThrowArgs>(args: SelectSubset<T, imagesFindUniqueOrThrowArgs<ExtArgs>>): Prisma__imagesClient<$Result.GetResult<Prisma.$imagesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends imagesFindUniqueOrThrowArgs>(
+      args: SelectSubset<T, imagesFindUniqueOrThrowArgs<ExtArgs>>,
+    ): Prisma__imagesClient<
+      $Result.GetResult<
+        Prisma.$imagesPayload<ExtArgs>,
+        T,
+        'findUniqueOrThrow',
+        GlobalOmitOptions
+      >,
+      never,
+      ExtArgs,
+      GlobalOmitOptions
+    >
 
     /**
      * Find the first Images that matches the filter.
@@ -2487,7 +2851,19 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirst<T extends imagesFindFirstArgs>(args?: SelectSubset<T, imagesFindFirstArgs<ExtArgs>>): Prisma__imagesClient<$Result.GetResult<Prisma.$imagesPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends imagesFindFirstArgs>(
+      args?: SelectSubset<T, imagesFindFirstArgs<ExtArgs>>,
+    ): Prisma__imagesClient<
+      $Result.GetResult<
+        Prisma.$imagesPayload<ExtArgs>,
+        T,
+        'findFirst',
+        GlobalOmitOptions
+      > | null,
+      null,
+      ExtArgs,
+      GlobalOmitOptions
+    >
 
     /**
      * Find the first Images that matches the filter or
@@ -2503,7 +2879,19 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirstOrThrow<T extends imagesFindFirstOrThrowArgs>(args?: SelectSubset<T, imagesFindFirstOrThrowArgs<ExtArgs>>): Prisma__imagesClient<$Result.GetResult<Prisma.$imagesPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends imagesFindFirstOrThrowArgs>(
+      args?: SelectSubset<T, imagesFindFirstOrThrowArgs<ExtArgs>>,
+    ): Prisma__imagesClient<
+      $Result.GetResult<
+        Prisma.$imagesPayload<ExtArgs>,
+        T,
+        'findFirstOrThrow',
+        GlobalOmitOptions
+      >,
+      never,
+      ExtArgs,
+      GlobalOmitOptions
+    >
 
     /**
      * Find zero or more Images that matches the filter.
@@ -2513,15 +2901,24 @@ export namespace Prisma {
      * @example
      * // Get all Images
      * const images = await prisma.images.findMany()
-     * 
+     *
      * // Get first 10 Images
      * const images = await prisma.images.findMany({ take: 10 })
-     * 
+     *
      * // Only select the `id`
      * const imagesWithIdOnly = await prisma.images.findMany({ select: { id: true } })
-     * 
+     *
      */
-    findMany<T extends imagesFindManyArgs>(args?: SelectSubset<T, imagesFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$imagesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends imagesFindManyArgs>(
+      args?: SelectSubset<T, imagesFindManyArgs<ExtArgs>>,
+    ): Prisma.PrismaPromise<
+      $Result.GetResult<
+        Prisma.$imagesPayload<ExtArgs>,
+        T,
+        'findMany',
+        GlobalOmitOptions
+      >
+    >
 
     /**
      * Create a Images.
@@ -2533,9 +2930,21 @@ export namespace Prisma {
      *     // ... data to create a Images
      *   }
      * })
-     * 
+     *
      */
-    create<T extends imagesCreateArgs>(args: SelectSubset<T, imagesCreateArgs<ExtArgs>>): Prisma__imagesClient<$Result.GetResult<Prisma.$imagesPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends imagesCreateArgs>(
+      args: SelectSubset<T, imagesCreateArgs<ExtArgs>>,
+    ): Prisma__imagesClient<
+      $Result.GetResult<
+        Prisma.$imagesPayload<ExtArgs>,
+        T,
+        'create',
+        GlobalOmitOptions
+      >,
+      never,
+      ExtArgs,
+      GlobalOmitOptions
+    >
 
     /**
      * Create many Images.
@@ -2547,9 +2956,11 @@ export namespace Prisma {
      *     // ... provide data here
      *   ]
      * })
-     *     
+     *
      */
-    createMany<T extends imagesCreateManyArgs>(args?: SelectSubset<T, imagesCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends imagesCreateManyArgs>(
+      args?: SelectSubset<T, imagesCreateManyArgs<ExtArgs>>,
+    ): Prisma.PrismaPromise<BatchPayload>
 
     /**
      * Delete a Images.
@@ -2561,9 +2972,21 @@ export namespace Prisma {
      *     // ... filter to delete one Images
      *   }
      * })
-     * 
+     *
      */
-    delete<T extends imagesDeleteArgs>(args: SelectSubset<T, imagesDeleteArgs<ExtArgs>>): Prisma__imagesClient<$Result.GetResult<Prisma.$imagesPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends imagesDeleteArgs>(
+      args: SelectSubset<T, imagesDeleteArgs<ExtArgs>>,
+    ): Prisma__imagesClient<
+      $Result.GetResult<
+        Prisma.$imagesPayload<ExtArgs>,
+        T,
+        'delete',
+        GlobalOmitOptions
+      >,
+      never,
+      ExtArgs,
+      GlobalOmitOptions
+    >
 
     /**
      * Update one Images.
@@ -2578,9 +3001,21 @@ export namespace Prisma {
      *     // ... provide data here
      *   }
      * })
-     * 
+     *
      */
-    update<T extends imagesUpdateArgs>(args: SelectSubset<T, imagesUpdateArgs<ExtArgs>>): Prisma__imagesClient<$Result.GetResult<Prisma.$imagesPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends imagesUpdateArgs>(
+      args: SelectSubset<T, imagesUpdateArgs<ExtArgs>>,
+    ): Prisma__imagesClient<
+      $Result.GetResult<
+        Prisma.$imagesPayload<ExtArgs>,
+        T,
+        'update',
+        GlobalOmitOptions
+      >,
+      never,
+      ExtArgs,
+      GlobalOmitOptions
+    >
 
     /**
      * Delete zero or more Images.
@@ -2592,9 +3027,11 @@ export namespace Prisma {
      *     // ... provide filter here
      *   }
      * })
-     * 
+     *
      */
-    deleteMany<T extends imagesDeleteManyArgs>(args?: SelectSubset<T, imagesDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends imagesDeleteManyArgs>(
+      args?: SelectSubset<T, imagesDeleteManyArgs<ExtArgs>>,
+    ): Prisma.PrismaPromise<BatchPayload>
 
     /**
      * Update zero or more Images.
@@ -2611,9 +3048,11 @@ export namespace Prisma {
      *     // ... provide data here
      *   }
      * })
-     * 
+     *
      */
-    updateMany<T extends imagesUpdateManyArgs>(args: SelectSubset<T, imagesUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends imagesUpdateManyArgs>(
+      args: SelectSubset<T, imagesUpdateManyArgs<ExtArgs>>,
+    ): Prisma.PrismaPromise<BatchPayload>
 
     /**
      * Create or update one Images.
@@ -2632,8 +3071,19 @@ export namespace Prisma {
      *   }
      * })
      */
-    upsert<T extends imagesUpsertArgs>(args: SelectSubset<T, imagesUpsertArgs<ExtArgs>>): Prisma__imagesClient<$Result.GetResult<Prisma.$imagesPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
+    upsert<T extends imagesUpsertArgs>(
+      args: SelectSubset<T, imagesUpsertArgs<ExtArgs>>,
+    ): Prisma__imagesClient<
+      $Result.GetResult<
+        Prisma.$imagesPayload<ExtArgs>,
+        T,
+        'upsert',
+        GlobalOmitOptions
+      >,
+      never,
+      ExtArgs,
+      GlobalOmitOptions
+    >
 
     /**
      * Count the number of Images.
@@ -2647,7 +3097,7 @@ export namespace Prisma {
      *     // ... the filter for the Images we want to count
      *   }
      * })
-    **/
+     **/
     count<T extends imagesCountArgs>(
       args?: Subset<T, imagesCountArgs>,
     ): Prisma.PrismaPromise<
@@ -2681,8 +3131,10 @@ export namespace Prisma {
      *   },
      *   take: 10,
      * })
-    **/
-    aggregate<T extends ImagesAggregateArgs>(args: Subset<T, ImagesAggregateArgs>): Prisma.PrismaPromise<GetImagesAggregateType<T>>
+     **/
+    aggregate<T extends ImagesAggregateArgs>(
+      args: Subset<T, ImagesAggregateArgs>,
+    ): Prisma.PrismaPromise<GetImagesAggregateType<T>>
 
     /**
      * Group by Images.
@@ -2690,18 +3142,18 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * @param {imagesGroupByArgs} args - Group by arguments.
      * @example
-     * // Group by city, order by createdAt, get count
+     * // Group by city, order by created_at, get count
      * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
+     *   by: ['city', 'created_at'],
      *   orderBy: {
-     *     createdAt: true
+     *     created_at: true
      *   },
      *   _count: {
      *     _all: true
      *   },
      * })
-     * 
-    **/
+     *
+     **/
     groupBy<
       T extends imagesGroupByArgs,
       HasSelectOrTake extends Or<
@@ -2711,59 +3163,65 @@ export namespace Prisma {
       OrderByArg extends True extends HasSelectOrTake
         ? { orderBy: imagesGroupByArgs['orderBy'] }
         : { orderBy?: imagesGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      OrderFields extends ExcludeUnderscoreKeys<
+        Keys<MaybeTupleToUnion<T['orderBy']>>
+      >,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
       HavingFields extends GetHavingFields<T['having']>,
       HavingValid extends Has<ByFields, HavingFields>,
       ByEmpty extends T['by'] extends never[] ? True : False,
       InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
+        ? `Error: "by" must not be empty.`
+        : HavingValid extends False
+          ? {
+              [P in HavingFields]: P extends ByFields
                 ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, imagesGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetImagesGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the images model
-   */
-  readonly fields: imagesFieldRefs;
+                : P extends string
+                  ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+                  : [
+                      Error,
+                      'Field ',
+                      P,
+                      ` in "having" needs to be provided in "by"`,
+                    ]
+            }[HavingFields]
+          : 'take' extends Keys<T>
+            ? 'orderBy' extends Keys<T>
+              ? ByValid extends True
+                ? {}
+                : {
+                    [P in OrderFields]: P extends ByFields
+                      ? never
+                      : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+                  }[OrderFields]
+              : 'Error: If you provide "take", you also need to provide "orderBy"'
+            : 'skip' extends Keys<T>
+              ? 'orderBy' extends Keys<T>
+                ? ByValid extends True
+                  ? {}
+                  : {
+                      [P in OrderFields]: P extends ByFields
+                        ? never
+                        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+                    }[OrderFields]
+                : 'Error: If you provide "skip", you also need to provide "orderBy"'
+              : ByValid extends True
+                ? {}
+                : {
+                    [P in OrderFields]: P extends ByFields
+                      ? never
+                      : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+                  }[OrderFields],
+    >(
+      args: SubsetIntersection<T, imagesGroupByArgs, OrderByArg> & InputErrors,
+    ): {} extends InputErrors
+      ? GetImagesGroupByPayload<T>
+      : Prisma.PrismaPromise<InputErrors>
+    /**
+     * Fields of the images model
+     */
+    readonly fields: imagesFieldRefs
   }
 
   /**
@@ -2772,24 +3230,76 @@ export namespace Prisma {
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__imagesClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    comments<T extends images$commentsArgs<ExtArgs> = {}>(args?: Subset<T, images$commentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$commentsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    users<T extends usersDefaultArgs<ExtArgs> = {}>(args?: Subset<T, usersDefaultArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    saved_images<T extends images$saved_imagesArgs<ExtArgs> = {}>(args?: Subset<T, images$saved_imagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$saved_imagesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  export interface Prisma__imagesClient<
+    T,
+    Null = never,
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+    GlobalOmitOptions = {},
+  > extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise'
+    comments<T extends images$commentsArgs<ExtArgs> = {}>(
+      args?: Subset<T, images$commentsArgs<ExtArgs>>,
+    ): Prisma.PrismaPromise<
+      | $Result.GetResult<
+          Prisma.$commentsPayload<ExtArgs>,
+          T,
+          'findMany',
+          GlobalOmitOptions
+        >
+      | Null
+    >
+    users<T extends usersDefaultArgs<ExtArgs> = {}>(
+      args?: Subset<T, usersDefaultArgs<ExtArgs>>,
+    ): Prisma__usersClient<
+      | $Result.GetResult<
+          Prisma.$usersPayload<ExtArgs>,
+          T,
+          'findUniqueOrThrow',
+          GlobalOmitOptions
+        >
+      | Null,
+      Null,
+      ExtArgs,
+      GlobalOmitOptions
+    >
+    saved_images<T extends images$saved_imagesArgs<ExtArgs> = {}>(
+      args?: Subset<T, images$saved_imagesArgs<ExtArgs>>,
+    ): Prisma.PrismaPromise<
+      | $Result.GetResult<
+          Prisma.$saved_imagesPayload<ExtArgs>,
+          T,
+          'findMany',
+          GlobalOmitOptions
+        >
+      | Null
+    >
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
      * @param onrejected The callback to execute when the Promise is rejected.
      * @returns A Promise for the completion of which ever callback is executed.
      */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    then<TResult1 = T, TResult2 = never>(
+      onfulfilled?:
+        | ((value: T) => TResult1 | PromiseLike<TResult1>)
+        | undefined
+        | null,
+      onrejected?:
+        | ((reason: any) => TResult2 | PromiseLike<TResult2>)
+        | undefined
+        | null,
+    ): $Utils.JsPromise<TResult1 | TResult2>
     /**
      * Attaches a callback for only the rejection of the Promise.
      * @param onrejected The callback to execute when the Promise is rejected.
      * @returns A Promise for the completion of the callback.
      */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    catch<TResult = never>(
+      onrejected?:
+        | ((reason: any) => TResult | PromiseLike<TResult>)
+        | undefined
+        | null,
+    ): $Utils.JsPromise<T | TResult>
     /**
      * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
      * resolved value cannot be modified from the callback.
@@ -2799,28 +3309,26 @@ export namespace Prisma {
     finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
   }
 
-
-
-
   /**
    * Fields of the images model
    */
   interface imagesFieldRefs {
-    readonly id: FieldRef<"images", 'Int'>
-    readonly title: FieldRef<"images", 'String'>
-    readonly description: FieldRef<"images", 'String'>
-    readonly url: FieldRef<"images", 'String'>
-    readonly user_id: FieldRef<"images", 'Int'>
-    readonly created_at: FieldRef<"images", 'DateTime'>
-    readonly updated_at: FieldRef<"images", 'DateTime'>
+    readonly id: FieldRef<'images', 'Int'>
+    readonly title: FieldRef<'images', 'String'>
+    readonly description: FieldRef<'images', 'String'>
+    readonly url: FieldRef<'images', 'String'>
+    readonly user_id: FieldRef<'images', 'Int'>
+    readonly created_at: FieldRef<'images', 'DateTime'>
+    readonly updated_at: FieldRef<'images', 'DateTime'>
   }
-    
 
   // Custom InputTypes
   /**
    * images findUnique
    */
-  export type imagesFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type imagesFindUniqueArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
     /**
      * Select specific fields to fetch from the images
      */
@@ -2842,7 +3350,9 @@ export namespace Prisma {
   /**
    * images findUniqueOrThrow
    */
-  export type imagesFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type imagesFindUniqueOrThrowArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
     /**
      * Select specific fields to fetch from the images
      */
@@ -2864,7 +3374,9 @@ export namespace Prisma {
   /**
    * images findFirst
    */
-  export type imagesFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type imagesFindFirstArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
     /**
      * Select specific fields to fetch from the images
      */
@@ -2883,31 +3395,31 @@ export namespace Prisma {
     where?: imagesWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
+     *
      * Determine the order of images to fetch.
      */
     orderBy?: imagesOrderByWithRelationInput | imagesOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
+     *
      * Sets the position for searching for images.
      */
     cursor?: imagesWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Take `±n` images from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Skip the first `n` images.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
+     *
      * Filter by unique combinations of images.
      */
     distinct?: ImagesScalarFieldEnum | ImagesScalarFieldEnum[]
@@ -2916,7 +3428,9 @@ export namespace Prisma {
   /**
    * images findFirstOrThrow
    */
-  export type imagesFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type imagesFindFirstOrThrowArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
     /**
      * Select specific fields to fetch from the images
      */
@@ -2935,31 +3449,31 @@ export namespace Prisma {
     where?: imagesWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
+     *
      * Determine the order of images to fetch.
      */
     orderBy?: imagesOrderByWithRelationInput | imagesOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
+     *
      * Sets the position for searching for images.
      */
     cursor?: imagesWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Take `±n` images from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Skip the first `n` images.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
+     *
      * Filter by unique combinations of images.
      */
     distinct?: ImagesScalarFieldEnum | ImagesScalarFieldEnum[]
@@ -2968,7 +3482,9 @@ export namespace Prisma {
   /**
    * images findMany
    */
-  export type imagesFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type imagesFindManyArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
     /**
      * Select specific fields to fetch from the images
      */
@@ -2987,31 +3503,31 @@ export namespace Prisma {
     where?: imagesWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
+     *
      * Determine the order of images to fetch.
      */
     orderBy?: imagesOrderByWithRelationInput | imagesOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
+     *
      * Sets the position for listing images.
      */
     cursor?: imagesWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Take `±n` images from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Skip the first `n` images.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
+     *
      * Filter by unique combinations of images.
      */
     distinct?: ImagesScalarFieldEnum | ImagesScalarFieldEnum[]
@@ -3020,7 +3536,9 @@ export namespace Prisma {
   /**
    * images create
    */
-  export type imagesCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type imagesCreateArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
     /**
      * Select specific fields to fetch from the images
      */
@@ -3042,7 +3560,9 @@ export namespace Prisma {
   /**
    * images createMany
    */
-  export type imagesCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type imagesCreateManyArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
     /**
      * The data used to create many images.
      */
@@ -3053,7 +3573,9 @@ export namespace Prisma {
   /**
    * images update
    */
-  export type imagesUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type imagesUpdateArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
     /**
      * Select specific fields to fetch from the images
      */
@@ -3079,7 +3601,9 @@ export namespace Prisma {
   /**
    * images updateMany
    */
-  export type imagesUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type imagesUpdateManyArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
     /**
      * The data used to update images.
      */
@@ -3097,7 +3621,9 @@ export namespace Prisma {
   /**
    * images upsert
    */
-  export type imagesUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type imagesUpsertArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
     /**
      * Select specific fields to fetch from the images
      */
@@ -3127,7 +3653,9 @@ export namespace Prisma {
   /**
    * images delete
    */
-  export type imagesDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type imagesDeleteArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
     /**
      * Select specific fields to fetch from the images
      */
@@ -3149,7 +3677,9 @@ export namespace Prisma {
   /**
    * images deleteMany
    */
-  export type imagesDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type imagesDeleteManyArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
     /**
      * Filter which images to delete
      */
@@ -3163,7 +3693,9 @@ export namespace Prisma {
   /**
    * images.comments
    */
-  export type images$commentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type images$commentsArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
     /**
      * Select specific fields to fetch from the comments
      */
@@ -3177,7 +3709,9 @@ export namespace Prisma {
      */
     include?: commentsInclude<ExtArgs> | null
     where?: commentsWhereInput
-    orderBy?: commentsOrderByWithRelationInput | commentsOrderByWithRelationInput[]
+    orderBy?:
+      | commentsOrderByWithRelationInput
+      | commentsOrderByWithRelationInput[]
     cursor?: commentsWhereUniqueInput
     take?: number
     skip?: number
@@ -3187,7 +3721,9 @@ export namespace Prisma {
   /**
    * images.saved_images
    */
-  export type images$saved_imagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type images$saved_imagesArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
     /**
      * Select specific fields to fetch from the saved_images
      */
@@ -3201,7 +3737,9 @@ export namespace Prisma {
      */
     include?: saved_imagesInclude<ExtArgs> | null
     where?: saved_imagesWhereInput
-    orderBy?: saved_imagesOrderByWithRelationInput | saved_imagesOrderByWithRelationInput[]
+    orderBy?:
+      | saved_imagesOrderByWithRelationInput
+      | saved_imagesOrderByWithRelationInput[]
     cursor?: saved_imagesWhereUniqueInput
     take?: number
     skip?: number
@@ -3211,7 +3749,9 @@ export namespace Prisma {
   /**
    * images without action
    */
-  export type imagesDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type imagesDefaultArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
     /**
      * Select specific fields to fetch from the images
      */
@@ -3225,7 +3765,6 @@ export namespace Prisma {
      */
     include?: imagesInclude<ExtArgs> | null
   }
-
 
   /**
    * Model saved_images
@@ -3273,7 +3812,6 @@ export namespace Prisma {
     _all: number
   }
 
-
   export type Saved_imagesAvgAggregateInputType = {
     id?: true
     user_id?: true
@@ -3308,81 +3846,88 @@ export namespace Prisma {
     _all?: true
   }
 
-  export type Saved_imagesAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Saved_imagesAggregateArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
     /**
      * Filter which saved_images to aggregate.
      */
     where?: saved_imagesWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
+     *
      * Determine the order of saved_images to fetch.
      */
-    orderBy?: saved_imagesOrderByWithRelationInput | saved_imagesOrderByWithRelationInput[]
+    orderBy?:
+      | saved_imagesOrderByWithRelationInput
+      | saved_imagesOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
+     *
      * Sets the start position
      */
     cursor?: saved_imagesWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Take `±n` saved_images from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Skip the first `n` saved_images.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
+     *
      * Count returned saved_images
-    **/
+     **/
     _count?: true | Saved_imagesCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
+     *
      * Select which fields to average
-    **/
+     **/
     _avg?: Saved_imagesAvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
+     *
      * Select which fields to sum
-    **/
+     **/
     _sum?: Saved_imagesSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
+     *
      * Select which fields to find the minimum value
-    **/
+     **/
     _min?: Saved_imagesMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
+     *
      * Select which fields to find the maximum value
-    **/
+     **/
     _max?: Saved_imagesMaxAggregateInputType
   }
 
-  export type GetSaved_imagesAggregateType<T extends Saved_imagesAggregateArgs> = {
-        [P in keyof T & keyof AggregateSaved_images]: P extends '_count' | 'count'
+  export type GetSaved_imagesAggregateType<
+    T extends Saved_imagesAggregateArgs,
+  > = {
+    [P in keyof T & keyof AggregateSaved_images]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
         : GetScalarType<T[P], AggregateSaved_images[P]>
       : GetScalarType<T[P], AggregateSaved_images[P]>
   }
 
-
-
-
-  export type saved_imagesGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type saved_imagesGroupByArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
     where?: saved_imagesWhereInput
-    orderBy?: saved_imagesOrderByWithAggregationInput | saved_imagesOrderByWithAggregationInput[]
+    orderBy?:
+      | saved_imagesOrderByWithAggregationInput
+      | saved_imagesOrderByWithAggregationInput[]
     by: Saved_imagesScalarFieldEnum[] | Saved_imagesScalarFieldEnum
     having?: saved_imagesScalarWhereWithAggregatesInput
     take?: number
@@ -3406,11 +3951,12 @@ export namespace Prisma {
     _max: Saved_imagesMaxAggregateOutputType | null
   }
 
-  type GetSaved_imagesGroupByPayload<T extends saved_imagesGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<Saved_imagesGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof Saved_imagesGroupByOutputType))]: P extends '_count'
+  type GetSaved_imagesGroupByPayload<T extends saved_imagesGroupByArgs> =
+    Prisma.PrismaPromise<
+      Array<
+        PickEnumerable<Saved_imagesGroupByOutputType, T['by']> & {
+          [P in keyof T &
+            keyof Saved_imagesGroupByOutputType]: P extends '_count'
             ? T[P] extends boolean
               ? number
               : GetScalarType<T[P], Saved_imagesGroupByOutputType[P]>
@@ -3419,17 +3965,19 @@ export namespace Prisma {
       >
     >
 
-
-  export type saved_imagesSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    user_id?: boolean
-    image_id?: boolean
-    saved_at?: boolean
-    users?: boolean | usersDefaultArgs<ExtArgs>
-    images?: boolean | imagesDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["saved_images"]>
-
-
+  export type saved_imagesSelect<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = $Extensions.GetSelect<
+    {
+      id?: boolean
+      user_id?: boolean
+      image_id?: boolean
+      saved_at?: boolean
+      users?: boolean | usersDefaultArgs<ExtArgs>
+      images?: boolean | imagesDefaultArgs<ExtArgs>
+    },
+    ExtArgs['result']['saved_images']
+  >
 
   export type saved_imagesSelectScalar = {
     id?: boolean
@@ -3438,36 +3986,60 @@ export namespace Prisma {
     saved_at?: boolean
   }
 
-  export type saved_imagesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "user_id" | "image_id" | "saved_at", ExtArgs["result"]["saved_images"]>
-  export type saved_imagesInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type saved_imagesOmit<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = $Extensions.GetOmit<
+    'id' | 'user_id' | 'image_id' | 'saved_at',
+    ExtArgs['result']['saved_images']
+  >
+  export type saved_imagesInclude<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
     users?: boolean | usersDefaultArgs<ExtArgs>
     images?: boolean | imagesDefaultArgs<ExtArgs>
   }
 
-  export type $saved_imagesPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "saved_images"
+  export type $saved_imagesPayload<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    name: 'saved_images'
     objects: {
       users: Prisma.$usersPayload<ExtArgs>
       images: Prisma.$imagesPayload<ExtArgs>
     }
-    scalars: $Extensions.GetPayloadResult<{
-      id: number
-      user_id: number
-      image_id: number
-      saved_at: Date | null
-    }, ExtArgs["result"]["saved_images"]>
+    scalars: $Extensions.GetPayloadResult<
+      {
+        id: number
+        user_id: number
+        image_id: number
+        saved_at: Date | null
+      },
+      ExtArgs['result']['saved_images']
+    >
     composites: {}
   }
 
-  type saved_imagesGetPayload<S extends boolean | null | undefined | saved_imagesDefaultArgs> = $Result.GetResult<Prisma.$saved_imagesPayload, S>
+  type saved_imagesGetPayload<
+    S extends boolean | null | undefined | saved_imagesDefaultArgs,
+  > = $Result.GetResult<Prisma.$saved_imagesPayload, S>
 
-  type saved_imagesCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<saved_imagesFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: Saved_imagesCountAggregateInputType | true
+  type saved_imagesCountArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = Omit<
+    saved_imagesFindManyArgs,
+    'select' | 'include' | 'distinct' | 'omit'
+  > & {
+    select?: Saved_imagesCountAggregateInputType | true
+  }
+
+  export interface saved_imagesDelegate<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+    GlobalOmitOptions = {},
+  > {
+    [K: symbol]: {
+      types: Prisma.TypeMap<ExtArgs>['model']['saved_images']
+      meta: { name: 'saved_images' }
     }
-
-  export interface saved_imagesDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['saved_images'], meta: { name: 'saved_images' } }
     /**
      * Find zero or one Saved_images that matches the filter.
      * @param {saved_imagesFindUniqueArgs} args - Arguments to find a Saved_images
@@ -3479,7 +4051,19 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUnique<T extends saved_imagesFindUniqueArgs>(args: SelectSubset<T, saved_imagesFindUniqueArgs<ExtArgs>>): Prisma__saved_imagesClient<$Result.GetResult<Prisma.$saved_imagesPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends saved_imagesFindUniqueArgs>(
+      args: SelectSubset<T, saved_imagesFindUniqueArgs<ExtArgs>>,
+    ): Prisma__saved_imagesClient<
+      $Result.GetResult<
+        Prisma.$saved_imagesPayload<ExtArgs>,
+        T,
+        'findUnique',
+        GlobalOmitOptions
+      > | null,
+      null,
+      ExtArgs,
+      GlobalOmitOptions
+    >
 
     /**
      * Find one Saved_images that matches the filter or throw an error with `error.code='P2025'`
@@ -3493,7 +4077,19 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUniqueOrThrow<T extends saved_imagesFindUniqueOrThrowArgs>(args: SelectSubset<T, saved_imagesFindUniqueOrThrowArgs<ExtArgs>>): Prisma__saved_imagesClient<$Result.GetResult<Prisma.$saved_imagesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends saved_imagesFindUniqueOrThrowArgs>(
+      args: SelectSubset<T, saved_imagesFindUniqueOrThrowArgs<ExtArgs>>,
+    ): Prisma__saved_imagesClient<
+      $Result.GetResult<
+        Prisma.$saved_imagesPayload<ExtArgs>,
+        T,
+        'findUniqueOrThrow',
+        GlobalOmitOptions
+      >,
+      never,
+      ExtArgs,
+      GlobalOmitOptions
+    >
 
     /**
      * Find the first Saved_images that matches the filter.
@@ -3508,7 +4104,19 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirst<T extends saved_imagesFindFirstArgs>(args?: SelectSubset<T, saved_imagesFindFirstArgs<ExtArgs>>): Prisma__saved_imagesClient<$Result.GetResult<Prisma.$saved_imagesPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends saved_imagesFindFirstArgs>(
+      args?: SelectSubset<T, saved_imagesFindFirstArgs<ExtArgs>>,
+    ): Prisma__saved_imagesClient<
+      $Result.GetResult<
+        Prisma.$saved_imagesPayload<ExtArgs>,
+        T,
+        'findFirst',
+        GlobalOmitOptions
+      > | null,
+      null,
+      ExtArgs,
+      GlobalOmitOptions
+    >
 
     /**
      * Find the first Saved_images that matches the filter or
@@ -3524,7 +4132,19 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirstOrThrow<T extends saved_imagesFindFirstOrThrowArgs>(args?: SelectSubset<T, saved_imagesFindFirstOrThrowArgs<ExtArgs>>): Prisma__saved_imagesClient<$Result.GetResult<Prisma.$saved_imagesPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends saved_imagesFindFirstOrThrowArgs>(
+      args?: SelectSubset<T, saved_imagesFindFirstOrThrowArgs<ExtArgs>>,
+    ): Prisma__saved_imagesClient<
+      $Result.GetResult<
+        Prisma.$saved_imagesPayload<ExtArgs>,
+        T,
+        'findFirstOrThrow',
+        GlobalOmitOptions
+      >,
+      never,
+      ExtArgs,
+      GlobalOmitOptions
+    >
 
     /**
      * Find zero or more Saved_images that matches the filter.
@@ -3534,15 +4154,24 @@ export namespace Prisma {
      * @example
      * // Get all Saved_images
      * const saved_images = await prisma.saved_images.findMany()
-     * 
+     *
      * // Get first 10 Saved_images
      * const saved_images = await prisma.saved_images.findMany({ take: 10 })
-     * 
+     *
      * // Only select the `id`
      * const saved_imagesWithIdOnly = await prisma.saved_images.findMany({ select: { id: true } })
-     * 
+     *
      */
-    findMany<T extends saved_imagesFindManyArgs>(args?: SelectSubset<T, saved_imagesFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$saved_imagesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends saved_imagesFindManyArgs>(
+      args?: SelectSubset<T, saved_imagesFindManyArgs<ExtArgs>>,
+    ): Prisma.PrismaPromise<
+      $Result.GetResult<
+        Prisma.$saved_imagesPayload<ExtArgs>,
+        T,
+        'findMany',
+        GlobalOmitOptions
+      >
+    >
 
     /**
      * Create a Saved_images.
@@ -3554,9 +4183,21 @@ export namespace Prisma {
      *     // ... data to create a Saved_images
      *   }
      * })
-     * 
+     *
      */
-    create<T extends saved_imagesCreateArgs>(args: SelectSubset<T, saved_imagesCreateArgs<ExtArgs>>): Prisma__saved_imagesClient<$Result.GetResult<Prisma.$saved_imagesPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends saved_imagesCreateArgs>(
+      args: SelectSubset<T, saved_imagesCreateArgs<ExtArgs>>,
+    ): Prisma__saved_imagesClient<
+      $Result.GetResult<
+        Prisma.$saved_imagesPayload<ExtArgs>,
+        T,
+        'create',
+        GlobalOmitOptions
+      >,
+      never,
+      ExtArgs,
+      GlobalOmitOptions
+    >
 
     /**
      * Create many Saved_images.
@@ -3568,9 +4209,11 @@ export namespace Prisma {
      *     // ... provide data here
      *   ]
      * })
-     *     
+     *
      */
-    createMany<T extends saved_imagesCreateManyArgs>(args?: SelectSubset<T, saved_imagesCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends saved_imagesCreateManyArgs>(
+      args?: SelectSubset<T, saved_imagesCreateManyArgs<ExtArgs>>,
+    ): Prisma.PrismaPromise<BatchPayload>
 
     /**
      * Delete a Saved_images.
@@ -3582,9 +4225,21 @@ export namespace Prisma {
      *     // ... filter to delete one Saved_images
      *   }
      * })
-     * 
+     *
      */
-    delete<T extends saved_imagesDeleteArgs>(args: SelectSubset<T, saved_imagesDeleteArgs<ExtArgs>>): Prisma__saved_imagesClient<$Result.GetResult<Prisma.$saved_imagesPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends saved_imagesDeleteArgs>(
+      args: SelectSubset<T, saved_imagesDeleteArgs<ExtArgs>>,
+    ): Prisma__saved_imagesClient<
+      $Result.GetResult<
+        Prisma.$saved_imagesPayload<ExtArgs>,
+        T,
+        'delete',
+        GlobalOmitOptions
+      >,
+      never,
+      ExtArgs,
+      GlobalOmitOptions
+    >
 
     /**
      * Update one Saved_images.
@@ -3599,9 +4254,21 @@ export namespace Prisma {
      *     // ... provide data here
      *   }
      * })
-     * 
+     *
      */
-    update<T extends saved_imagesUpdateArgs>(args: SelectSubset<T, saved_imagesUpdateArgs<ExtArgs>>): Prisma__saved_imagesClient<$Result.GetResult<Prisma.$saved_imagesPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends saved_imagesUpdateArgs>(
+      args: SelectSubset<T, saved_imagesUpdateArgs<ExtArgs>>,
+    ): Prisma__saved_imagesClient<
+      $Result.GetResult<
+        Prisma.$saved_imagesPayload<ExtArgs>,
+        T,
+        'update',
+        GlobalOmitOptions
+      >,
+      never,
+      ExtArgs,
+      GlobalOmitOptions
+    >
 
     /**
      * Delete zero or more Saved_images.
@@ -3613,9 +4280,11 @@ export namespace Prisma {
      *     // ... provide filter here
      *   }
      * })
-     * 
+     *
      */
-    deleteMany<T extends saved_imagesDeleteManyArgs>(args?: SelectSubset<T, saved_imagesDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends saved_imagesDeleteManyArgs>(
+      args?: SelectSubset<T, saved_imagesDeleteManyArgs<ExtArgs>>,
+    ): Prisma.PrismaPromise<BatchPayload>
 
     /**
      * Update zero or more Saved_images.
@@ -3632,9 +4301,11 @@ export namespace Prisma {
      *     // ... provide data here
      *   }
      * })
-     * 
+     *
      */
-    updateMany<T extends saved_imagesUpdateManyArgs>(args: SelectSubset<T, saved_imagesUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends saved_imagesUpdateManyArgs>(
+      args: SelectSubset<T, saved_imagesUpdateManyArgs<ExtArgs>>,
+    ): Prisma.PrismaPromise<BatchPayload>
 
     /**
      * Create or update one Saved_images.
@@ -3653,8 +4324,19 @@ export namespace Prisma {
      *   }
      * })
      */
-    upsert<T extends saved_imagesUpsertArgs>(args: SelectSubset<T, saved_imagesUpsertArgs<ExtArgs>>): Prisma__saved_imagesClient<$Result.GetResult<Prisma.$saved_imagesPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
+    upsert<T extends saved_imagesUpsertArgs>(
+      args: SelectSubset<T, saved_imagesUpsertArgs<ExtArgs>>,
+    ): Prisma__saved_imagesClient<
+      $Result.GetResult<
+        Prisma.$saved_imagesPayload<ExtArgs>,
+        T,
+        'upsert',
+        GlobalOmitOptions
+      >,
+      never,
+      ExtArgs,
+      GlobalOmitOptions
+    >
 
     /**
      * Count the number of Saved_images.
@@ -3668,7 +4350,7 @@ export namespace Prisma {
      *     // ... the filter for the Saved_images we want to count
      *   }
      * })
-    **/
+     **/
     count<T extends saved_imagesCountArgs>(
       args?: Subset<T, saved_imagesCountArgs>,
     ): Prisma.PrismaPromise<
@@ -3702,8 +4384,10 @@ export namespace Prisma {
      *   },
      *   take: 10,
      * })
-    **/
-    aggregate<T extends Saved_imagesAggregateArgs>(args: Subset<T, Saved_imagesAggregateArgs>): Prisma.PrismaPromise<GetSaved_imagesAggregateType<T>>
+     **/
+    aggregate<T extends Saved_imagesAggregateArgs>(
+      args: Subset<T, Saved_imagesAggregateArgs>,
+    ): Prisma.PrismaPromise<GetSaved_imagesAggregateType<T>>
 
     /**
      * Group by Saved_images.
@@ -3711,18 +4395,18 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * @param {saved_imagesGroupByArgs} args - Group by arguments.
      * @example
-     * // Group by city, order by createdAt, get count
+     * // Group by city, order by created_at, get count
      * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
+     *   by: ['city', 'created_at'],
      *   orderBy: {
-     *     createdAt: true
+     *     created_at: true
      *   },
      *   _count: {
      *     _all: true
      *   },
      * })
-     * 
-    **/
+     *
+     **/
     groupBy<
       T extends saved_imagesGroupByArgs,
       HasSelectOrTake extends Or<
@@ -3732,59 +4416,66 @@ export namespace Prisma {
       OrderByArg extends True extends HasSelectOrTake
         ? { orderBy: saved_imagesGroupByArgs['orderBy'] }
         : { orderBy?: saved_imagesGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      OrderFields extends ExcludeUnderscoreKeys<
+        Keys<MaybeTupleToUnion<T['orderBy']>>
+      >,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
       HavingFields extends GetHavingFields<T['having']>,
       HavingValid extends Has<ByFields, HavingFields>,
       ByEmpty extends T['by'] extends never[] ? True : False,
       InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
+        ? `Error: "by" must not be empty.`
+        : HavingValid extends False
+          ? {
+              [P in HavingFields]: P extends ByFields
                 ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, saved_imagesGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetSaved_imagesGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the saved_images model
-   */
-  readonly fields: saved_imagesFieldRefs;
+                : P extends string
+                  ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+                  : [
+                      Error,
+                      'Field ',
+                      P,
+                      ` in "having" needs to be provided in "by"`,
+                    ]
+            }[HavingFields]
+          : 'take' extends Keys<T>
+            ? 'orderBy' extends Keys<T>
+              ? ByValid extends True
+                ? {}
+                : {
+                    [P in OrderFields]: P extends ByFields
+                      ? never
+                      : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+                  }[OrderFields]
+              : 'Error: If you provide "take", you also need to provide "orderBy"'
+            : 'skip' extends Keys<T>
+              ? 'orderBy' extends Keys<T>
+                ? ByValid extends True
+                  ? {}
+                  : {
+                      [P in OrderFields]: P extends ByFields
+                        ? never
+                        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+                    }[OrderFields]
+                : 'Error: If you provide "skip", you also need to provide "orderBy"'
+              : ByValid extends True
+                ? {}
+                : {
+                    [P in OrderFields]: P extends ByFields
+                      ? never
+                      : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+                  }[OrderFields],
+    >(
+      args: SubsetIntersection<T, saved_imagesGroupByArgs, OrderByArg> &
+        InputErrors,
+    ): {} extends InputErrors
+      ? GetSaved_imagesGroupByPayload<T>
+      : Prisma.PrismaPromise<InputErrors>
+    /**
+     * Fields of the saved_images model
+     */
+    readonly fields: saved_imagesFieldRefs
   }
 
   /**
@@ -3793,23 +4484,68 @@ export namespace Prisma {
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__saved_imagesClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    users<T extends usersDefaultArgs<ExtArgs> = {}>(args?: Subset<T, usersDefaultArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    images<T extends imagesDefaultArgs<ExtArgs> = {}>(args?: Subset<T, imagesDefaultArgs<ExtArgs>>): Prisma__imagesClient<$Result.GetResult<Prisma.$imagesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  export interface Prisma__saved_imagesClient<
+    T,
+    Null = never,
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+    GlobalOmitOptions = {},
+  > extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise'
+    users<T extends usersDefaultArgs<ExtArgs> = {}>(
+      args?: Subset<T, usersDefaultArgs<ExtArgs>>,
+    ): Prisma__usersClient<
+      | $Result.GetResult<
+          Prisma.$usersPayload<ExtArgs>,
+          T,
+          'findUniqueOrThrow',
+          GlobalOmitOptions
+        >
+      | Null,
+      Null,
+      ExtArgs,
+      GlobalOmitOptions
+    >
+    images<T extends imagesDefaultArgs<ExtArgs> = {}>(
+      args?: Subset<T, imagesDefaultArgs<ExtArgs>>,
+    ): Prisma__imagesClient<
+      | $Result.GetResult<
+          Prisma.$imagesPayload<ExtArgs>,
+          T,
+          'findUniqueOrThrow',
+          GlobalOmitOptions
+        >
+      | Null,
+      Null,
+      ExtArgs,
+      GlobalOmitOptions
+    >
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
      * @param onrejected The callback to execute when the Promise is rejected.
      * @returns A Promise for the completion of which ever callback is executed.
      */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    then<TResult1 = T, TResult2 = never>(
+      onfulfilled?:
+        | ((value: T) => TResult1 | PromiseLike<TResult1>)
+        | undefined
+        | null,
+      onrejected?:
+        | ((reason: any) => TResult2 | PromiseLike<TResult2>)
+        | undefined
+        | null,
+    ): $Utils.JsPromise<TResult1 | TResult2>
     /**
      * Attaches a callback for only the rejection of the Promise.
      * @param onrejected The callback to execute when the Promise is rejected.
      * @returns A Promise for the completion of the callback.
      */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    catch<TResult = never>(
+      onrejected?:
+        | ((reason: any) => TResult | PromiseLike<TResult>)
+        | undefined
+        | null,
+    ): $Utils.JsPromise<T | TResult>
     /**
      * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
      * resolved value cannot be modified from the callback.
@@ -3819,25 +4555,23 @@ export namespace Prisma {
     finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
   }
 
-
-
-
   /**
    * Fields of the saved_images model
    */
   interface saved_imagesFieldRefs {
-    readonly id: FieldRef<"saved_images", 'Int'>
-    readonly user_id: FieldRef<"saved_images", 'Int'>
-    readonly image_id: FieldRef<"saved_images", 'Int'>
-    readonly saved_at: FieldRef<"saved_images", 'DateTime'>
+    readonly id: FieldRef<'saved_images', 'Int'>
+    readonly user_id: FieldRef<'saved_images', 'Int'>
+    readonly image_id: FieldRef<'saved_images', 'Int'>
+    readonly saved_at: FieldRef<'saved_images', 'DateTime'>
   }
-    
 
   // Custom InputTypes
   /**
    * saved_images findUnique
    */
-  export type saved_imagesFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type saved_imagesFindUniqueArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
     /**
      * Select specific fields to fetch from the saved_images
      */
@@ -3859,7 +4593,9 @@ export namespace Prisma {
   /**
    * saved_images findUniqueOrThrow
    */
-  export type saved_imagesFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type saved_imagesFindUniqueOrThrowArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
     /**
      * Select specific fields to fetch from the saved_images
      */
@@ -3881,7 +4617,9 @@ export namespace Prisma {
   /**
    * saved_images findFirst
    */
-  export type saved_imagesFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type saved_imagesFindFirstArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
     /**
      * Select specific fields to fetch from the saved_images
      */
@@ -3900,31 +4638,33 @@ export namespace Prisma {
     where?: saved_imagesWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
+     *
      * Determine the order of saved_images to fetch.
      */
-    orderBy?: saved_imagesOrderByWithRelationInput | saved_imagesOrderByWithRelationInput[]
+    orderBy?:
+      | saved_imagesOrderByWithRelationInput
+      | saved_imagesOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
+     *
      * Sets the position for searching for saved_images.
      */
     cursor?: saved_imagesWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Take `±n` saved_images from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Skip the first `n` saved_images.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
+     *
      * Filter by unique combinations of saved_images.
      */
     distinct?: Saved_imagesScalarFieldEnum | Saved_imagesScalarFieldEnum[]
@@ -3933,7 +4673,9 @@ export namespace Prisma {
   /**
    * saved_images findFirstOrThrow
    */
-  export type saved_imagesFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type saved_imagesFindFirstOrThrowArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
     /**
      * Select specific fields to fetch from the saved_images
      */
@@ -3952,31 +4694,33 @@ export namespace Prisma {
     where?: saved_imagesWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
+     *
      * Determine the order of saved_images to fetch.
      */
-    orderBy?: saved_imagesOrderByWithRelationInput | saved_imagesOrderByWithRelationInput[]
+    orderBy?:
+      | saved_imagesOrderByWithRelationInput
+      | saved_imagesOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
+     *
      * Sets the position for searching for saved_images.
      */
     cursor?: saved_imagesWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Take `±n` saved_images from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Skip the first `n` saved_images.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
+     *
      * Filter by unique combinations of saved_images.
      */
     distinct?: Saved_imagesScalarFieldEnum | Saved_imagesScalarFieldEnum[]
@@ -3985,7 +4729,9 @@ export namespace Prisma {
   /**
    * saved_images findMany
    */
-  export type saved_imagesFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type saved_imagesFindManyArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
     /**
      * Select specific fields to fetch from the saved_images
      */
@@ -4004,31 +4750,33 @@ export namespace Prisma {
     where?: saved_imagesWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
+     *
      * Determine the order of saved_images to fetch.
      */
-    orderBy?: saved_imagesOrderByWithRelationInput | saved_imagesOrderByWithRelationInput[]
+    orderBy?:
+      | saved_imagesOrderByWithRelationInput
+      | saved_imagesOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
+     *
      * Sets the position for listing saved_images.
      */
     cursor?: saved_imagesWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Take `±n` saved_images from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Skip the first `n` saved_images.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
+     *
      * Filter by unique combinations of saved_images.
      */
     distinct?: Saved_imagesScalarFieldEnum | Saved_imagesScalarFieldEnum[]
@@ -4037,7 +4785,9 @@ export namespace Prisma {
   /**
    * saved_images create
    */
-  export type saved_imagesCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type saved_imagesCreateArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
     /**
      * Select specific fields to fetch from the saved_images
      */
@@ -4059,7 +4809,9 @@ export namespace Prisma {
   /**
    * saved_images createMany
    */
-  export type saved_imagesCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type saved_imagesCreateManyArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
     /**
      * The data used to create many saved_images.
      */
@@ -4070,7 +4822,9 @@ export namespace Prisma {
   /**
    * saved_images update
    */
-  export type saved_imagesUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type saved_imagesUpdateArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
     /**
      * Select specific fields to fetch from the saved_images
      */
@@ -4096,11 +4850,16 @@ export namespace Prisma {
   /**
    * saved_images updateMany
    */
-  export type saved_imagesUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type saved_imagesUpdateManyArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
     /**
      * The data used to update saved_images.
      */
-    data: XOR<saved_imagesUpdateManyMutationInput, saved_imagesUncheckedUpdateManyInput>
+    data: XOR<
+      saved_imagesUpdateManyMutationInput,
+      saved_imagesUncheckedUpdateManyInput
+    >
     /**
      * Filter which saved_images to update
      */
@@ -4114,7 +4873,9 @@ export namespace Prisma {
   /**
    * saved_images upsert
    */
-  export type saved_imagesUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type saved_imagesUpsertArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
     /**
      * Select specific fields to fetch from the saved_images
      */
@@ -4144,7 +4905,9 @@ export namespace Prisma {
   /**
    * saved_images delete
    */
-  export type saved_imagesDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type saved_imagesDeleteArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
     /**
      * Select specific fields to fetch from the saved_images
      */
@@ -4166,7 +4929,9 @@ export namespace Prisma {
   /**
    * saved_images deleteMany
    */
-  export type saved_imagesDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type saved_imagesDeleteManyArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
     /**
      * Filter which saved_images to delete
      */
@@ -4180,7 +4945,9 @@ export namespace Prisma {
   /**
    * saved_images without action
    */
-  export type saved_imagesDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type saved_imagesDefaultArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
     /**
      * Select specific fields to fetch from the saved_images
      */
@@ -4194,7 +4961,6 @@ export namespace Prisma {
      */
     include?: saved_imagesInclude<ExtArgs> | null
   }
-
 
   /**
    * Model users
@@ -4255,7 +5021,6 @@ export namespace Prisma {
     _all: number
   }
 
-
   export type UsersAvgAggregateInputType = {
     id?: true
     age?: true
@@ -4303,81 +5068,84 @@ export namespace Prisma {
     _all?: true
   }
 
-  export type UsersAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UsersAggregateArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
     /**
      * Filter which users to aggregate.
      */
     where?: usersWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
+     *
      * Determine the order of users to fetch.
      */
     orderBy?: usersOrderByWithRelationInput | usersOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
+     *
      * Sets the start position
      */
     cursor?: usersWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Take `±n` users from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Skip the first `n` users.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
+     *
      * Count returned users
-    **/
+     **/
     _count?: true | UsersCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
+     *
      * Select which fields to average
-    **/
+     **/
     _avg?: UsersAvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
+     *
      * Select which fields to sum
-    **/
+     **/
     _sum?: UsersSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
+     *
      * Select which fields to find the minimum value
-    **/
+     **/
     _min?: UsersMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
+     *
      * Select which fields to find the maximum value
-    **/
+     **/
     _max?: UsersMaxAggregateInputType
   }
 
   export type GetUsersAggregateType<T extends UsersAggregateArgs> = {
-        [P in keyof T & keyof AggregateUsers]: P extends '_count' | 'count'
+    [P in keyof T & keyof AggregateUsers]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
         : GetScalarType<T[P], AggregateUsers[P]>
       : GetScalarType<T[P], AggregateUsers[P]>
   }
 
-
-
-
-  export type usersGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type usersGroupByArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
     where?: usersWhereInput
-    orderBy?: usersOrderByWithAggregationInput | usersOrderByWithAggregationInput[]
+    orderBy?:
+      | usersOrderByWithAggregationInput
+      | usersOrderByWithAggregationInput[]
     by: UsersScalarFieldEnum[] | UsersScalarFieldEnum
     having?: usersScalarWhereWithAggregatesInput
     take?: number
@@ -4406,11 +5174,11 @@ export namespace Prisma {
     _max: UsersMaxAggregateOutputType | null
   }
 
-  type GetUsersGroupByPayload<T extends usersGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<UsersGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof UsersGroupByOutputType))]: P extends '_count'
+  type GetUsersGroupByPayload<T extends usersGroupByArgs> =
+    Prisma.PrismaPromise<
+      Array<
+        PickEnumerable<UsersGroupByOutputType, T['by']> & {
+          [P in keyof T & keyof UsersGroupByOutputType]: P extends '_count'
             ? T[P] extends boolean
               ? number
               : GetScalarType<T[P], UsersGroupByOutputType[P]>
@@ -4419,24 +5187,26 @@ export namespace Prisma {
       >
     >
 
-
-  export type usersSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    email?: boolean
-    password?: boolean
-    full_name?: boolean
-    avatar?: boolean
-    age?: boolean
-    created_at?: boolean
-    updated_at?: boolean
-    codeChangePass?: boolean
-    comments?: boolean | users$commentsArgs<ExtArgs>
-    images?: boolean | users$imagesArgs<ExtArgs>
-    saved_images?: boolean | users$saved_imagesArgs<ExtArgs>
-    _count?: boolean | UsersCountOutputTypeDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["users"]>
-
-
+  export type usersSelect<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = $Extensions.GetSelect<
+    {
+      id?: boolean
+      email?: boolean
+      password?: boolean
+      full_name?: boolean
+      avatar?: boolean
+      age?: boolean
+      created_at?: boolean
+      updated_at?: boolean
+      codeChangePass?: boolean
+      comments?: boolean | users$commentsArgs<ExtArgs>
+      images?: boolean | users$imagesArgs<ExtArgs>
+      saved_images?: boolean | users$saved_imagesArgs<ExtArgs>
+      _count?: boolean | UsersCountOutputTypeDefaultArgs<ExtArgs>
+    },
+    ExtArgs['result']['users']
+  >
 
   export type usersSelectScalar = {
     id?: boolean
@@ -4450,44 +5220,73 @@ export namespace Prisma {
     codeChangePass?: boolean
   }
 
-  export type usersOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "password" | "full_name" | "avatar" | "age" | "created_at" | "updated_at" | "codeChangePass", ExtArgs["result"]["users"]>
-  export type usersInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type usersOmit<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = $Extensions.GetOmit<
+    | 'id'
+    | 'email'
+    | 'password'
+    | 'full_name'
+    | 'avatar'
+    | 'age'
+    | 'created_at'
+    | 'updated_at'
+    | 'codeChangePass',
+    ExtArgs['result']['users']
+  >
+  export type usersInclude<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
     comments?: boolean | users$commentsArgs<ExtArgs>
     images?: boolean | users$imagesArgs<ExtArgs>
     saved_images?: boolean | users$saved_imagesArgs<ExtArgs>
     _count?: boolean | UsersCountOutputTypeDefaultArgs<ExtArgs>
   }
 
-  export type $usersPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "users"
+  export type $usersPayload<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    name: 'users'
     objects: {
       comments: Prisma.$commentsPayload<ExtArgs>[]
       images: Prisma.$imagesPayload<ExtArgs>[]
       saved_images: Prisma.$saved_imagesPayload<ExtArgs>[]
     }
-    scalars: $Extensions.GetPayloadResult<{
-      id: number
-      email: string
-      password: string
-      full_name: string | null
-      avatar: string | null
-      age: number | null
-      created_at: Date | null
-      updated_at: Date | null
-      codeChangePass: string | null
-    }, ExtArgs["result"]["users"]>
+    scalars: $Extensions.GetPayloadResult<
+      {
+        id: number
+        email: string
+        password: string
+        full_name: string | null
+        avatar: string | null
+        age: number | null
+        created_at: Date | null
+        updated_at: Date | null
+        codeChangePass: string | null
+      },
+      ExtArgs['result']['users']
+    >
     composites: {}
   }
 
-  type usersGetPayload<S extends boolean | null | undefined | usersDefaultArgs> = $Result.GetResult<Prisma.$usersPayload, S>
+  type usersGetPayload<
+    S extends boolean | null | undefined | usersDefaultArgs,
+  > = $Result.GetResult<Prisma.$usersPayload, S>
 
-  type usersCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<usersFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: UsersCountAggregateInputType | true
+  type usersCountArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = Omit<usersFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+    select?: UsersCountAggregateInputType | true
+  }
+
+  export interface usersDelegate<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+    GlobalOmitOptions = {},
+  > {
+    [K: symbol]: {
+      types: Prisma.TypeMap<ExtArgs>['model']['users']
+      meta: { name: 'users' }
     }
-
-  export interface usersDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['users'], meta: { name: 'users' } }
     /**
      * Find zero or one Users that matches the filter.
      * @param {usersFindUniqueArgs} args - Arguments to find a Users
@@ -4499,7 +5298,19 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUnique<T extends usersFindUniqueArgs>(args: SelectSubset<T, usersFindUniqueArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends usersFindUniqueArgs>(
+      args: SelectSubset<T, usersFindUniqueArgs<ExtArgs>>,
+    ): Prisma__usersClient<
+      $Result.GetResult<
+        Prisma.$usersPayload<ExtArgs>,
+        T,
+        'findUnique',
+        GlobalOmitOptions
+      > | null,
+      null,
+      ExtArgs,
+      GlobalOmitOptions
+    >
 
     /**
      * Find one Users that matches the filter or throw an error with `error.code='P2025'`
@@ -4513,7 +5324,19 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUniqueOrThrow<T extends usersFindUniqueOrThrowArgs>(args: SelectSubset<T, usersFindUniqueOrThrowArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends usersFindUniqueOrThrowArgs>(
+      args: SelectSubset<T, usersFindUniqueOrThrowArgs<ExtArgs>>,
+    ): Prisma__usersClient<
+      $Result.GetResult<
+        Prisma.$usersPayload<ExtArgs>,
+        T,
+        'findUniqueOrThrow',
+        GlobalOmitOptions
+      >,
+      never,
+      ExtArgs,
+      GlobalOmitOptions
+    >
 
     /**
      * Find the first Users that matches the filter.
@@ -4528,7 +5351,19 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirst<T extends usersFindFirstArgs>(args?: SelectSubset<T, usersFindFirstArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends usersFindFirstArgs>(
+      args?: SelectSubset<T, usersFindFirstArgs<ExtArgs>>,
+    ): Prisma__usersClient<
+      $Result.GetResult<
+        Prisma.$usersPayload<ExtArgs>,
+        T,
+        'findFirst',
+        GlobalOmitOptions
+      > | null,
+      null,
+      ExtArgs,
+      GlobalOmitOptions
+    >
 
     /**
      * Find the first Users that matches the filter or
@@ -4544,7 +5379,19 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirstOrThrow<T extends usersFindFirstOrThrowArgs>(args?: SelectSubset<T, usersFindFirstOrThrowArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends usersFindFirstOrThrowArgs>(
+      args?: SelectSubset<T, usersFindFirstOrThrowArgs<ExtArgs>>,
+    ): Prisma__usersClient<
+      $Result.GetResult<
+        Prisma.$usersPayload<ExtArgs>,
+        T,
+        'findFirstOrThrow',
+        GlobalOmitOptions
+      >,
+      never,
+      ExtArgs,
+      GlobalOmitOptions
+    >
 
     /**
      * Find zero or more Users that matches the filter.
@@ -4554,15 +5401,24 @@ export namespace Prisma {
      * @example
      * // Get all Users
      * const users = await prisma.users.findMany()
-     * 
+     *
      * // Get first 10 Users
      * const users = await prisma.users.findMany({ take: 10 })
-     * 
+     *
      * // Only select the `id`
      * const usersWithIdOnly = await prisma.users.findMany({ select: { id: true } })
-     * 
+     *
      */
-    findMany<T extends usersFindManyArgs>(args?: SelectSubset<T, usersFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends usersFindManyArgs>(
+      args?: SelectSubset<T, usersFindManyArgs<ExtArgs>>,
+    ): Prisma.PrismaPromise<
+      $Result.GetResult<
+        Prisma.$usersPayload<ExtArgs>,
+        T,
+        'findMany',
+        GlobalOmitOptions
+      >
+    >
 
     /**
      * Create a Users.
@@ -4574,9 +5430,21 @@ export namespace Prisma {
      *     // ... data to create a Users
      *   }
      * })
-     * 
+     *
      */
-    create<T extends usersCreateArgs>(args: SelectSubset<T, usersCreateArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends usersCreateArgs>(
+      args: SelectSubset<T, usersCreateArgs<ExtArgs>>,
+    ): Prisma__usersClient<
+      $Result.GetResult<
+        Prisma.$usersPayload<ExtArgs>,
+        T,
+        'create',
+        GlobalOmitOptions
+      >,
+      never,
+      ExtArgs,
+      GlobalOmitOptions
+    >
 
     /**
      * Create many Users.
@@ -4588,9 +5456,11 @@ export namespace Prisma {
      *     // ... provide data here
      *   ]
      * })
-     *     
+     *
      */
-    createMany<T extends usersCreateManyArgs>(args?: SelectSubset<T, usersCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends usersCreateManyArgs>(
+      args?: SelectSubset<T, usersCreateManyArgs<ExtArgs>>,
+    ): Prisma.PrismaPromise<BatchPayload>
 
     /**
      * Delete a Users.
@@ -4602,9 +5472,21 @@ export namespace Prisma {
      *     // ... filter to delete one Users
      *   }
      * })
-     * 
+     *
      */
-    delete<T extends usersDeleteArgs>(args: SelectSubset<T, usersDeleteArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends usersDeleteArgs>(
+      args: SelectSubset<T, usersDeleteArgs<ExtArgs>>,
+    ): Prisma__usersClient<
+      $Result.GetResult<
+        Prisma.$usersPayload<ExtArgs>,
+        T,
+        'delete',
+        GlobalOmitOptions
+      >,
+      never,
+      ExtArgs,
+      GlobalOmitOptions
+    >
 
     /**
      * Update one Users.
@@ -4619,9 +5501,21 @@ export namespace Prisma {
      *     // ... provide data here
      *   }
      * })
-     * 
+     *
      */
-    update<T extends usersUpdateArgs>(args: SelectSubset<T, usersUpdateArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends usersUpdateArgs>(
+      args: SelectSubset<T, usersUpdateArgs<ExtArgs>>,
+    ): Prisma__usersClient<
+      $Result.GetResult<
+        Prisma.$usersPayload<ExtArgs>,
+        T,
+        'update',
+        GlobalOmitOptions
+      >,
+      never,
+      ExtArgs,
+      GlobalOmitOptions
+    >
 
     /**
      * Delete zero or more Users.
@@ -4633,9 +5527,11 @@ export namespace Prisma {
      *     // ... provide filter here
      *   }
      * })
-     * 
+     *
      */
-    deleteMany<T extends usersDeleteManyArgs>(args?: SelectSubset<T, usersDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends usersDeleteManyArgs>(
+      args?: SelectSubset<T, usersDeleteManyArgs<ExtArgs>>,
+    ): Prisma.PrismaPromise<BatchPayload>
 
     /**
      * Update zero or more Users.
@@ -4652,9 +5548,11 @@ export namespace Prisma {
      *     // ... provide data here
      *   }
      * })
-     * 
+     *
      */
-    updateMany<T extends usersUpdateManyArgs>(args: SelectSubset<T, usersUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends usersUpdateManyArgs>(
+      args: SelectSubset<T, usersUpdateManyArgs<ExtArgs>>,
+    ): Prisma.PrismaPromise<BatchPayload>
 
     /**
      * Create or update one Users.
@@ -4673,8 +5571,19 @@ export namespace Prisma {
      *   }
      * })
      */
-    upsert<T extends usersUpsertArgs>(args: SelectSubset<T, usersUpsertArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
+    upsert<T extends usersUpsertArgs>(
+      args: SelectSubset<T, usersUpsertArgs<ExtArgs>>,
+    ): Prisma__usersClient<
+      $Result.GetResult<
+        Prisma.$usersPayload<ExtArgs>,
+        T,
+        'upsert',
+        GlobalOmitOptions
+      >,
+      never,
+      ExtArgs,
+      GlobalOmitOptions
+    >
 
     /**
      * Count the number of Users.
@@ -4688,7 +5597,7 @@ export namespace Prisma {
      *     // ... the filter for the Users we want to count
      *   }
      * })
-    **/
+     **/
     count<T extends usersCountArgs>(
       args?: Subset<T, usersCountArgs>,
     ): Prisma.PrismaPromise<
@@ -4722,8 +5631,10 @@ export namespace Prisma {
      *   },
      *   take: 10,
      * })
-    **/
-    aggregate<T extends UsersAggregateArgs>(args: Subset<T, UsersAggregateArgs>): Prisma.PrismaPromise<GetUsersAggregateType<T>>
+     **/
+    aggregate<T extends UsersAggregateArgs>(
+      args: Subset<T, UsersAggregateArgs>,
+    ): Prisma.PrismaPromise<GetUsersAggregateType<T>>
 
     /**
      * Group by Users.
@@ -4731,18 +5642,18 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * @param {usersGroupByArgs} args - Group by arguments.
      * @example
-     * // Group by city, order by createdAt, get count
+     * // Group by city, order by created_at, get count
      * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
+     *   by: ['city', 'created_at'],
      *   orderBy: {
-     *     createdAt: true
+     *     created_at: true
      *   },
      *   _count: {
      *     _all: true
      *   },
      * })
-     * 
-    **/
+     *
+     **/
     groupBy<
       T extends usersGroupByArgs,
       HasSelectOrTake extends Or<
@@ -4752,59 +5663,65 @@ export namespace Prisma {
       OrderByArg extends True extends HasSelectOrTake
         ? { orderBy: usersGroupByArgs['orderBy'] }
         : { orderBy?: usersGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      OrderFields extends ExcludeUnderscoreKeys<
+        Keys<MaybeTupleToUnion<T['orderBy']>>
+      >,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
       HavingFields extends GetHavingFields<T['having']>,
       HavingValid extends Has<ByFields, HavingFields>,
       ByEmpty extends T['by'] extends never[] ? True : False,
       InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
+        ? `Error: "by" must not be empty.`
+        : HavingValid extends False
+          ? {
+              [P in HavingFields]: P extends ByFields
                 ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, usersGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetUsersGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the users model
-   */
-  readonly fields: usersFieldRefs;
+                : P extends string
+                  ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+                  : [
+                      Error,
+                      'Field ',
+                      P,
+                      ` in "having" needs to be provided in "by"`,
+                    ]
+            }[HavingFields]
+          : 'take' extends Keys<T>
+            ? 'orderBy' extends Keys<T>
+              ? ByValid extends True
+                ? {}
+                : {
+                    [P in OrderFields]: P extends ByFields
+                      ? never
+                      : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+                  }[OrderFields]
+              : 'Error: If you provide "take", you also need to provide "orderBy"'
+            : 'skip' extends Keys<T>
+              ? 'orderBy' extends Keys<T>
+                ? ByValid extends True
+                  ? {}
+                  : {
+                      [P in OrderFields]: P extends ByFields
+                        ? never
+                        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+                    }[OrderFields]
+                : 'Error: If you provide "skip", you also need to provide "orderBy"'
+              : ByValid extends True
+                ? {}
+                : {
+                    [P in OrderFields]: P extends ByFields
+                      ? never
+                      : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+                  }[OrderFields],
+    >(
+      args: SubsetIntersection<T, usersGroupByArgs, OrderByArg> & InputErrors,
+    ): {} extends InputErrors
+      ? GetUsersGroupByPayload<T>
+      : Prisma.PrismaPromise<InputErrors>
+    /**
+     * Fields of the users model
+     */
+    readonly fields: usersFieldRefs
   }
 
   /**
@@ -4813,24 +5730,73 @@ export namespace Prisma {
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__usersClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    comments<T extends users$commentsArgs<ExtArgs> = {}>(args?: Subset<T, users$commentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$commentsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    images<T extends users$imagesArgs<ExtArgs> = {}>(args?: Subset<T, users$imagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$imagesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    saved_images<T extends users$saved_imagesArgs<ExtArgs> = {}>(args?: Subset<T, users$saved_imagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$saved_imagesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  export interface Prisma__usersClient<
+    T,
+    Null = never,
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+    GlobalOmitOptions = {},
+  > extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise'
+    comments<T extends users$commentsArgs<ExtArgs> = {}>(
+      args?: Subset<T, users$commentsArgs<ExtArgs>>,
+    ): Prisma.PrismaPromise<
+      | $Result.GetResult<
+          Prisma.$commentsPayload<ExtArgs>,
+          T,
+          'findMany',
+          GlobalOmitOptions
+        >
+      | Null
+    >
+    images<T extends users$imagesArgs<ExtArgs> = {}>(
+      args?: Subset<T, users$imagesArgs<ExtArgs>>,
+    ): Prisma.PrismaPromise<
+      | $Result.GetResult<
+          Prisma.$imagesPayload<ExtArgs>,
+          T,
+          'findMany',
+          GlobalOmitOptions
+        >
+      | Null
+    >
+    saved_images<T extends users$saved_imagesArgs<ExtArgs> = {}>(
+      args?: Subset<T, users$saved_imagesArgs<ExtArgs>>,
+    ): Prisma.PrismaPromise<
+      | $Result.GetResult<
+          Prisma.$saved_imagesPayload<ExtArgs>,
+          T,
+          'findMany',
+          GlobalOmitOptions
+        >
+      | Null
+    >
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
      * @param onrejected The callback to execute when the Promise is rejected.
      * @returns A Promise for the completion of which ever callback is executed.
      */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    then<TResult1 = T, TResult2 = never>(
+      onfulfilled?:
+        | ((value: T) => TResult1 | PromiseLike<TResult1>)
+        | undefined
+        | null,
+      onrejected?:
+        | ((reason: any) => TResult2 | PromiseLike<TResult2>)
+        | undefined
+        | null,
+    ): $Utils.JsPromise<TResult1 | TResult2>
     /**
      * Attaches a callback for only the rejection of the Promise.
      * @param onrejected The callback to execute when the Promise is rejected.
      * @returns A Promise for the completion of the callback.
      */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    catch<TResult = never>(
+      onrejected?:
+        | ((reason: any) => TResult | PromiseLike<TResult>)
+        | undefined
+        | null,
+    ): $Utils.JsPromise<T | TResult>
     /**
      * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
      * resolved value cannot be modified from the callback.
@@ -4840,30 +5806,28 @@ export namespace Prisma {
     finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
   }
 
-
-
-
   /**
    * Fields of the users model
    */
   interface usersFieldRefs {
-    readonly id: FieldRef<"users", 'Int'>
-    readonly email: FieldRef<"users", 'String'>
-    readonly password: FieldRef<"users", 'String'>
-    readonly full_name: FieldRef<"users", 'String'>
-    readonly avatar: FieldRef<"users", 'String'>
-    readonly age: FieldRef<"users", 'Int'>
-    readonly created_at: FieldRef<"users", 'DateTime'>
-    readonly updated_at: FieldRef<"users", 'DateTime'>
-    readonly codeChangePass: FieldRef<"users", 'String'>
+    readonly id: FieldRef<'users', 'Int'>
+    readonly email: FieldRef<'users', 'String'>
+    readonly password: FieldRef<'users', 'String'>
+    readonly full_name: FieldRef<'users', 'String'>
+    readonly avatar: FieldRef<'users', 'String'>
+    readonly age: FieldRef<'users', 'Int'>
+    readonly created_at: FieldRef<'users', 'DateTime'>
+    readonly updated_at: FieldRef<'users', 'DateTime'>
+    readonly codeChangePass: FieldRef<'users', 'String'>
   }
-    
 
   // Custom InputTypes
   /**
    * users findUnique
    */
-  export type usersFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type usersFindUniqueArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
     /**
      * Select specific fields to fetch from the users
      */
@@ -4885,7 +5849,9 @@ export namespace Prisma {
   /**
    * users findUniqueOrThrow
    */
-  export type usersFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type usersFindUniqueOrThrowArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
     /**
      * Select specific fields to fetch from the users
      */
@@ -4907,7 +5873,9 @@ export namespace Prisma {
   /**
    * users findFirst
    */
-  export type usersFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type usersFindFirstArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
     /**
      * Select specific fields to fetch from the users
      */
@@ -4926,31 +5894,31 @@ export namespace Prisma {
     where?: usersWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
+     *
      * Determine the order of users to fetch.
      */
     orderBy?: usersOrderByWithRelationInput | usersOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
+     *
      * Sets the position for searching for users.
      */
     cursor?: usersWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Take `±n` users from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Skip the first `n` users.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
+     *
      * Filter by unique combinations of users.
      */
     distinct?: UsersScalarFieldEnum | UsersScalarFieldEnum[]
@@ -4959,7 +5927,9 @@ export namespace Prisma {
   /**
    * users findFirstOrThrow
    */
-  export type usersFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type usersFindFirstOrThrowArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
     /**
      * Select specific fields to fetch from the users
      */
@@ -4978,31 +5948,31 @@ export namespace Prisma {
     where?: usersWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
+     *
      * Determine the order of users to fetch.
      */
     orderBy?: usersOrderByWithRelationInput | usersOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
+     *
      * Sets the position for searching for users.
      */
     cursor?: usersWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Take `±n` users from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Skip the first `n` users.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
+     *
      * Filter by unique combinations of users.
      */
     distinct?: UsersScalarFieldEnum | UsersScalarFieldEnum[]
@@ -5011,7 +5981,9 @@ export namespace Prisma {
   /**
    * users findMany
    */
-  export type usersFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type usersFindManyArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
     /**
      * Select specific fields to fetch from the users
      */
@@ -5030,31 +6002,31 @@ export namespace Prisma {
     where?: usersWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
+     *
      * Determine the order of users to fetch.
      */
     orderBy?: usersOrderByWithRelationInput | usersOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
+     *
      * Sets the position for listing users.
      */
     cursor?: usersWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Take `±n` users from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
+     *
      * Skip the first `n` users.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
+     *
      * Filter by unique combinations of users.
      */
     distinct?: UsersScalarFieldEnum | UsersScalarFieldEnum[]
@@ -5063,7 +6035,9 @@ export namespace Prisma {
   /**
    * users create
    */
-  export type usersCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type usersCreateArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
     /**
      * Select specific fields to fetch from the users
      */
@@ -5085,7 +6059,9 @@ export namespace Prisma {
   /**
    * users createMany
    */
-  export type usersCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type usersCreateManyArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
     /**
      * The data used to create many users.
      */
@@ -5096,7 +6072,9 @@ export namespace Prisma {
   /**
    * users update
    */
-  export type usersUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type usersUpdateArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
     /**
      * Select specific fields to fetch from the users
      */
@@ -5122,7 +6100,9 @@ export namespace Prisma {
   /**
    * users updateMany
    */
-  export type usersUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type usersUpdateManyArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
     /**
      * The data used to update users.
      */
@@ -5140,7 +6120,9 @@ export namespace Prisma {
   /**
    * users upsert
    */
-  export type usersUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type usersUpsertArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
     /**
      * Select specific fields to fetch from the users
      */
@@ -5170,7 +6152,9 @@ export namespace Prisma {
   /**
    * users delete
    */
-  export type usersDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type usersDeleteArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
     /**
      * Select specific fields to fetch from the users
      */
@@ -5192,7 +6176,9 @@ export namespace Prisma {
   /**
    * users deleteMany
    */
-  export type usersDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type usersDeleteManyArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
     /**
      * Filter which users to delete
      */
@@ -5206,7 +6192,9 @@ export namespace Prisma {
   /**
    * users.comments
    */
-  export type users$commentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type users$commentsArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
     /**
      * Select specific fields to fetch from the comments
      */
@@ -5220,7 +6208,9 @@ export namespace Prisma {
      */
     include?: commentsInclude<ExtArgs> | null
     where?: commentsWhereInput
-    orderBy?: commentsOrderByWithRelationInput | commentsOrderByWithRelationInput[]
+    orderBy?:
+      | commentsOrderByWithRelationInput
+      | commentsOrderByWithRelationInput[]
     cursor?: commentsWhereUniqueInput
     take?: number
     skip?: number
@@ -5230,7 +6220,9 @@ export namespace Prisma {
   /**
    * users.images
    */
-  export type users$imagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type users$imagesArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
     /**
      * Select specific fields to fetch from the images
      */
@@ -5254,7 +6246,9 @@ export namespace Prisma {
   /**
    * users.saved_images
    */
-  export type users$saved_imagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type users$saved_imagesArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
     /**
      * Select specific fields to fetch from the saved_images
      */
@@ -5268,7 +6262,9 @@ export namespace Prisma {
      */
     include?: saved_imagesInclude<ExtArgs> | null
     where?: saved_imagesWhereInput
-    orderBy?: saved_imagesOrderByWithRelationInput | saved_imagesOrderByWithRelationInput[]
+    orderBy?:
+      | saved_imagesOrderByWithRelationInput
+      | saved_imagesOrderByWithRelationInput[]
     cursor?: saved_imagesWhereUniqueInput
     take?: number
     skip?: number
@@ -5278,7 +6274,9 @@ export namespace Prisma {
   /**
    * users without action
    */
-  export type usersDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type usersDefaultArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
     /**
      * Select specific fields to fetch from the users
      */
@@ -5293,158 +6291,159 @@ export namespace Prisma {
     include?: usersInclude<ExtArgs> | null
   }
 
-
   /**
    * Enums
    */
 
   export const TransactionIsolationLevel: {
-    ReadUncommitted: 'ReadUncommitted',
-    ReadCommitted: 'ReadCommitted',
-    RepeatableRead: 'RepeatableRead',
+    ReadUncommitted: 'ReadUncommitted'
+    ReadCommitted: 'ReadCommitted'
+    RepeatableRead: 'RepeatableRead'
     Serializable: 'Serializable'
-  };
+  }
 
-  export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
-
+  export type TransactionIsolationLevel =
+    (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
   export const CommentsScalarFieldEnum: {
-    id: 'id',
-    content: 'content',
-    user_id: 'user_id',
-    image_id: 'image_id',
+    id: 'id'
+    content: 'content'
+    user_id: 'user_id'
+    image_id: 'image_id'
     created_at: 'created_at'
-  };
+  }
 
-  export type CommentsScalarFieldEnum = (typeof CommentsScalarFieldEnum)[keyof typeof CommentsScalarFieldEnum]
-
+  export type CommentsScalarFieldEnum =
+    (typeof CommentsScalarFieldEnum)[keyof typeof CommentsScalarFieldEnum]
 
   export const ImagesScalarFieldEnum: {
-    id: 'id',
-    title: 'title',
-    description: 'description',
-    url: 'url',
-    user_id: 'user_id',
-    created_at: 'created_at',
+    id: 'id'
+    title: 'title'
+    description: 'description'
+    url: 'url'
+    user_id: 'user_id'
+    created_at: 'created_at'
     updated_at: 'updated_at'
-  };
+  }
 
-  export type ImagesScalarFieldEnum = (typeof ImagesScalarFieldEnum)[keyof typeof ImagesScalarFieldEnum]
-
+  export type ImagesScalarFieldEnum =
+    (typeof ImagesScalarFieldEnum)[keyof typeof ImagesScalarFieldEnum]
 
   export const Saved_imagesScalarFieldEnum: {
-    id: 'id',
-    user_id: 'user_id',
-    image_id: 'image_id',
+    id: 'id'
+    user_id: 'user_id'
+    image_id: 'image_id'
     saved_at: 'saved_at'
-  };
+  }
 
-  export type Saved_imagesScalarFieldEnum = (typeof Saved_imagesScalarFieldEnum)[keyof typeof Saved_imagesScalarFieldEnum]
-
+  export type Saved_imagesScalarFieldEnum =
+    (typeof Saved_imagesScalarFieldEnum)[keyof typeof Saved_imagesScalarFieldEnum]
 
   export const UsersScalarFieldEnum: {
-    id: 'id',
-    email: 'email',
-    password: 'password',
-    full_name: 'full_name',
-    avatar: 'avatar',
-    age: 'age',
-    created_at: 'created_at',
-    updated_at: 'updated_at',
+    id: 'id'
+    email: 'email'
+    password: 'password'
+    full_name: 'full_name'
+    avatar: 'avatar'
+    age: 'age'
+    created_at: 'created_at'
+    updated_at: 'updated_at'
     codeChangePass: 'codeChangePass'
-  };
+  }
 
-  export type UsersScalarFieldEnum = (typeof UsersScalarFieldEnum)[keyof typeof UsersScalarFieldEnum]
-
+  export type UsersScalarFieldEnum =
+    (typeof UsersScalarFieldEnum)[keyof typeof UsersScalarFieldEnum]
 
   export const SortOrder: {
-    asc: 'asc',
+    asc: 'asc'
     desc: 'desc'
-  };
+  }
 
   export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
 
-
   export const NullsOrder: {
-    first: 'first',
+    first: 'first'
     last: 'last'
-  };
+  }
 
   export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 
-
   export const commentsOrderByRelevanceFieldEnum: {
     content: 'content'
-  };
+  }
 
-  export type commentsOrderByRelevanceFieldEnum = (typeof commentsOrderByRelevanceFieldEnum)[keyof typeof commentsOrderByRelevanceFieldEnum]
-
+  export type commentsOrderByRelevanceFieldEnum =
+    (typeof commentsOrderByRelevanceFieldEnum)[keyof typeof commentsOrderByRelevanceFieldEnum]
 
   export const imagesOrderByRelevanceFieldEnum: {
-    title: 'title',
-    description: 'description',
+    title: 'title'
+    description: 'description'
     url: 'url'
-  };
+  }
 
-  export type imagesOrderByRelevanceFieldEnum = (typeof imagesOrderByRelevanceFieldEnum)[keyof typeof imagesOrderByRelevanceFieldEnum]
-
+  export type imagesOrderByRelevanceFieldEnum =
+    (typeof imagesOrderByRelevanceFieldEnum)[keyof typeof imagesOrderByRelevanceFieldEnum]
 
   export const usersOrderByRelevanceFieldEnum: {
-    email: 'email',
-    password: 'password',
-    full_name: 'full_name',
-    avatar: 'avatar',
+    email: 'email'
+    password: 'password'
+    full_name: 'full_name'
+    avatar: 'avatar'
     codeChangePass: 'codeChangePass'
-  };
+  }
 
-  export type usersOrderByRelevanceFieldEnum = (typeof usersOrderByRelevanceFieldEnum)[keyof typeof usersOrderByRelevanceFieldEnum]
-
+  export type usersOrderByRelevanceFieldEnum =
+    (typeof usersOrderByRelevanceFieldEnum)[keyof typeof usersOrderByRelevanceFieldEnum]
 
   /**
    * Field references
    */
 
-
   /**
    * Reference to a field of type 'Int'
    */
-  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
-    
-
+  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<
+    $PrismaModel,
+    'Int'
+  >
 
   /**
    * Reference to a field of type 'String'
    */
-  export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String'>
-    
-
+  export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<
+    $PrismaModel,
+    'String'
+  >
 
   /**
    * Reference to a field of type 'DateTime'
    */
-  export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
-    
-
+  export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<
+    $PrismaModel,
+    'DateTime'
+  >
 
   /**
    * Reference to a field of type 'Float'
    */
-  export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
-    
+  export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<
+    $PrismaModel,
+    'Float'
+  >
+
   /**
    * Deep Input Types
    */
-
 
   export type commentsWhereInput = {
     AND?: commentsWhereInput | commentsWhereInput[]
     OR?: commentsWhereInput[]
     NOT?: commentsWhereInput | commentsWhereInput[]
-    id?: IntFilter<"comments"> | number
-    content?: StringFilter<"comments"> | string
-    user_id?: IntFilter<"comments"> | number
-    image_id?: IntFilter<"comments"> | number
-    created_at?: DateTimeNullableFilter<"comments"> | Date | string | null
+    id?: IntFilter<'comments'> | number
+    content?: StringFilter<'comments'> | string
+    user_id?: IntFilter<'comments'> | number
+    image_id?: IntFilter<'comments'> | number
+    created_at?: DateTimeNullableFilter<'comments'> | Date | string | null
     users?: XOR<UsersScalarRelationFilter, usersWhereInput>
     images?: XOR<ImagesScalarRelationFilter, imagesWhereInput>
   }
@@ -5460,18 +6459,21 @@ export namespace Prisma {
     _relevance?: commentsOrderByRelevanceInput
   }
 
-  export type commentsWhereUniqueInput = Prisma.AtLeast<{
-    id?: number
-    AND?: commentsWhereInput | commentsWhereInput[]
-    OR?: commentsWhereInput[]
-    NOT?: commentsWhereInput | commentsWhereInput[]
-    content?: StringFilter<"comments"> | string
-    user_id?: IntFilter<"comments"> | number
-    image_id?: IntFilter<"comments"> | number
-    created_at?: DateTimeNullableFilter<"comments"> | Date | string | null
-    users?: XOR<UsersScalarRelationFilter, usersWhereInput>
-    images?: XOR<ImagesScalarRelationFilter, imagesWhereInput>
-  }, "id">
+  export type commentsWhereUniqueInput = Prisma.AtLeast<
+    {
+      id?: number
+      AND?: commentsWhereInput | commentsWhereInput[]
+      OR?: commentsWhereInput[]
+      NOT?: commentsWhereInput | commentsWhereInput[]
+      content?: StringFilter<'comments'> | string
+      user_id?: IntFilter<'comments'> | number
+      image_id?: IntFilter<'comments'> | number
+      created_at?: DateTimeNullableFilter<'comments'> | Date | string | null
+      users?: XOR<UsersScalarRelationFilter, usersWhereInput>
+      images?: XOR<ImagesScalarRelationFilter, imagesWhereInput>
+    },
+    'id'
+  >
 
   export type commentsOrderByWithAggregationInput = {
     id?: SortOrder
@@ -5487,27 +6489,35 @@ export namespace Prisma {
   }
 
   export type commentsScalarWhereWithAggregatesInput = {
-    AND?: commentsScalarWhereWithAggregatesInput | commentsScalarWhereWithAggregatesInput[]
+    AND?:
+      | commentsScalarWhereWithAggregatesInput
+      | commentsScalarWhereWithAggregatesInput[]
     OR?: commentsScalarWhereWithAggregatesInput[]
-    NOT?: commentsScalarWhereWithAggregatesInput | commentsScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"comments"> | number
-    content?: StringWithAggregatesFilter<"comments"> | string
-    user_id?: IntWithAggregatesFilter<"comments"> | number
-    image_id?: IntWithAggregatesFilter<"comments"> | number
-    created_at?: DateTimeNullableWithAggregatesFilter<"comments"> | Date | string | null
+    NOT?:
+      | commentsScalarWhereWithAggregatesInput
+      | commentsScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<'comments'> | number
+    content?: StringWithAggregatesFilter<'comments'> | string
+    user_id?: IntWithAggregatesFilter<'comments'> | number
+    image_id?: IntWithAggregatesFilter<'comments'> | number
+    created_at?:
+      | DateTimeNullableWithAggregatesFilter<'comments'>
+      | Date
+      | string
+      | null
   }
 
   export type imagesWhereInput = {
     AND?: imagesWhereInput | imagesWhereInput[]
     OR?: imagesWhereInput[]
     NOT?: imagesWhereInput | imagesWhereInput[]
-    id?: IntFilter<"images"> | number
-    title?: StringNullableFilter<"images"> | string | null
-    description?: StringNullableFilter<"images"> | string | null
-    url?: StringFilter<"images"> | string
-    user_id?: IntFilter<"images"> | number
-    created_at?: DateTimeNullableFilter<"images"> | Date | string | null
-    updated_at?: DateTimeNullableFilter<"images"> | Date | string | null
+    id?: IntFilter<'images'> | number
+    title?: StringNullableFilter<'images'> | string | null
+    description?: StringNullableFilter<'images'> | string | null
+    url?: StringFilter<'images'> | string
+    user_id?: IntFilter<'images'> | number
+    created_at?: DateTimeNullableFilter<'images'> | Date | string | null
+    updated_at?: DateTimeNullableFilter<'images'> | Date | string | null
     comments?: CommentsListRelationFilter
     users?: XOR<UsersScalarRelationFilter, usersWhereInput>
     saved_images?: Saved_imagesListRelationFilter
@@ -5527,21 +6537,24 @@ export namespace Prisma {
     _relevance?: imagesOrderByRelevanceInput
   }
 
-  export type imagesWhereUniqueInput = Prisma.AtLeast<{
-    id?: number
-    AND?: imagesWhereInput | imagesWhereInput[]
-    OR?: imagesWhereInput[]
-    NOT?: imagesWhereInput | imagesWhereInput[]
-    title?: StringNullableFilter<"images"> | string | null
-    description?: StringNullableFilter<"images"> | string | null
-    url?: StringFilter<"images"> | string
-    user_id?: IntFilter<"images"> | number
-    created_at?: DateTimeNullableFilter<"images"> | Date | string | null
-    updated_at?: DateTimeNullableFilter<"images"> | Date | string | null
-    comments?: CommentsListRelationFilter
-    users?: XOR<UsersScalarRelationFilter, usersWhereInput>
-    saved_images?: Saved_imagesListRelationFilter
-  }, "id">
+  export type imagesWhereUniqueInput = Prisma.AtLeast<
+    {
+      id?: number
+      AND?: imagesWhereInput | imagesWhereInput[]
+      OR?: imagesWhereInput[]
+      NOT?: imagesWhereInput | imagesWhereInput[]
+      title?: StringNullableFilter<'images'> | string | null
+      description?: StringNullableFilter<'images'> | string | null
+      url?: StringFilter<'images'> | string
+      user_id?: IntFilter<'images'> | number
+      created_at?: DateTimeNullableFilter<'images'> | Date | string | null
+      updated_at?: DateTimeNullableFilter<'images'> | Date | string | null
+      comments?: CommentsListRelationFilter
+      users?: XOR<UsersScalarRelationFilter, usersWhereInput>
+      saved_images?: Saved_imagesListRelationFilter
+    },
+    'id'
+  >
 
   export type imagesOrderByWithAggregationInput = {
     id?: SortOrder
@@ -5559,26 +6572,38 @@ export namespace Prisma {
   }
 
   export type imagesScalarWhereWithAggregatesInput = {
-    AND?: imagesScalarWhereWithAggregatesInput | imagesScalarWhereWithAggregatesInput[]
+    AND?:
+      | imagesScalarWhereWithAggregatesInput
+      | imagesScalarWhereWithAggregatesInput[]
     OR?: imagesScalarWhereWithAggregatesInput[]
-    NOT?: imagesScalarWhereWithAggregatesInput | imagesScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"images"> | number
-    title?: StringNullableWithAggregatesFilter<"images"> | string | null
-    description?: StringNullableWithAggregatesFilter<"images"> | string | null
-    url?: StringWithAggregatesFilter<"images"> | string
-    user_id?: IntWithAggregatesFilter<"images"> | number
-    created_at?: DateTimeNullableWithAggregatesFilter<"images"> | Date | string | null
-    updated_at?: DateTimeNullableWithAggregatesFilter<"images"> | Date | string | null
+    NOT?:
+      | imagesScalarWhereWithAggregatesInput
+      | imagesScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<'images'> | number
+    title?: StringNullableWithAggregatesFilter<'images'> | string | null
+    description?: StringNullableWithAggregatesFilter<'images'> | string | null
+    url?: StringWithAggregatesFilter<'images'> | string
+    user_id?: IntWithAggregatesFilter<'images'> | number
+    created_at?:
+      | DateTimeNullableWithAggregatesFilter<'images'>
+      | Date
+      | string
+      | null
+    updated_at?:
+      | DateTimeNullableWithAggregatesFilter<'images'>
+      | Date
+      | string
+      | null
   }
 
   export type saved_imagesWhereInput = {
     AND?: saved_imagesWhereInput | saved_imagesWhereInput[]
     OR?: saved_imagesWhereInput[]
     NOT?: saved_imagesWhereInput | saved_imagesWhereInput[]
-    id?: IntFilter<"saved_images"> | number
-    user_id?: IntFilter<"saved_images"> | number
-    image_id?: IntFilter<"saved_images"> | number
-    saved_at?: DateTimeNullableFilter<"saved_images"> | Date | string | null
+    id?: IntFilter<'saved_images'> | number
+    user_id?: IntFilter<'saved_images'> | number
+    image_id?: IntFilter<'saved_images'> | number
+    saved_at?: DateTimeNullableFilter<'saved_images'> | Date | string | null
     users?: XOR<UsersScalarRelationFilter, usersWhereInput>
     images?: XOR<ImagesScalarRelationFilter, imagesWhereInput>
   }
@@ -5592,17 +6617,20 @@ export namespace Prisma {
     images?: imagesOrderByWithRelationInput
   }
 
-  export type saved_imagesWhereUniqueInput = Prisma.AtLeast<{
-    id?: number
-    AND?: saved_imagesWhereInput | saved_imagesWhereInput[]
-    OR?: saved_imagesWhereInput[]
-    NOT?: saved_imagesWhereInput | saved_imagesWhereInput[]
-    user_id?: IntFilter<"saved_images"> | number
-    image_id?: IntFilter<"saved_images"> | number
-    saved_at?: DateTimeNullableFilter<"saved_images"> | Date | string | null
-    users?: XOR<UsersScalarRelationFilter, usersWhereInput>
-    images?: XOR<ImagesScalarRelationFilter, imagesWhereInput>
-  }, "id">
+  export type saved_imagesWhereUniqueInput = Prisma.AtLeast<
+    {
+      id?: number
+      AND?: saved_imagesWhereInput | saved_imagesWhereInput[]
+      OR?: saved_imagesWhereInput[]
+      NOT?: saved_imagesWhereInput | saved_imagesWhereInput[]
+      user_id?: IntFilter<'saved_images'> | number
+      image_id?: IntFilter<'saved_images'> | number
+      saved_at?: DateTimeNullableFilter<'saved_images'> | Date | string | null
+      users?: XOR<UsersScalarRelationFilter, usersWhereInput>
+      images?: XOR<ImagesScalarRelationFilter, imagesWhereInput>
+    },
+    'id'
+  >
 
   export type saved_imagesOrderByWithAggregationInput = {
     id?: SortOrder
@@ -5617,28 +6645,36 @@ export namespace Prisma {
   }
 
   export type saved_imagesScalarWhereWithAggregatesInput = {
-    AND?: saved_imagesScalarWhereWithAggregatesInput | saved_imagesScalarWhereWithAggregatesInput[]
+    AND?:
+      | saved_imagesScalarWhereWithAggregatesInput
+      | saved_imagesScalarWhereWithAggregatesInput[]
     OR?: saved_imagesScalarWhereWithAggregatesInput[]
-    NOT?: saved_imagesScalarWhereWithAggregatesInput | saved_imagesScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"saved_images"> | number
-    user_id?: IntWithAggregatesFilter<"saved_images"> | number
-    image_id?: IntWithAggregatesFilter<"saved_images"> | number
-    saved_at?: DateTimeNullableWithAggregatesFilter<"saved_images"> | Date | string | null
+    NOT?:
+      | saved_imagesScalarWhereWithAggregatesInput
+      | saved_imagesScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<'saved_images'> | number
+    user_id?: IntWithAggregatesFilter<'saved_images'> | number
+    image_id?: IntWithAggregatesFilter<'saved_images'> | number
+    saved_at?:
+      | DateTimeNullableWithAggregatesFilter<'saved_images'>
+      | Date
+      | string
+      | null
   }
 
   export type usersWhereInput = {
     AND?: usersWhereInput | usersWhereInput[]
     OR?: usersWhereInput[]
     NOT?: usersWhereInput | usersWhereInput[]
-    id?: IntFilter<"users"> | number
-    email?: StringFilter<"users"> | string
-    password?: StringFilter<"users"> | string
-    full_name?: StringNullableFilter<"users"> | string | null
-    avatar?: StringNullableFilter<"users"> | string | null
-    age?: IntNullableFilter<"users"> | number | null
-    created_at?: DateTimeNullableFilter<"users"> | Date | string | null
-    updated_at?: DateTimeNullableFilter<"users"> | Date | string | null
-    codeChangePass?: StringNullableFilter<"users"> | string | null
+    id?: IntFilter<'users'> | number
+    email?: StringFilter<'users'> | string
+    password?: StringFilter<'users'> | string
+    full_name?: StringNullableFilter<'users'> | string | null
+    avatar?: StringNullableFilter<'users'> | string | null
+    age?: IntNullableFilter<'users'> | number | null
+    created_at?: DateTimeNullableFilter<'users'> | Date | string | null
+    updated_at?: DateTimeNullableFilter<'users'> | Date | string | null
+    codeChangePass?: StringNullableFilter<'users'> | string | null
     comments?: CommentsListRelationFilter
     images?: ImagesListRelationFilter
     saved_images?: Saved_imagesListRelationFilter
@@ -5660,23 +6696,26 @@ export namespace Prisma {
     _relevance?: usersOrderByRelevanceInput
   }
 
-  export type usersWhereUniqueInput = Prisma.AtLeast<{
-    id?: number
-    email?: string
-    AND?: usersWhereInput | usersWhereInput[]
-    OR?: usersWhereInput[]
-    NOT?: usersWhereInput | usersWhereInput[]
-    password?: StringFilter<"users"> | string
-    full_name?: StringNullableFilter<"users"> | string | null
-    avatar?: StringNullableFilter<"users"> | string | null
-    age?: IntNullableFilter<"users"> | number | null
-    created_at?: DateTimeNullableFilter<"users"> | Date | string | null
-    updated_at?: DateTimeNullableFilter<"users"> | Date | string | null
-    codeChangePass?: StringNullableFilter<"users"> | string | null
-    comments?: CommentsListRelationFilter
-    images?: ImagesListRelationFilter
-    saved_images?: Saved_imagesListRelationFilter
-  }, "id" | "email">
+  export type usersWhereUniqueInput = Prisma.AtLeast<
+    {
+      id?: number
+      email?: string
+      AND?: usersWhereInput | usersWhereInput[]
+      OR?: usersWhereInput[]
+      NOT?: usersWhereInput | usersWhereInput[]
+      password?: StringFilter<'users'> | string
+      full_name?: StringNullableFilter<'users'> | string | null
+      avatar?: StringNullableFilter<'users'> | string | null
+      age?: IntNullableFilter<'users'> | number | null
+      created_at?: DateTimeNullableFilter<'users'> | Date | string | null
+      updated_at?: DateTimeNullableFilter<'users'> | Date | string | null
+      codeChangePass?: StringNullableFilter<'users'> | string | null
+      comments?: CommentsListRelationFilter
+      images?: ImagesListRelationFilter
+      saved_images?: Saved_imagesListRelationFilter
+    },
+    'id' | 'email'
+  >
 
   export type usersOrderByWithAggregationInput = {
     id?: SortOrder
@@ -5696,18 +6735,30 @@ export namespace Prisma {
   }
 
   export type usersScalarWhereWithAggregatesInput = {
-    AND?: usersScalarWhereWithAggregatesInput | usersScalarWhereWithAggregatesInput[]
+    AND?:
+      | usersScalarWhereWithAggregatesInput
+      | usersScalarWhereWithAggregatesInput[]
     OR?: usersScalarWhereWithAggregatesInput[]
-    NOT?: usersScalarWhereWithAggregatesInput | usersScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"users"> | number
-    email?: StringWithAggregatesFilter<"users"> | string
-    password?: StringWithAggregatesFilter<"users"> | string
-    full_name?: StringNullableWithAggregatesFilter<"users"> | string | null
-    avatar?: StringNullableWithAggregatesFilter<"users"> | string | null
-    age?: IntNullableWithAggregatesFilter<"users"> | number | null
-    created_at?: DateTimeNullableWithAggregatesFilter<"users"> | Date | string | null
-    updated_at?: DateTimeNullableWithAggregatesFilter<"users"> | Date | string | null
-    codeChangePass?: StringNullableWithAggregatesFilter<"users"> | string | null
+    NOT?:
+      | usersScalarWhereWithAggregatesInput
+      | usersScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<'users'> | number
+    email?: StringWithAggregatesFilter<'users'> | string
+    password?: StringWithAggregatesFilter<'users'> | string
+    full_name?: StringNullableWithAggregatesFilter<'users'> | string | null
+    avatar?: StringNullableWithAggregatesFilter<'users'> | string | null
+    age?: IntNullableWithAggregatesFilter<'users'> | number | null
+    created_at?:
+      | DateTimeNullableWithAggregatesFilter<'users'>
+      | Date
+      | string
+      | null
+    updated_at?:
+      | DateTimeNullableWithAggregatesFilter<'users'>
+      | Date
+      | string
+      | null
+    codeChangePass?: StringNullableWithAggregatesFilter<'users'> | string | null
   }
 
   export type commentsCreateInput = {
@@ -5727,7 +6778,11 @@ export namespace Prisma {
 
   export type commentsUpdateInput = {
     content?: StringFieldUpdateOperationsInput | string
-    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?:
+      | NullableDateTimeFieldUpdateOperationsInput
+      | Date
+      | string
+      | null
     users?: usersUpdateOneRequiredWithoutCommentsNestedInput
     images?: imagesUpdateOneRequiredWithoutCommentsNestedInput
   }
@@ -5737,7 +6792,11 @@ export namespace Prisma {
     content?: StringFieldUpdateOperationsInput | string
     user_id?: IntFieldUpdateOperationsInput | number
     image_id?: IntFieldUpdateOperationsInput | number
-    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?:
+      | NullableDateTimeFieldUpdateOperationsInput
+      | Date
+      | string
+      | null
   }
 
   export type commentsCreateManyInput = {
@@ -5750,7 +6809,11 @@ export namespace Prisma {
 
   export type commentsUpdateManyMutationInput = {
     content?: StringFieldUpdateOperationsInput | string
-    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?:
+      | NullableDateTimeFieldUpdateOperationsInput
+      | Date
+      | string
+      | null
   }
 
   export type commentsUncheckedUpdateManyInput = {
@@ -5758,7 +6821,11 @@ export namespace Prisma {
     content?: StringFieldUpdateOperationsInput | string
     user_id?: IntFieldUpdateOperationsInput | number
     image_id?: IntFieldUpdateOperationsInput | number
-    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?:
+      | NullableDateTimeFieldUpdateOperationsInput
+      | Date
+      | string
+      | null
   }
 
   export type imagesCreateInput = {
@@ -5788,8 +6855,16 @@ export namespace Prisma {
     title?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
     url?: StringFieldUpdateOperationsInput | string
-    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?:
+      | NullableDateTimeFieldUpdateOperationsInput
+      | Date
+      | string
+      | null
+    updated_at?:
+      | NullableDateTimeFieldUpdateOperationsInput
+      | Date
+      | string
+      | null
     comments?: commentsUpdateManyWithoutImagesNestedInput
     users?: usersUpdateOneRequiredWithoutImagesNestedInput
     saved_images?: saved_imagesUpdateManyWithoutImagesNestedInput
@@ -5801,8 +6876,16 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     url?: StringFieldUpdateOperationsInput | string
     user_id?: IntFieldUpdateOperationsInput | number
-    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?:
+      | NullableDateTimeFieldUpdateOperationsInput
+      | Date
+      | string
+      | null
+    updated_at?:
+      | NullableDateTimeFieldUpdateOperationsInput
+      | Date
+      | string
+      | null
     comments?: commentsUncheckedUpdateManyWithoutImagesNestedInput
     saved_images?: saved_imagesUncheckedUpdateManyWithoutImagesNestedInput
   }
@@ -5821,8 +6904,16 @@ export namespace Prisma {
     title?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
     url?: StringFieldUpdateOperationsInput | string
-    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?:
+      | NullableDateTimeFieldUpdateOperationsInput
+      | Date
+      | string
+      | null
+    updated_at?:
+      | NullableDateTimeFieldUpdateOperationsInput
+      | Date
+      | string
+      | null
   }
 
   export type imagesUncheckedUpdateManyInput = {
@@ -5831,8 +6922,16 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     url?: StringFieldUpdateOperationsInput | string
     user_id?: IntFieldUpdateOperationsInput | number
-    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?:
+      | NullableDateTimeFieldUpdateOperationsInput
+      | Date
+      | string
+      | null
+    updated_at?:
+      | NullableDateTimeFieldUpdateOperationsInput
+      | Date
+      | string
+      | null
   }
 
   export type saved_imagesCreateInput = {
@@ -5914,8 +7013,16 @@ export namespace Prisma {
     full_name?: NullableStringFieldUpdateOperationsInput | string | null
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     age?: NullableIntFieldUpdateOperationsInput | number | null
-    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?:
+      | NullableDateTimeFieldUpdateOperationsInput
+      | Date
+      | string
+      | null
+    updated_at?:
+      | NullableDateTimeFieldUpdateOperationsInput
+      | Date
+      | string
+      | null
     codeChangePass?: NullableStringFieldUpdateOperationsInput | string | null
     comments?: commentsUpdateManyWithoutUsersNestedInput
     images?: imagesUpdateManyWithoutUsersNestedInput
@@ -5929,8 +7036,16 @@ export namespace Prisma {
     full_name?: NullableStringFieldUpdateOperationsInput | string | null
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     age?: NullableIntFieldUpdateOperationsInput | number | null
-    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?:
+      | NullableDateTimeFieldUpdateOperationsInput
+      | Date
+      | string
+      | null
+    updated_at?:
+      | NullableDateTimeFieldUpdateOperationsInput
+      | Date
+      | string
+      | null
     codeChangePass?: NullableStringFieldUpdateOperationsInput | string | null
     comments?: commentsUncheckedUpdateManyWithoutUsersNestedInput
     images?: imagesUncheckedUpdateManyWithoutUsersNestedInput
@@ -5955,8 +7070,16 @@ export namespace Prisma {
     full_name?: NullableStringFieldUpdateOperationsInput | string | null
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     age?: NullableIntFieldUpdateOperationsInput | number | null
-    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?:
+      | NullableDateTimeFieldUpdateOperationsInput
+      | Date
+      | string
+      | null
+    updated_at?:
+      | NullableDateTimeFieldUpdateOperationsInput
+      | Date
+      | string
+      | null
     codeChangePass?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
@@ -5967,8 +7090,16 @@ export namespace Prisma {
     full_name?: NullableStringFieldUpdateOperationsInput | string | null
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     age?: NullableIntFieldUpdateOperationsInput | number | null
-    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?:
+      | NullableDateTimeFieldUpdateOperationsInput
+      | Date
+      | string
+      | null
+    updated_at?:
+      | NullableDateTimeFieldUpdateOperationsInput
+      | Date
+      | string
+      | null
     codeChangePass?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
@@ -6025,7 +7156,9 @@ export namespace Prisma {
   }
 
   export type commentsOrderByRelevanceInput = {
-    fields: commentsOrderByRelevanceFieldEnum | commentsOrderByRelevanceFieldEnum[]
+    fields:
+      | commentsOrderByRelevanceFieldEnum
+      | commentsOrderByRelevanceFieldEnum[]
     sort: SortOrder
     search: string
   }
@@ -6108,7 +7241,11 @@ export namespace Prisma {
     lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    not?:
+      | NestedDateTimeNullableWithAggregatesFilter<$PrismaModel>
+      | Date
+      | string
+      | null
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedDateTimeNullableFilter<$PrismaModel>
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
@@ -6336,13 +7473,19 @@ export namespace Prisma {
   }
 
   export type usersCreateNestedOneWithoutCommentsInput = {
-    create?: XOR<usersCreateWithoutCommentsInput, usersUncheckedCreateWithoutCommentsInput>
+    create?: XOR<
+      usersCreateWithoutCommentsInput,
+      usersUncheckedCreateWithoutCommentsInput
+    >
     connectOrCreate?: usersCreateOrConnectWithoutCommentsInput
     connect?: usersWhereUniqueInput
   }
 
   export type imagesCreateNestedOneWithoutCommentsInput = {
-    create?: XOR<imagesCreateWithoutCommentsInput, imagesUncheckedCreateWithoutCommentsInput>
+    create?: XOR<
+      imagesCreateWithoutCommentsInput,
+      imagesUncheckedCreateWithoutCommentsInput
+    >
     connectOrCreate?: imagesCreateOrConnectWithoutCommentsInput
     connect?: imagesWhereUniqueInput
   }
@@ -6356,19 +7499,37 @@ export namespace Prisma {
   }
 
   export type usersUpdateOneRequiredWithoutCommentsNestedInput = {
-    create?: XOR<usersCreateWithoutCommentsInput, usersUncheckedCreateWithoutCommentsInput>
+    create?: XOR<
+      usersCreateWithoutCommentsInput,
+      usersUncheckedCreateWithoutCommentsInput
+    >
     connectOrCreate?: usersCreateOrConnectWithoutCommentsInput
     upsert?: usersUpsertWithoutCommentsInput
     connect?: usersWhereUniqueInput
-    update?: XOR<XOR<usersUpdateToOneWithWhereWithoutCommentsInput, usersUpdateWithoutCommentsInput>, usersUncheckedUpdateWithoutCommentsInput>
+    update?: XOR<
+      XOR<
+        usersUpdateToOneWithWhereWithoutCommentsInput,
+        usersUpdateWithoutCommentsInput
+      >,
+      usersUncheckedUpdateWithoutCommentsInput
+    >
   }
 
   export type imagesUpdateOneRequiredWithoutCommentsNestedInput = {
-    create?: XOR<imagesCreateWithoutCommentsInput, imagesUncheckedCreateWithoutCommentsInput>
+    create?: XOR<
+      imagesCreateWithoutCommentsInput,
+      imagesUncheckedCreateWithoutCommentsInput
+    >
     connectOrCreate?: imagesCreateOrConnectWithoutCommentsInput
     upsert?: imagesUpsertWithoutCommentsInput
     connect?: imagesWhereUniqueInput
-    update?: XOR<XOR<imagesUpdateToOneWithWhereWithoutCommentsInput, imagesUpdateWithoutCommentsInput>, imagesUncheckedUpdateWithoutCommentsInput>
+    update?: XOR<
+      XOR<
+        imagesUpdateToOneWithWhereWithoutCommentsInput,
+        imagesUpdateWithoutCommentsInput
+      >,
+      imagesUncheckedUpdateWithoutCommentsInput
+    >
   }
 
   export type IntFieldUpdateOperationsInput = {
@@ -6380,35 +7541,70 @@ export namespace Prisma {
   }
 
   export type commentsCreateNestedManyWithoutImagesInput = {
-    create?: XOR<commentsCreateWithoutImagesInput, commentsUncheckedCreateWithoutImagesInput> | commentsCreateWithoutImagesInput[] | commentsUncheckedCreateWithoutImagesInput[]
-    connectOrCreate?: commentsCreateOrConnectWithoutImagesInput | commentsCreateOrConnectWithoutImagesInput[]
+    create?:
+      | XOR<
+          commentsCreateWithoutImagesInput,
+          commentsUncheckedCreateWithoutImagesInput
+        >
+      | commentsCreateWithoutImagesInput[]
+      | commentsUncheckedCreateWithoutImagesInput[]
+    connectOrCreate?:
+      | commentsCreateOrConnectWithoutImagesInput
+      | commentsCreateOrConnectWithoutImagesInput[]
     createMany?: commentsCreateManyImagesInputEnvelope
     connect?: commentsWhereUniqueInput | commentsWhereUniqueInput[]
   }
 
   export type usersCreateNestedOneWithoutImagesInput = {
-    create?: XOR<usersCreateWithoutImagesInput, usersUncheckedCreateWithoutImagesInput>
+    create?: XOR<
+      usersCreateWithoutImagesInput,
+      usersUncheckedCreateWithoutImagesInput
+    >
     connectOrCreate?: usersCreateOrConnectWithoutImagesInput
     connect?: usersWhereUniqueInput
   }
 
   export type saved_imagesCreateNestedManyWithoutImagesInput = {
-    create?: XOR<saved_imagesCreateWithoutImagesInput, saved_imagesUncheckedCreateWithoutImagesInput> | saved_imagesCreateWithoutImagesInput[] | saved_imagesUncheckedCreateWithoutImagesInput[]
-    connectOrCreate?: saved_imagesCreateOrConnectWithoutImagesInput | saved_imagesCreateOrConnectWithoutImagesInput[]
+    create?:
+      | XOR<
+          saved_imagesCreateWithoutImagesInput,
+          saved_imagesUncheckedCreateWithoutImagesInput
+        >
+      | saved_imagesCreateWithoutImagesInput[]
+      | saved_imagesUncheckedCreateWithoutImagesInput[]
+    connectOrCreate?:
+      | saved_imagesCreateOrConnectWithoutImagesInput
+      | saved_imagesCreateOrConnectWithoutImagesInput[]
     createMany?: saved_imagesCreateManyImagesInputEnvelope
     connect?: saved_imagesWhereUniqueInput | saved_imagesWhereUniqueInput[]
   }
 
   export type commentsUncheckedCreateNestedManyWithoutImagesInput = {
-    create?: XOR<commentsCreateWithoutImagesInput, commentsUncheckedCreateWithoutImagesInput> | commentsCreateWithoutImagesInput[] | commentsUncheckedCreateWithoutImagesInput[]
-    connectOrCreate?: commentsCreateOrConnectWithoutImagesInput | commentsCreateOrConnectWithoutImagesInput[]
+    create?:
+      | XOR<
+          commentsCreateWithoutImagesInput,
+          commentsUncheckedCreateWithoutImagesInput
+        >
+      | commentsCreateWithoutImagesInput[]
+      | commentsUncheckedCreateWithoutImagesInput[]
+    connectOrCreate?:
+      | commentsCreateOrConnectWithoutImagesInput
+      | commentsCreateOrConnectWithoutImagesInput[]
     createMany?: commentsCreateManyImagesInputEnvelope
     connect?: commentsWhereUniqueInput | commentsWhereUniqueInput[]
   }
 
   export type saved_imagesUncheckedCreateNestedManyWithoutImagesInput = {
-    create?: XOR<saved_imagesCreateWithoutImagesInput, saved_imagesUncheckedCreateWithoutImagesInput> | saved_imagesCreateWithoutImagesInput[] | saved_imagesUncheckedCreateWithoutImagesInput[]
-    connectOrCreate?: saved_imagesCreateOrConnectWithoutImagesInput | saved_imagesCreateOrConnectWithoutImagesInput[]
+    create?:
+      | XOR<
+          saved_imagesCreateWithoutImagesInput,
+          saved_imagesUncheckedCreateWithoutImagesInput
+        >
+      | saved_imagesCreateWithoutImagesInput[]
+      | saved_imagesUncheckedCreateWithoutImagesInput[]
+    connectOrCreate?:
+      | saved_imagesCreateOrConnectWithoutImagesInput
+      | saved_imagesCreateOrConnectWithoutImagesInput[]
     createMany?: saved_imagesCreateManyImagesInputEnvelope
     connect?: saved_imagesWhereUniqueInput | saved_imagesWhereUniqueInput[]
   }
@@ -6418,135 +7614,272 @@ export namespace Prisma {
   }
 
   export type commentsUpdateManyWithoutImagesNestedInput = {
-    create?: XOR<commentsCreateWithoutImagesInput, commentsUncheckedCreateWithoutImagesInput> | commentsCreateWithoutImagesInput[] | commentsUncheckedCreateWithoutImagesInput[]
-    connectOrCreate?: commentsCreateOrConnectWithoutImagesInput | commentsCreateOrConnectWithoutImagesInput[]
-    upsert?: commentsUpsertWithWhereUniqueWithoutImagesInput | commentsUpsertWithWhereUniqueWithoutImagesInput[]
+    create?:
+      | XOR<
+          commentsCreateWithoutImagesInput,
+          commentsUncheckedCreateWithoutImagesInput
+        >
+      | commentsCreateWithoutImagesInput[]
+      | commentsUncheckedCreateWithoutImagesInput[]
+    connectOrCreate?:
+      | commentsCreateOrConnectWithoutImagesInput
+      | commentsCreateOrConnectWithoutImagesInput[]
+    upsert?:
+      | commentsUpsertWithWhereUniqueWithoutImagesInput
+      | commentsUpsertWithWhereUniqueWithoutImagesInput[]
     createMany?: commentsCreateManyImagesInputEnvelope
     set?: commentsWhereUniqueInput | commentsWhereUniqueInput[]
     disconnect?: commentsWhereUniqueInput | commentsWhereUniqueInput[]
     delete?: commentsWhereUniqueInput | commentsWhereUniqueInput[]
     connect?: commentsWhereUniqueInput | commentsWhereUniqueInput[]
-    update?: commentsUpdateWithWhereUniqueWithoutImagesInput | commentsUpdateWithWhereUniqueWithoutImagesInput[]
-    updateMany?: commentsUpdateManyWithWhereWithoutImagesInput | commentsUpdateManyWithWhereWithoutImagesInput[]
+    update?:
+      | commentsUpdateWithWhereUniqueWithoutImagesInput
+      | commentsUpdateWithWhereUniqueWithoutImagesInput[]
+    updateMany?:
+      | commentsUpdateManyWithWhereWithoutImagesInput
+      | commentsUpdateManyWithWhereWithoutImagesInput[]
     deleteMany?: commentsScalarWhereInput | commentsScalarWhereInput[]
   }
 
   export type usersUpdateOneRequiredWithoutImagesNestedInput = {
-    create?: XOR<usersCreateWithoutImagesInput, usersUncheckedCreateWithoutImagesInput>
+    create?: XOR<
+      usersCreateWithoutImagesInput,
+      usersUncheckedCreateWithoutImagesInput
+    >
     connectOrCreate?: usersCreateOrConnectWithoutImagesInput
     upsert?: usersUpsertWithoutImagesInput
     connect?: usersWhereUniqueInput
-    update?: XOR<XOR<usersUpdateToOneWithWhereWithoutImagesInput, usersUpdateWithoutImagesInput>, usersUncheckedUpdateWithoutImagesInput>
+    update?: XOR<
+      XOR<
+        usersUpdateToOneWithWhereWithoutImagesInput,
+        usersUpdateWithoutImagesInput
+      >,
+      usersUncheckedUpdateWithoutImagesInput
+    >
   }
 
   export type saved_imagesUpdateManyWithoutImagesNestedInput = {
-    create?: XOR<saved_imagesCreateWithoutImagesInput, saved_imagesUncheckedCreateWithoutImagesInput> | saved_imagesCreateWithoutImagesInput[] | saved_imagesUncheckedCreateWithoutImagesInput[]
-    connectOrCreate?: saved_imagesCreateOrConnectWithoutImagesInput | saved_imagesCreateOrConnectWithoutImagesInput[]
-    upsert?: saved_imagesUpsertWithWhereUniqueWithoutImagesInput | saved_imagesUpsertWithWhereUniqueWithoutImagesInput[]
+    create?:
+      | XOR<
+          saved_imagesCreateWithoutImagesInput,
+          saved_imagesUncheckedCreateWithoutImagesInput
+        >
+      | saved_imagesCreateWithoutImagesInput[]
+      | saved_imagesUncheckedCreateWithoutImagesInput[]
+    connectOrCreate?:
+      | saved_imagesCreateOrConnectWithoutImagesInput
+      | saved_imagesCreateOrConnectWithoutImagesInput[]
+    upsert?:
+      | saved_imagesUpsertWithWhereUniqueWithoutImagesInput
+      | saved_imagesUpsertWithWhereUniqueWithoutImagesInput[]
     createMany?: saved_imagesCreateManyImagesInputEnvelope
     set?: saved_imagesWhereUniqueInput | saved_imagesWhereUniqueInput[]
     disconnect?: saved_imagesWhereUniqueInput | saved_imagesWhereUniqueInput[]
     delete?: saved_imagesWhereUniqueInput | saved_imagesWhereUniqueInput[]
     connect?: saved_imagesWhereUniqueInput | saved_imagesWhereUniqueInput[]
-    update?: saved_imagesUpdateWithWhereUniqueWithoutImagesInput | saved_imagesUpdateWithWhereUniqueWithoutImagesInput[]
-    updateMany?: saved_imagesUpdateManyWithWhereWithoutImagesInput | saved_imagesUpdateManyWithWhereWithoutImagesInput[]
+    update?:
+      | saved_imagesUpdateWithWhereUniqueWithoutImagesInput
+      | saved_imagesUpdateWithWhereUniqueWithoutImagesInput[]
+    updateMany?:
+      | saved_imagesUpdateManyWithWhereWithoutImagesInput
+      | saved_imagesUpdateManyWithWhereWithoutImagesInput[]
     deleteMany?: saved_imagesScalarWhereInput | saved_imagesScalarWhereInput[]
   }
 
   export type commentsUncheckedUpdateManyWithoutImagesNestedInput = {
-    create?: XOR<commentsCreateWithoutImagesInput, commentsUncheckedCreateWithoutImagesInput> | commentsCreateWithoutImagesInput[] | commentsUncheckedCreateWithoutImagesInput[]
-    connectOrCreate?: commentsCreateOrConnectWithoutImagesInput | commentsCreateOrConnectWithoutImagesInput[]
-    upsert?: commentsUpsertWithWhereUniqueWithoutImagesInput | commentsUpsertWithWhereUniqueWithoutImagesInput[]
+    create?:
+      | XOR<
+          commentsCreateWithoutImagesInput,
+          commentsUncheckedCreateWithoutImagesInput
+        >
+      | commentsCreateWithoutImagesInput[]
+      | commentsUncheckedCreateWithoutImagesInput[]
+    connectOrCreate?:
+      | commentsCreateOrConnectWithoutImagesInput
+      | commentsCreateOrConnectWithoutImagesInput[]
+    upsert?:
+      | commentsUpsertWithWhereUniqueWithoutImagesInput
+      | commentsUpsertWithWhereUniqueWithoutImagesInput[]
     createMany?: commentsCreateManyImagesInputEnvelope
     set?: commentsWhereUniqueInput | commentsWhereUniqueInput[]
     disconnect?: commentsWhereUniqueInput | commentsWhereUniqueInput[]
     delete?: commentsWhereUniqueInput | commentsWhereUniqueInput[]
     connect?: commentsWhereUniqueInput | commentsWhereUniqueInput[]
-    update?: commentsUpdateWithWhereUniqueWithoutImagesInput | commentsUpdateWithWhereUniqueWithoutImagesInput[]
-    updateMany?: commentsUpdateManyWithWhereWithoutImagesInput | commentsUpdateManyWithWhereWithoutImagesInput[]
+    update?:
+      | commentsUpdateWithWhereUniqueWithoutImagesInput
+      | commentsUpdateWithWhereUniqueWithoutImagesInput[]
+    updateMany?:
+      | commentsUpdateManyWithWhereWithoutImagesInput
+      | commentsUpdateManyWithWhereWithoutImagesInput[]
     deleteMany?: commentsScalarWhereInput | commentsScalarWhereInput[]
   }
 
   export type saved_imagesUncheckedUpdateManyWithoutImagesNestedInput = {
-    create?: XOR<saved_imagesCreateWithoutImagesInput, saved_imagesUncheckedCreateWithoutImagesInput> | saved_imagesCreateWithoutImagesInput[] | saved_imagesUncheckedCreateWithoutImagesInput[]
-    connectOrCreate?: saved_imagesCreateOrConnectWithoutImagesInput | saved_imagesCreateOrConnectWithoutImagesInput[]
-    upsert?: saved_imagesUpsertWithWhereUniqueWithoutImagesInput | saved_imagesUpsertWithWhereUniqueWithoutImagesInput[]
+    create?:
+      | XOR<
+          saved_imagesCreateWithoutImagesInput,
+          saved_imagesUncheckedCreateWithoutImagesInput
+        >
+      | saved_imagesCreateWithoutImagesInput[]
+      | saved_imagesUncheckedCreateWithoutImagesInput[]
+    connectOrCreate?:
+      | saved_imagesCreateOrConnectWithoutImagesInput
+      | saved_imagesCreateOrConnectWithoutImagesInput[]
+    upsert?:
+      | saved_imagesUpsertWithWhereUniqueWithoutImagesInput
+      | saved_imagesUpsertWithWhereUniqueWithoutImagesInput[]
     createMany?: saved_imagesCreateManyImagesInputEnvelope
     set?: saved_imagesWhereUniqueInput | saved_imagesWhereUniqueInput[]
     disconnect?: saved_imagesWhereUniqueInput | saved_imagesWhereUniqueInput[]
     delete?: saved_imagesWhereUniqueInput | saved_imagesWhereUniqueInput[]
     connect?: saved_imagesWhereUniqueInput | saved_imagesWhereUniqueInput[]
-    update?: saved_imagesUpdateWithWhereUniqueWithoutImagesInput | saved_imagesUpdateWithWhereUniqueWithoutImagesInput[]
-    updateMany?: saved_imagesUpdateManyWithWhereWithoutImagesInput | saved_imagesUpdateManyWithWhereWithoutImagesInput[]
+    update?:
+      | saved_imagesUpdateWithWhereUniqueWithoutImagesInput
+      | saved_imagesUpdateWithWhereUniqueWithoutImagesInput[]
+    updateMany?:
+      | saved_imagesUpdateManyWithWhereWithoutImagesInput
+      | saved_imagesUpdateManyWithWhereWithoutImagesInput[]
     deleteMany?: saved_imagesScalarWhereInput | saved_imagesScalarWhereInput[]
   }
 
   export type usersCreateNestedOneWithoutSaved_imagesInput = {
-    create?: XOR<usersCreateWithoutSaved_imagesInput, usersUncheckedCreateWithoutSaved_imagesInput>
+    create?: XOR<
+      usersCreateWithoutSaved_imagesInput,
+      usersUncheckedCreateWithoutSaved_imagesInput
+    >
     connectOrCreate?: usersCreateOrConnectWithoutSaved_imagesInput
     connect?: usersWhereUniqueInput
   }
 
   export type imagesCreateNestedOneWithoutSaved_imagesInput = {
-    create?: XOR<imagesCreateWithoutSaved_imagesInput, imagesUncheckedCreateWithoutSaved_imagesInput>
+    create?: XOR<
+      imagesCreateWithoutSaved_imagesInput,
+      imagesUncheckedCreateWithoutSaved_imagesInput
+    >
     connectOrCreate?: imagesCreateOrConnectWithoutSaved_imagesInput
     connect?: imagesWhereUniqueInput
   }
 
   export type usersUpdateOneRequiredWithoutSaved_imagesNestedInput = {
-    create?: XOR<usersCreateWithoutSaved_imagesInput, usersUncheckedCreateWithoutSaved_imagesInput>
+    create?: XOR<
+      usersCreateWithoutSaved_imagesInput,
+      usersUncheckedCreateWithoutSaved_imagesInput
+    >
     connectOrCreate?: usersCreateOrConnectWithoutSaved_imagesInput
     upsert?: usersUpsertWithoutSaved_imagesInput
     connect?: usersWhereUniqueInput
-    update?: XOR<XOR<usersUpdateToOneWithWhereWithoutSaved_imagesInput, usersUpdateWithoutSaved_imagesInput>, usersUncheckedUpdateWithoutSaved_imagesInput>
+    update?: XOR<
+      XOR<
+        usersUpdateToOneWithWhereWithoutSaved_imagesInput,
+        usersUpdateWithoutSaved_imagesInput
+      >,
+      usersUncheckedUpdateWithoutSaved_imagesInput
+    >
   }
 
   export type imagesUpdateOneRequiredWithoutSaved_imagesNestedInput = {
-    create?: XOR<imagesCreateWithoutSaved_imagesInput, imagesUncheckedCreateWithoutSaved_imagesInput>
+    create?: XOR<
+      imagesCreateWithoutSaved_imagesInput,
+      imagesUncheckedCreateWithoutSaved_imagesInput
+    >
     connectOrCreate?: imagesCreateOrConnectWithoutSaved_imagesInput
     upsert?: imagesUpsertWithoutSaved_imagesInput
     connect?: imagesWhereUniqueInput
-    update?: XOR<XOR<imagesUpdateToOneWithWhereWithoutSaved_imagesInput, imagesUpdateWithoutSaved_imagesInput>, imagesUncheckedUpdateWithoutSaved_imagesInput>
+    update?: XOR<
+      XOR<
+        imagesUpdateToOneWithWhereWithoutSaved_imagesInput,
+        imagesUpdateWithoutSaved_imagesInput
+      >,
+      imagesUncheckedUpdateWithoutSaved_imagesInput
+    >
   }
 
   export type commentsCreateNestedManyWithoutUsersInput = {
-    create?: XOR<commentsCreateWithoutUsersInput, commentsUncheckedCreateWithoutUsersInput> | commentsCreateWithoutUsersInput[] | commentsUncheckedCreateWithoutUsersInput[]
-    connectOrCreate?: commentsCreateOrConnectWithoutUsersInput | commentsCreateOrConnectWithoutUsersInput[]
+    create?:
+      | XOR<
+          commentsCreateWithoutUsersInput,
+          commentsUncheckedCreateWithoutUsersInput
+        >
+      | commentsCreateWithoutUsersInput[]
+      | commentsUncheckedCreateWithoutUsersInput[]
+    connectOrCreate?:
+      | commentsCreateOrConnectWithoutUsersInput
+      | commentsCreateOrConnectWithoutUsersInput[]
     createMany?: commentsCreateManyUsersInputEnvelope
     connect?: commentsWhereUniqueInput | commentsWhereUniqueInput[]
   }
 
   export type imagesCreateNestedManyWithoutUsersInput = {
-    create?: XOR<imagesCreateWithoutUsersInput, imagesUncheckedCreateWithoutUsersInput> | imagesCreateWithoutUsersInput[] | imagesUncheckedCreateWithoutUsersInput[]
-    connectOrCreate?: imagesCreateOrConnectWithoutUsersInput | imagesCreateOrConnectWithoutUsersInput[]
+    create?:
+      | XOR<
+          imagesCreateWithoutUsersInput,
+          imagesUncheckedCreateWithoutUsersInput
+        >
+      | imagesCreateWithoutUsersInput[]
+      | imagesUncheckedCreateWithoutUsersInput[]
+    connectOrCreate?:
+      | imagesCreateOrConnectWithoutUsersInput
+      | imagesCreateOrConnectWithoutUsersInput[]
     createMany?: imagesCreateManyUsersInputEnvelope
     connect?: imagesWhereUniqueInput | imagesWhereUniqueInput[]
   }
 
   export type saved_imagesCreateNestedManyWithoutUsersInput = {
-    create?: XOR<saved_imagesCreateWithoutUsersInput, saved_imagesUncheckedCreateWithoutUsersInput> | saved_imagesCreateWithoutUsersInput[] | saved_imagesUncheckedCreateWithoutUsersInput[]
-    connectOrCreate?: saved_imagesCreateOrConnectWithoutUsersInput | saved_imagesCreateOrConnectWithoutUsersInput[]
+    create?:
+      | XOR<
+          saved_imagesCreateWithoutUsersInput,
+          saved_imagesUncheckedCreateWithoutUsersInput
+        >
+      | saved_imagesCreateWithoutUsersInput[]
+      | saved_imagesUncheckedCreateWithoutUsersInput[]
+    connectOrCreate?:
+      | saved_imagesCreateOrConnectWithoutUsersInput
+      | saved_imagesCreateOrConnectWithoutUsersInput[]
     createMany?: saved_imagesCreateManyUsersInputEnvelope
     connect?: saved_imagesWhereUniqueInput | saved_imagesWhereUniqueInput[]
   }
 
   export type commentsUncheckedCreateNestedManyWithoutUsersInput = {
-    create?: XOR<commentsCreateWithoutUsersInput, commentsUncheckedCreateWithoutUsersInput> | commentsCreateWithoutUsersInput[] | commentsUncheckedCreateWithoutUsersInput[]
-    connectOrCreate?: commentsCreateOrConnectWithoutUsersInput | commentsCreateOrConnectWithoutUsersInput[]
+    create?:
+      | XOR<
+          commentsCreateWithoutUsersInput,
+          commentsUncheckedCreateWithoutUsersInput
+        >
+      | commentsCreateWithoutUsersInput[]
+      | commentsUncheckedCreateWithoutUsersInput[]
+    connectOrCreate?:
+      | commentsCreateOrConnectWithoutUsersInput
+      | commentsCreateOrConnectWithoutUsersInput[]
     createMany?: commentsCreateManyUsersInputEnvelope
     connect?: commentsWhereUniqueInput | commentsWhereUniqueInput[]
   }
 
   export type imagesUncheckedCreateNestedManyWithoutUsersInput = {
-    create?: XOR<imagesCreateWithoutUsersInput, imagesUncheckedCreateWithoutUsersInput> | imagesCreateWithoutUsersInput[] | imagesUncheckedCreateWithoutUsersInput[]
-    connectOrCreate?: imagesCreateOrConnectWithoutUsersInput | imagesCreateOrConnectWithoutUsersInput[]
+    create?:
+      | XOR<
+          imagesCreateWithoutUsersInput,
+          imagesUncheckedCreateWithoutUsersInput
+        >
+      | imagesCreateWithoutUsersInput[]
+      | imagesUncheckedCreateWithoutUsersInput[]
+    connectOrCreate?:
+      | imagesCreateOrConnectWithoutUsersInput
+      | imagesCreateOrConnectWithoutUsersInput[]
     createMany?: imagesCreateManyUsersInputEnvelope
     connect?: imagesWhereUniqueInput | imagesWhereUniqueInput[]
   }
 
   export type saved_imagesUncheckedCreateNestedManyWithoutUsersInput = {
-    create?: XOR<saved_imagesCreateWithoutUsersInput, saved_imagesUncheckedCreateWithoutUsersInput> | saved_imagesCreateWithoutUsersInput[] | saved_imagesUncheckedCreateWithoutUsersInput[]
-    connectOrCreate?: saved_imagesCreateOrConnectWithoutUsersInput | saved_imagesCreateOrConnectWithoutUsersInput[]
+    create?:
+      | XOR<
+          saved_imagesCreateWithoutUsersInput,
+          saved_imagesUncheckedCreateWithoutUsersInput
+        >
+      | saved_imagesCreateWithoutUsersInput[]
+      | saved_imagesUncheckedCreateWithoutUsersInput[]
+    connectOrCreate?:
+      | saved_imagesCreateOrConnectWithoutUsersInput
+      | saved_imagesCreateOrConnectWithoutUsersInput[]
     createMany?: saved_imagesCreateManyUsersInputEnvelope
     connect?: saved_imagesWhereUniqueInput | saved_imagesWhereUniqueInput[]
   }
@@ -6560,86 +7893,170 @@ export namespace Prisma {
   }
 
   export type commentsUpdateManyWithoutUsersNestedInput = {
-    create?: XOR<commentsCreateWithoutUsersInput, commentsUncheckedCreateWithoutUsersInput> | commentsCreateWithoutUsersInput[] | commentsUncheckedCreateWithoutUsersInput[]
-    connectOrCreate?: commentsCreateOrConnectWithoutUsersInput | commentsCreateOrConnectWithoutUsersInput[]
-    upsert?: commentsUpsertWithWhereUniqueWithoutUsersInput | commentsUpsertWithWhereUniqueWithoutUsersInput[]
+    create?:
+      | XOR<
+          commentsCreateWithoutUsersInput,
+          commentsUncheckedCreateWithoutUsersInput
+        >
+      | commentsCreateWithoutUsersInput[]
+      | commentsUncheckedCreateWithoutUsersInput[]
+    connectOrCreate?:
+      | commentsCreateOrConnectWithoutUsersInput
+      | commentsCreateOrConnectWithoutUsersInput[]
+    upsert?:
+      | commentsUpsertWithWhereUniqueWithoutUsersInput
+      | commentsUpsertWithWhereUniqueWithoutUsersInput[]
     createMany?: commentsCreateManyUsersInputEnvelope
     set?: commentsWhereUniqueInput | commentsWhereUniqueInput[]
     disconnect?: commentsWhereUniqueInput | commentsWhereUniqueInput[]
     delete?: commentsWhereUniqueInput | commentsWhereUniqueInput[]
     connect?: commentsWhereUniqueInput | commentsWhereUniqueInput[]
-    update?: commentsUpdateWithWhereUniqueWithoutUsersInput | commentsUpdateWithWhereUniqueWithoutUsersInput[]
-    updateMany?: commentsUpdateManyWithWhereWithoutUsersInput | commentsUpdateManyWithWhereWithoutUsersInput[]
+    update?:
+      | commentsUpdateWithWhereUniqueWithoutUsersInput
+      | commentsUpdateWithWhereUniqueWithoutUsersInput[]
+    updateMany?:
+      | commentsUpdateManyWithWhereWithoutUsersInput
+      | commentsUpdateManyWithWhereWithoutUsersInput[]
     deleteMany?: commentsScalarWhereInput | commentsScalarWhereInput[]
   }
 
   export type imagesUpdateManyWithoutUsersNestedInput = {
-    create?: XOR<imagesCreateWithoutUsersInput, imagesUncheckedCreateWithoutUsersInput> | imagesCreateWithoutUsersInput[] | imagesUncheckedCreateWithoutUsersInput[]
-    connectOrCreate?: imagesCreateOrConnectWithoutUsersInput | imagesCreateOrConnectWithoutUsersInput[]
-    upsert?: imagesUpsertWithWhereUniqueWithoutUsersInput | imagesUpsertWithWhereUniqueWithoutUsersInput[]
+    create?:
+      | XOR<
+          imagesCreateWithoutUsersInput,
+          imagesUncheckedCreateWithoutUsersInput
+        >
+      | imagesCreateWithoutUsersInput[]
+      | imagesUncheckedCreateWithoutUsersInput[]
+    connectOrCreate?:
+      | imagesCreateOrConnectWithoutUsersInput
+      | imagesCreateOrConnectWithoutUsersInput[]
+    upsert?:
+      | imagesUpsertWithWhereUniqueWithoutUsersInput
+      | imagesUpsertWithWhereUniqueWithoutUsersInput[]
     createMany?: imagesCreateManyUsersInputEnvelope
     set?: imagesWhereUniqueInput | imagesWhereUniqueInput[]
     disconnect?: imagesWhereUniqueInput | imagesWhereUniqueInput[]
     delete?: imagesWhereUniqueInput | imagesWhereUniqueInput[]
     connect?: imagesWhereUniqueInput | imagesWhereUniqueInput[]
-    update?: imagesUpdateWithWhereUniqueWithoutUsersInput | imagesUpdateWithWhereUniqueWithoutUsersInput[]
-    updateMany?: imagesUpdateManyWithWhereWithoutUsersInput | imagesUpdateManyWithWhereWithoutUsersInput[]
+    update?:
+      | imagesUpdateWithWhereUniqueWithoutUsersInput
+      | imagesUpdateWithWhereUniqueWithoutUsersInput[]
+    updateMany?:
+      | imagesUpdateManyWithWhereWithoutUsersInput
+      | imagesUpdateManyWithWhereWithoutUsersInput[]
     deleteMany?: imagesScalarWhereInput | imagesScalarWhereInput[]
   }
 
   export type saved_imagesUpdateManyWithoutUsersNestedInput = {
-    create?: XOR<saved_imagesCreateWithoutUsersInput, saved_imagesUncheckedCreateWithoutUsersInput> | saved_imagesCreateWithoutUsersInput[] | saved_imagesUncheckedCreateWithoutUsersInput[]
-    connectOrCreate?: saved_imagesCreateOrConnectWithoutUsersInput | saved_imagesCreateOrConnectWithoutUsersInput[]
-    upsert?: saved_imagesUpsertWithWhereUniqueWithoutUsersInput | saved_imagesUpsertWithWhereUniqueWithoutUsersInput[]
+    create?:
+      | XOR<
+          saved_imagesCreateWithoutUsersInput,
+          saved_imagesUncheckedCreateWithoutUsersInput
+        >
+      | saved_imagesCreateWithoutUsersInput[]
+      | saved_imagesUncheckedCreateWithoutUsersInput[]
+    connectOrCreate?:
+      | saved_imagesCreateOrConnectWithoutUsersInput
+      | saved_imagesCreateOrConnectWithoutUsersInput[]
+    upsert?:
+      | saved_imagesUpsertWithWhereUniqueWithoutUsersInput
+      | saved_imagesUpsertWithWhereUniqueWithoutUsersInput[]
     createMany?: saved_imagesCreateManyUsersInputEnvelope
     set?: saved_imagesWhereUniqueInput | saved_imagesWhereUniqueInput[]
     disconnect?: saved_imagesWhereUniqueInput | saved_imagesWhereUniqueInput[]
     delete?: saved_imagesWhereUniqueInput | saved_imagesWhereUniqueInput[]
     connect?: saved_imagesWhereUniqueInput | saved_imagesWhereUniqueInput[]
-    update?: saved_imagesUpdateWithWhereUniqueWithoutUsersInput | saved_imagesUpdateWithWhereUniqueWithoutUsersInput[]
-    updateMany?: saved_imagesUpdateManyWithWhereWithoutUsersInput | saved_imagesUpdateManyWithWhereWithoutUsersInput[]
+    update?:
+      | saved_imagesUpdateWithWhereUniqueWithoutUsersInput
+      | saved_imagesUpdateWithWhereUniqueWithoutUsersInput[]
+    updateMany?:
+      | saved_imagesUpdateManyWithWhereWithoutUsersInput
+      | saved_imagesUpdateManyWithWhereWithoutUsersInput[]
     deleteMany?: saved_imagesScalarWhereInput | saved_imagesScalarWhereInput[]
   }
 
   export type commentsUncheckedUpdateManyWithoutUsersNestedInput = {
-    create?: XOR<commentsCreateWithoutUsersInput, commentsUncheckedCreateWithoutUsersInput> | commentsCreateWithoutUsersInput[] | commentsUncheckedCreateWithoutUsersInput[]
-    connectOrCreate?: commentsCreateOrConnectWithoutUsersInput | commentsCreateOrConnectWithoutUsersInput[]
-    upsert?: commentsUpsertWithWhereUniqueWithoutUsersInput | commentsUpsertWithWhereUniqueWithoutUsersInput[]
+    create?:
+      | XOR<
+          commentsCreateWithoutUsersInput,
+          commentsUncheckedCreateWithoutUsersInput
+        >
+      | commentsCreateWithoutUsersInput[]
+      | commentsUncheckedCreateWithoutUsersInput[]
+    connectOrCreate?:
+      | commentsCreateOrConnectWithoutUsersInput
+      | commentsCreateOrConnectWithoutUsersInput[]
+    upsert?:
+      | commentsUpsertWithWhereUniqueWithoutUsersInput
+      | commentsUpsertWithWhereUniqueWithoutUsersInput[]
     createMany?: commentsCreateManyUsersInputEnvelope
     set?: commentsWhereUniqueInput | commentsWhereUniqueInput[]
     disconnect?: commentsWhereUniqueInput | commentsWhereUniqueInput[]
     delete?: commentsWhereUniqueInput | commentsWhereUniqueInput[]
     connect?: commentsWhereUniqueInput | commentsWhereUniqueInput[]
-    update?: commentsUpdateWithWhereUniqueWithoutUsersInput | commentsUpdateWithWhereUniqueWithoutUsersInput[]
-    updateMany?: commentsUpdateManyWithWhereWithoutUsersInput | commentsUpdateManyWithWhereWithoutUsersInput[]
+    update?:
+      | commentsUpdateWithWhereUniqueWithoutUsersInput
+      | commentsUpdateWithWhereUniqueWithoutUsersInput[]
+    updateMany?:
+      | commentsUpdateManyWithWhereWithoutUsersInput
+      | commentsUpdateManyWithWhereWithoutUsersInput[]
     deleteMany?: commentsScalarWhereInput | commentsScalarWhereInput[]
   }
 
   export type imagesUncheckedUpdateManyWithoutUsersNestedInput = {
-    create?: XOR<imagesCreateWithoutUsersInput, imagesUncheckedCreateWithoutUsersInput> | imagesCreateWithoutUsersInput[] | imagesUncheckedCreateWithoutUsersInput[]
-    connectOrCreate?: imagesCreateOrConnectWithoutUsersInput | imagesCreateOrConnectWithoutUsersInput[]
-    upsert?: imagesUpsertWithWhereUniqueWithoutUsersInput | imagesUpsertWithWhereUniqueWithoutUsersInput[]
+    create?:
+      | XOR<
+          imagesCreateWithoutUsersInput,
+          imagesUncheckedCreateWithoutUsersInput
+        >
+      | imagesCreateWithoutUsersInput[]
+      | imagesUncheckedCreateWithoutUsersInput[]
+    connectOrCreate?:
+      | imagesCreateOrConnectWithoutUsersInput
+      | imagesCreateOrConnectWithoutUsersInput[]
+    upsert?:
+      | imagesUpsertWithWhereUniqueWithoutUsersInput
+      | imagesUpsertWithWhereUniqueWithoutUsersInput[]
     createMany?: imagesCreateManyUsersInputEnvelope
     set?: imagesWhereUniqueInput | imagesWhereUniqueInput[]
     disconnect?: imagesWhereUniqueInput | imagesWhereUniqueInput[]
     delete?: imagesWhereUniqueInput | imagesWhereUniqueInput[]
     connect?: imagesWhereUniqueInput | imagesWhereUniqueInput[]
-    update?: imagesUpdateWithWhereUniqueWithoutUsersInput | imagesUpdateWithWhereUniqueWithoutUsersInput[]
-    updateMany?: imagesUpdateManyWithWhereWithoutUsersInput | imagesUpdateManyWithWhereWithoutUsersInput[]
+    update?:
+      | imagesUpdateWithWhereUniqueWithoutUsersInput
+      | imagesUpdateWithWhereUniqueWithoutUsersInput[]
+    updateMany?:
+      | imagesUpdateManyWithWhereWithoutUsersInput
+      | imagesUpdateManyWithWhereWithoutUsersInput[]
     deleteMany?: imagesScalarWhereInput | imagesScalarWhereInput[]
   }
 
   export type saved_imagesUncheckedUpdateManyWithoutUsersNestedInput = {
-    create?: XOR<saved_imagesCreateWithoutUsersInput, saved_imagesUncheckedCreateWithoutUsersInput> | saved_imagesCreateWithoutUsersInput[] | saved_imagesUncheckedCreateWithoutUsersInput[]
-    connectOrCreate?: saved_imagesCreateOrConnectWithoutUsersInput | saved_imagesCreateOrConnectWithoutUsersInput[]
-    upsert?: saved_imagesUpsertWithWhereUniqueWithoutUsersInput | saved_imagesUpsertWithWhereUniqueWithoutUsersInput[]
+    create?:
+      | XOR<
+          saved_imagesCreateWithoutUsersInput,
+          saved_imagesUncheckedCreateWithoutUsersInput
+        >
+      | saved_imagesCreateWithoutUsersInput[]
+      | saved_imagesUncheckedCreateWithoutUsersInput[]
+    connectOrCreate?:
+      | saved_imagesCreateOrConnectWithoutUsersInput
+      | saved_imagesCreateOrConnectWithoutUsersInput[]
+    upsert?:
+      | saved_imagesUpsertWithWhereUniqueWithoutUsersInput
+      | saved_imagesUpsertWithWhereUniqueWithoutUsersInput[]
     createMany?: saved_imagesCreateManyUsersInputEnvelope
     set?: saved_imagesWhereUniqueInput | saved_imagesWhereUniqueInput[]
     disconnect?: saved_imagesWhereUniqueInput | saved_imagesWhereUniqueInput[]
     delete?: saved_imagesWhereUniqueInput | saved_imagesWhereUniqueInput[]
     connect?: saved_imagesWhereUniqueInput | saved_imagesWhereUniqueInput[]
-    update?: saved_imagesUpdateWithWhereUniqueWithoutUsersInput | saved_imagesUpdateWithWhereUniqueWithoutUsersInput[]
-    updateMany?: saved_imagesUpdateManyWithWhereWithoutUsersInput | saved_imagesUpdateManyWithWhereWithoutUsersInput[]
+    update?:
+      | saved_imagesUpdateWithWhereUniqueWithoutUsersInput
+      | saved_imagesUpdateWithWhereUniqueWithoutUsersInput[]
+    updateMany?:
+      | saved_imagesUpdateManyWithWhereWithoutUsersInput
+      | saved_imagesUpdateManyWithWhereWithoutUsersInput[]
     deleteMany?: saved_imagesScalarWhereInput | saved_imagesScalarWhereInput[]
   }
 
@@ -6725,19 +8142,24 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
-  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | null
-    notIn?: Date[] | string[] | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedDateTimeNullableFilter<$PrismaModel>
-    _max?: NestedDateTimeNullableFilter<$PrismaModel>
-  }
+  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> =
+    {
+      equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+      in?: Date[] | string[] | null
+      notIn?: Date[] | string[] | null
+      lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+      lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+      gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+      gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+      not?:
+        | NestedDateTimeNullableWithAggregatesFilter<$PrismaModel>
+        | Date
+        | string
+        | null
+      _count?: NestedIntNullableFilter<$PrismaModel>
+      _min?: NestedDateTimeNullableFilter<$PrismaModel>
+      _max?: NestedDateTimeNullableFilter<$PrismaModel>
+    }
 
   export type NestedIntNullableFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel> | null
@@ -6839,7 +8261,10 @@ export namespace Prisma {
 
   export type usersCreateOrConnectWithoutCommentsInput = {
     where: usersWhereUniqueInput
-    create: XOR<usersCreateWithoutCommentsInput, usersUncheckedCreateWithoutCommentsInput>
+    create: XOR<
+      usersCreateWithoutCommentsInput,
+      usersUncheckedCreateWithoutCommentsInput
+    >
   }
 
   export type imagesCreateWithoutCommentsInput = {
@@ -6865,18 +8290,30 @@ export namespace Prisma {
 
   export type imagesCreateOrConnectWithoutCommentsInput = {
     where: imagesWhereUniqueInput
-    create: XOR<imagesCreateWithoutCommentsInput, imagesUncheckedCreateWithoutCommentsInput>
+    create: XOR<
+      imagesCreateWithoutCommentsInput,
+      imagesUncheckedCreateWithoutCommentsInput
+    >
   }
 
   export type usersUpsertWithoutCommentsInput = {
-    update: XOR<usersUpdateWithoutCommentsInput, usersUncheckedUpdateWithoutCommentsInput>
-    create: XOR<usersCreateWithoutCommentsInput, usersUncheckedCreateWithoutCommentsInput>
+    update: XOR<
+      usersUpdateWithoutCommentsInput,
+      usersUncheckedUpdateWithoutCommentsInput
+    >
+    create: XOR<
+      usersCreateWithoutCommentsInput,
+      usersUncheckedCreateWithoutCommentsInput
+    >
     where?: usersWhereInput
   }
 
   export type usersUpdateToOneWithWhereWithoutCommentsInput = {
     where?: usersWhereInput
-    data: XOR<usersUpdateWithoutCommentsInput, usersUncheckedUpdateWithoutCommentsInput>
+    data: XOR<
+      usersUpdateWithoutCommentsInput,
+      usersUncheckedUpdateWithoutCommentsInput
+    >
   }
 
   export type usersUpdateWithoutCommentsInput = {
@@ -6885,8 +8322,16 @@ export namespace Prisma {
     full_name?: NullableStringFieldUpdateOperationsInput | string | null
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     age?: NullableIntFieldUpdateOperationsInput | number | null
-    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?:
+      | NullableDateTimeFieldUpdateOperationsInput
+      | Date
+      | string
+      | null
+    updated_at?:
+      | NullableDateTimeFieldUpdateOperationsInput
+      | Date
+      | string
+      | null
     codeChangePass?: NullableStringFieldUpdateOperationsInput | string | null
     images?: imagesUpdateManyWithoutUsersNestedInput
     saved_images?: saved_imagesUpdateManyWithoutUsersNestedInput
@@ -6899,30 +8344,55 @@ export namespace Prisma {
     full_name?: NullableStringFieldUpdateOperationsInput | string | null
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     age?: NullableIntFieldUpdateOperationsInput | number | null
-    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?:
+      | NullableDateTimeFieldUpdateOperationsInput
+      | Date
+      | string
+      | null
+    updated_at?:
+      | NullableDateTimeFieldUpdateOperationsInput
+      | Date
+      | string
+      | null
     codeChangePass?: NullableStringFieldUpdateOperationsInput | string | null
     images?: imagesUncheckedUpdateManyWithoutUsersNestedInput
     saved_images?: saved_imagesUncheckedUpdateManyWithoutUsersNestedInput
   }
 
   export type imagesUpsertWithoutCommentsInput = {
-    update: XOR<imagesUpdateWithoutCommentsInput, imagesUncheckedUpdateWithoutCommentsInput>
-    create: XOR<imagesCreateWithoutCommentsInput, imagesUncheckedCreateWithoutCommentsInput>
+    update: XOR<
+      imagesUpdateWithoutCommentsInput,
+      imagesUncheckedUpdateWithoutCommentsInput
+    >
+    create: XOR<
+      imagesCreateWithoutCommentsInput,
+      imagesUncheckedCreateWithoutCommentsInput
+    >
     where?: imagesWhereInput
   }
 
   export type imagesUpdateToOneWithWhereWithoutCommentsInput = {
     where?: imagesWhereInput
-    data: XOR<imagesUpdateWithoutCommentsInput, imagesUncheckedUpdateWithoutCommentsInput>
+    data: XOR<
+      imagesUpdateWithoutCommentsInput,
+      imagesUncheckedUpdateWithoutCommentsInput
+    >
   }
 
   export type imagesUpdateWithoutCommentsInput = {
     title?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
     url?: StringFieldUpdateOperationsInput | string
-    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?:
+      | NullableDateTimeFieldUpdateOperationsInput
+      | Date
+      | string
+      | null
+    updated_at?:
+      | NullableDateTimeFieldUpdateOperationsInput
+      | Date
+      | string
+      | null
     users?: usersUpdateOneRequiredWithoutImagesNestedInput
     saved_images?: saved_imagesUpdateManyWithoutImagesNestedInput
   }
@@ -6933,8 +8403,16 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     url?: StringFieldUpdateOperationsInput | string
     user_id?: IntFieldUpdateOperationsInput | number
-    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?:
+      | NullableDateTimeFieldUpdateOperationsInput
+      | Date
+      | string
+      | null
+    updated_at?:
+      | NullableDateTimeFieldUpdateOperationsInput
+      | Date
+      | string
+      | null
     saved_images?: saved_imagesUncheckedUpdateManyWithoutImagesNestedInput
   }
 
@@ -6953,7 +8431,10 @@ export namespace Prisma {
 
   export type commentsCreateOrConnectWithoutImagesInput = {
     where: commentsWhereUniqueInput
-    create: XOR<commentsCreateWithoutImagesInput, commentsUncheckedCreateWithoutImagesInput>
+    create: XOR<
+      commentsCreateWithoutImagesInput,
+      commentsUncheckedCreateWithoutImagesInput
+    >
   }
 
   export type commentsCreateManyImagesInputEnvelope = {
@@ -6990,7 +8471,10 @@ export namespace Prisma {
 
   export type usersCreateOrConnectWithoutImagesInput = {
     where: usersWhereUniqueInput
-    create: XOR<usersCreateWithoutImagesInput, usersUncheckedCreateWithoutImagesInput>
+    create: XOR<
+      usersCreateWithoutImagesInput,
+      usersUncheckedCreateWithoutImagesInput
+    >
   }
 
   export type saved_imagesCreateWithoutImagesInput = {
@@ -7006,50 +8490,76 @@ export namespace Prisma {
 
   export type saved_imagesCreateOrConnectWithoutImagesInput = {
     where: saved_imagesWhereUniqueInput
-    create: XOR<saved_imagesCreateWithoutImagesInput, saved_imagesUncheckedCreateWithoutImagesInput>
+    create: XOR<
+      saved_imagesCreateWithoutImagesInput,
+      saved_imagesUncheckedCreateWithoutImagesInput
+    >
   }
 
   export type saved_imagesCreateManyImagesInputEnvelope = {
-    data: saved_imagesCreateManyImagesInput | saved_imagesCreateManyImagesInput[]
+    data:
+      | saved_imagesCreateManyImagesInput
+      | saved_imagesCreateManyImagesInput[]
     skipDuplicates?: boolean
   }
 
   export type commentsUpsertWithWhereUniqueWithoutImagesInput = {
     where: commentsWhereUniqueInput
-    update: XOR<commentsUpdateWithoutImagesInput, commentsUncheckedUpdateWithoutImagesInput>
-    create: XOR<commentsCreateWithoutImagesInput, commentsUncheckedCreateWithoutImagesInput>
+    update: XOR<
+      commentsUpdateWithoutImagesInput,
+      commentsUncheckedUpdateWithoutImagesInput
+    >
+    create: XOR<
+      commentsCreateWithoutImagesInput,
+      commentsUncheckedCreateWithoutImagesInput
+    >
   }
 
   export type commentsUpdateWithWhereUniqueWithoutImagesInput = {
     where: commentsWhereUniqueInput
-    data: XOR<commentsUpdateWithoutImagesInput, commentsUncheckedUpdateWithoutImagesInput>
+    data: XOR<
+      commentsUpdateWithoutImagesInput,
+      commentsUncheckedUpdateWithoutImagesInput
+    >
   }
 
   export type commentsUpdateManyWithWhereWithoutImagesInput = {
     where: commentsScalarWhereInput
-    data: XOR<commentsUpdateManyMutationInput, commentsUncheckedUpdateManyWithoutImagesInput>
+    data: XOR<
+      commentsUpdateManyMutationInput,
+      commentsUncheckedUpdateManyWithoutImagesInput
+    >
   }
 
   export type commentsScalarWhereInput = {
     AND?: commentsScalarWhereInput | commentsScalarWhereInput[]
     OR?: commentsScalarWhereInput[]
     NOT?: commentsScalarWhereInput | commentsScalarWhereInput[]
-    id?: IntFilter<"comments"> | number
-    content?: StringFilter<"comments"> | string
-    user_id?: IntFilter<"comments"> | number
-    image_id?: IntFilter<"comments"> | number
-    created_at?: DateTimeNullableFilter<"comments"> | Date | string | null
+    id?: IntFilter<'comments'> | number
+    content?: StringFilter<'comments'> | string
+    user_id?: IntFilter<'comments'> | number
+    image_id?: IntFilter<'comments'> | number
+    created_at?: DateTimeNullableFilter<'comments'> | Date | string | null
   }
 
   export type usersUpsertWithoutImagesInput = {
-    update: XOR<usersUpdateWithoutImagesInput, usersUncheckedUpdateWithoutImagesInput>
-    create: XOR<usersCreateWithoutImagesInput, usersUncheckedCreateWithoutImagesInput>
+    update: XOR<
+      usersUpdateWithoutImagesInput,
+      usersUncheckedUpdateWithoutImagesInput
+    >
+    create: XOR<
+      usersCreateWithoutImagesInput,
+      usersUncheckedCreateWithoutImagesInput
+    >
     where?: usersWhereInput
   }
 
   export type usersUpdateToOneWithWhereWithoutImagesInput = {
     where?: usersWhereInput
-    data: XOR<usersUpdateWithoutImagesInput, usersUncheckedUpdateWithoutImagesInput>
+    data: XOR<
+      usersUpdateWithoutImagesInput,
+      usersUncheckedUpdateWithoutImagesInput
+    >
   }
 
   export type usersUpdateWithoutImagesInput = {
@@ -7058,8 +8568,16 @@ export namespace Prisma {
     full_name?: NullableStringFieldUpdateOperationsInput | string | null
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     age?: NullableIntFieldUpdateOperationsInput | number | null
-    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?:
+      | NullableDateTimeFieldUpdateOperationsInput
+      | Date
+      | string
+      | null
+    updated_at?:
+      | NullableDateTimeFieldUpdateOperationsInput
+      | Date
+      | string
+      | null
     codeChangePass?: NullableStringFieldUpdateOperationsInput | string | null
     comments?: commentsUpdateManyWithoutUsersNestedInput
     saved_images?: saved_imagesUpdateManyWithoutUsersNestedInput
@@ -7072,8 +8590,16 @@ export namespace Prisma {
     full_name?: NullableStringFieldUpdateOperationsInput | string | null
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     age?: NullableIntFieldUpdateOperationsInput | number | null
-    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?:
+      | NullableDateTimeFieldUpdateOperationsInput
+      | Date
+      | string
+      | null
+    updated_at?:
+      | NullableDateTimeFieldUpdateOperationsInput
+      | Date
+      | string
+      | null
     codeChangePass?: NullableStringFieldUpdateOperationsInput | string | null
     comments?: commentsUncheckedUpdateManyWithoutUsersNestedInput
     saved_images?: saved_imagesUncheckedUpdateManyWithoutUsersNestedInput
@@ -7081,28 +8607,40 @@ export namespace Prisma {
 
   export type saved_imagesUpsertWithWhereUniqueWithoutImagesInput = {
     where: saved_imagesWhereUniqueInput
-    update: XOR<saved_imagesUpdateWithoutImagesInput, saved_imagesUncheckedUpdateWithoutImagesInput>
-    create: XOR<saved_imagesCreateWithoutImagesInput, saved_imagesUncheckedCreateWithoutImagesInput>
+    update: XOR<
+      saved_imagesUpdateWithoutImagesInput,
+      saved_imagesUncheckedUpdateWithoutImagesInput
+    >
+    create: XOR<
+      saved_imagesCreateWithoutImagesInput,
+      saved_imagesUncheckedCreateWithoutImagesInput
+    >
   }
 
   export type saved_imagesUpdateWithWhereUniqueWithoutImagesInput = {
     where: saved_imagesWhereUniqueInput
-    data: XOR<saved_imagesUpdateWithoutImagesInput, saved_imagesUncheckedUpdateWithoutImagesInput>
+    data: XOR<
+      saved_imagesUpdateWithoutImagesInput,
+      saved_imagesUncheckedUpdateWithoutImagesInput
+    >
   }
 
   export type saved_imagesUpdateManyWithWhereWithoutImagesInput = {
     where: saved_imagesScalarWhereInput
-    data: XOR<saved_imagesUpdateManyMutationInput, saved_imagesUncheckedUpdateManyWithoutImagesInput>
+    data: XOR<
+      saved_imagesUpdateManyMutationInput,
+      saved_imagesUncheckedUpdateManyWithoutImagesInput
+    >
   }
 
   export type saved_imagesScalarWhereInput = {
     AND?: saved_imagesScalarWhereInput | saved_imagesScalarWhereInput[]
     OR?: saved_imagesScalarWhereInput[]
     NOT?: saved_imagesScalarWhereInput | saved_imagesScalarWhereInput[]
-    id?: IntFilter<"saved_images"> | number
-    user_id?: IntFilter<"saved_images"> | number
-    image_id?: IntFilter<"saved_images"> | number
-    saved_at?: DateTimeNullableFilter<"saved_images"> | Date | string | null
+    id?: IntFilter<'saved_images'> | number
+    user_id?: IntFilter<'saved_images'> | number
+    image_id?: IntFilter<'saved_images'> | number
+    saved_at?: DateTimeNullableFilter<'saved_images'> | Date | string | null
   }
 
   export type usersCreateWithoutSaved_imagesInput = {
@@ -7134,7 +8672,10 @@ export namespace Prisma {
 
   export type usersCreateOrConnectWithoutSaved_imagesInput = {
     where: usersWhereUniqueInput
-    create: XOR<usersCreateWithoutSaved_imagesInput, usersUncheckedCreateWithoutSaved_imagesInput>
+    create: XOR<
+      usersCreateWithoutSaved_imagesInput,
+      usersUncheckedCreateWithoutSaved_imagesInput
+    >
   }
 
   export type imagesCreateWithoutSaved_imagesInput = {
@@ -7160,18 +8701,30 @@ export namespace Prisma {
 
   export type imagesCreateOrConnectWithoutSaved_imagesInput = {
     where: imagesWhereUniqueInput
-    create: XOR<imagesCreateWithoutSaved_imagesInput, imagesUncheckedCreateWithoutSaved_imagesInput>
+    create: XOR<
+      imagesCreateWithoutSaved_imagesInput,
+      imagesUncheckedCreateWithoutSaved_imagesInput
+    >
   }
 
   export type usersUpsertWithoutSaved_imagesInput = {
-    update: XOR<usersUpdateWithoutSaved_imagesInput, usersUncheckedUpdateWithoutSaved_imagesInput>
-    create: XOR<usersCreateWithoutSaved_imagesInput, usersUncheckedCreateWithoutSaved_imagesInput>
+    update: XOR<
+      usersUpdateWithoutSaved_imagesInput,
+      usersUncheckedUpdateWithoutSaved_imagesInput
+    >
+    create: XOR<
+      usersCreateWithoutSaved_imagesInput,
+      usersUncheckedCreateWithoutSaved_imagesInput
+    >
     where?: usersWhereInput
   }
 
   export type usersUpdateToOneWithWhereWithoutSaved_imagesInput = {
     where?: usersWhereInput
-    data: XOR<usersUpdateWithoutSaved_imagesInput, usersUncheckedUpdateWithoutSaved_imagesInput>
+    data: XOR<
+      usersUpdateWithoutSaved_imagesInput,
+      usersUncheckedUpdateWithoutSaved_imagesInput
+    >
   }
 
   export type usersUpdateWithoutSaved_imagesInput = {
@@ -7180,8 +8733,16 @@ export namespace Prisma {
     full_name?: NullableStringFieldUpdateOperationsInput | string | null
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     age?: NullableIntFieldUpdateOperationsInput | number | null
-    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?:
+      | NullableDateTimeFieldUpdateOperationsInput
+      | Date
+      | string
+      | null
+    updated_at?:
+      | NullableDateTimeFieldUpdateOperationsInput
+      | Date
+      | string
+      | null
     codeChangePass?: NullableStringFieldUpdateOperationsInput | string | null
     comments?: commentsUpdateManyWithoutUsersNestedInput
     images?: imagesUpdateManyWithoutUsersNestedInput
@@ -7194,30 +8755,55 @@ export namespace Prisma {
     full_name?: NullableStringFieldUpdateOperationsInput | string | null
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     age?: NullableIntFieldUpdateOperationsInput | number | null
-    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?:
+      | NullableDateTimeFieldUpdateOperationsInput
+      | Date
+      | string
+      | null
+    updated_at?:
+      | NullableDateTimeFieldUpdateOperationsInput
+      | Date
+      | string
+      | null
     codeChangePass?: NullableStringFieldUpdateOperationsInput | string | null
     comments?: commentsUncheckedUpdateManyWithoutUsersNestedInput
     images?: imagesUncheckedUpdateManyWithoutUsersNestedInput
   }
 
   export type imagesUpsertWithoutSaved_imagesInput = {
-    update: XOR<imagesUpdateWithoutSaved_imagesInput, imagesUncheckedUpdateWithoutSaved_imagesInput>
-    create: XOR<imagesCreateWithoutSaved_imagesInput, imagesUncheckedCreateWithoutSaved_imagesInput>
+    update: XOR<
+      imagesUpdateWithoutSaved_imagesInput,
+      imagesUncheckedUpdateWithoutSaved_imagesInput
+    >
+    create: XOR<
+      imagesCreateWithoutSaved_imagesInput,
+      imagesUncheckedCreateWithoutSaved_imagesInput
+    >
     where?: imagesWhereInput
   }
 
   export type imagesUpdateToOneWithWhereWithoutSaved_imagesInput = {
     where?: imagesWhereInput
-    data: XOR<imagesUpdateWithoutSaved_imagesInput, imagesUncheckedUpdateWithoutSaved_imagesInput>
+    data: XOR<
+      imagesUpdateWithoutSaved_imagesInput,
+      imagesUncheckedUpdateWithoutSaved_imagesInput
+    >
   }
 
   export type imagesUpdateWithoutSaved_imagesInput = {
     title?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
     url?: StringFieldUpdateOperationsInput | string
-    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?:
+      | NullableDateTimeFieldUpdateOperationsInput
+      | Date
+      | string
+      | null
+    updated_at?:
+      | NullableDateTimeFieldUpdateOperationsInput
+      | Date
+      | string
+      | null
     comments?: commentsUpdateManyWithoutImagesNestedInput
     users?: usersUpdateOneRequiredWithoutImagesNestedInput
   }
@@ -7228,8 +8814,16 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     url?: StringFieldUpdateOperationsInput | string
     user_id?: IntFieldUpdateOperationsInput | number
-    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?:
+      | NullableDateTimeFieldUpdateOperationsInput
+      | Date
+      | string
+      | null
+    updated_at?:
+      | NullableDateTimeFieldUpdateOperationsInput
+      | Date
+      | string
+      | null
     comments?: commentsUncheckedUpdateManyWithoutImagesNestedInput
   }
 
@@ -7248,7 +8842,10 @@ export namespace Prisma {
 
   export type commentsCreateOrConnectWithoutUsersInput = {
     where: commentsWhereUniqueInput
-    create: XOR<commentsCreateWithoutUsersInput, commentsUncheckedCreateWithoutUsersInput>
+    create: XOR<
+      commentsCreateWithoutUsersInput,
+      commentsUncheckedCreateWithoutUsersInput
+    >
   }
 
   export type commentsCreateManyUsersInputEnvelope = {
@@ -7279,7 +8876,10 @@ export namespace Prisma {
 
   export type imagesCreateOrConnectWithoutUsersInput = {
     where: imagesWhereUniqueInput
-    create: XOR<imagesCreateWithoutUsersInput, imagesUncheckedCreateWithoutUsersInput>
+    create: XOR<
+      imagesCreateWithoutUsersInput,
+      imagesUncheckedCreateWithoutUsersInput
+    >
   }
 
   export type imagesCreateManyUsersInputEnvelope = {
@@ -7300,7 +8900,10 @@ export namespace Prisma {
 
   export type saved_imagesCreateOrConnectWithoutUsersInput = {
     where: saved_imagesWhereUniqueInput
-    create: XOR<saved_imagesCreateWithoutUsersInput, saved_imagesUncheckedCreateWithoutUsersInput>
+    create: XOR<
+      saved_imagesCreateWithoutUsersInput,
+      saved_imagesUncheckedCreateWithoutUsersInput
+    >
   }
 
   export type saved_imagesCreateManyUsersInputEnvelope = {
@@ -7310,63 +8913,99 @@ export namespace Prisma {
 
   export type commentsUpsertWithWhereUniqueWithoutUsersInput = {
     where: commentsWhereUniqueInput
-    update: XOR<commentsUpdateWithoutUsersInput, commentsUncheckedUpdateWithoutUsersInput>
-    create: XOR<commentsCreateWithoutUsersInput, commentsUncheckedCreateWithoutUsersInput>
+    update: XOR<
+      commentsUpdateWithoutUsersInput,
+      commentsUncheckedUpdateWithoutUsersInput
+    >
+    create: XOR<
+      commentsCreateWithoutUsersInput,
+      commentsUncheckedCreateWithoutUsersInput
+    >
   }
 
   export type commentsUpdateWithWhereUniqueWithoutUsersInput = {
     where: commentsWhereUniqueInput
-    data: XOR<commentsUpdateWithoutUsersInput, commentsUncheckedUpdateWithoutUsersInput>
+    data: XOR<
+      commentsUpdateWithoutUsersInput,
+      commentsUncheckedUpdateWithoutUsersInput
+    >
   }
 
   export type commentsUpdateManyWithWhereWithoutUsersInput = {
     where: commentsScalarWhereInput
-    data: XOR<commentsUpdateManyMutationInput, commentsUncheckedUpdateManyWithoutUsersInput>
+    data: XOR<
+      commentsUpdateManyMutationInput,
+      commentsUncheckedUpdateManyWithoutUsersInput
+    >
   }
 
   export type imagesUpsertWithWhereUniqueWithoutUsersInput = {
     where: imagesWhereUniqueInput
-    update: XOR<imagesUpdateWithoutUsersInput, imagesUncheckedUpdateWithoutUsersInput>
-    create: XOR<imagesCreateWithoutUsersInput, imagesUncheckedCreateWithoutUsersInput>
+    update: XOR<
+      imagesUpdateWithoutUsersInput,
+      imagesUncheckedUpdateWithoutUsersInput
+    >
+    create: XOR<
+      imagesCreateWithoutUsersInput,
+      imagesUncheckedCreateWithoutUsersInput
+    >
   }
 
   export type imagesUpdateWithWhereUniqueWithoutUsersInput = {
     where: imagesWhereUniqueInput
-    data: XOR<imagesUpdateWithoutUsersInput, imagesUncheckedUpdateWithoutUsersInput>
+    data: XOR<
+      imagesUpdateWithoutUsersInput,
+      imagesUncheckedUpdateWithoutUsersInput
+    >
   }
 
   export type imagesUpdateManyWithWhereWithoutUsersInput = {
     where: imagesScalarWhereInput
-    data: XOR<imagesUpdateManyMutationInput, imagesUncheckedUpdateManyWithoutUsersInput>
+    data: XOR<
+      imagesUpdateManyMutationInput,
+      imagesUncheckedUpdateManyWithoutUsersInput
+    >
   }
 
   export type imagesScalarWhereInput = {
     AND?: imagesScalarWhereInput | imagesScalarWhereInput[]
     OR?: imagesScalarWhereInput[]
     NOT?: imagesScalarWhereInput | imagesScalarWhereInput[]
-    id?: IntFilter<"images"> | number
-    title?: StringNullableFilter<"images"> | string | null
-    description?: StringNullableFilter<"images"> | string | null
-    url?: StringFilter<"images"> | string
-    user_id?: IntFilter<"images"> | number
-    created_at?: DateTimeNullableFilter<"images"> | Date | string | null
-    updated_at?: DateTimeNullableFilter<"images"> | Date | string | null
+    id?: IntFilter<'images'> | number
+    title?: StringNullableFilter<'images'> | string | null
+    description?: StringNullableFilter<'images'> | string | null
+    url?: StringFilter<'images'> | string
+    user_id?: IntFilter<'images'> | number
+    created_at?: DateTimeNullableFilter<'images'> | Date | string | null
+    updated_at?: DateTimeNullableFilter<'images'> | Date | string | null
   }
 
   export type saved_imagesUpsertWithWhereUniqueWithoutUsersInput = {
     where: saved_imagesWhereUniqueInput
-    update: XOR<saved_imagesUpdateWithoutUsersInput, saved_imagesUncheckedUpdateWithoutUsersInput>
-    create: XOR<saved_imagesCreateWithoutUsersInput, saved_imagesUncheckedCreateWithoutUsersInput>
+    update: XOR<
+      saved_imagesUpdateWithoutUsersInput,
+      saved_imagesUncheckedUpdateWithoutUsersInput
+    >
+    create: XOR<
+      saved_imagesCreateWithoutUsersInput,
+      saved_imagesUncheckedCreateWithoutUsersInput
+    >
   }
 
   export type saved_imagesUpdateWithWhereUniqueWithoutUsersInput = {
     where: saved_imagesWhereUniqueInput
-    data: XOR<saved_imagesUpdateWithoutUsersInput, saved_imagesUncheckedUpdateWithoutUsersInput>
+    data: XOR<
+      saved_imagesUpdateWithoutUsersInput,
+      saved_imagesUncheckedUpdateWithoutUsersInput
+    >
   }
 
   export type saved_imagesUpdateManyWithWhereWithoutUsersInput = {
     where: saved_imagesScalarWhereInput
-    data: XOR<saved_imagesUpdateManyMutationInput, saved_imagesUncheckedUpdateManyWithoutUsersInput>
+    data: XOR<
+      saved_imagesUpdateManyMutationInput,
+      saved_imagesUncheckedUpdateManyWithoutUsersInput
+    >
   }
 
   export type commentsCreateManyImagesInput = {
@@ -7384,7 +9023,11 @@ export namespace Prisma {
 
   export type commentsUpdateWithoutImagesInput = {
     content?: StringFieldUpdateOperationsInput | string
-    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?:
+      | NullableDateTimeFieldUpdateOperationsInput
+      | Date
+      | string
+      | null
     users?: usersUpdateOneRequiredWithoutCommentsNestedInput
   }
 
@@ -7392,14 +9035,22 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     content?: StringFieldUpdateOperationsInput | string
     user_id?: IntFieldUpdateOperationsInput | number
-    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?:
+      | NullableDateTimeFieldUpdateOperationsInput
+      | Date
+      | string
+      | null
   }
 
   export type commentsUncheckedUpdateManyWithoutImagesInput = {
     id?: IntFieldUpdateOperationsInput | number
     content?: StringFieldUpdateOperationsInput | string
     user_id?: IntFieldUpdateOperationsInput | number
-    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?:
+      | NullableDateTimeFieldUpdateOperationsInput
+      | Date
+      | string
+      | null
   }
 
   export type saved_imagesUpdateWithoutImagesInput = {
@@ -7443,7 +9094,11 @@ export namespace Prisma {
 
   export type commentsUpdateWithoutUsersInput = {
     content?: StringFieldUpdateOperationsInput | string
-    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?:
+      | NullableDateTimeFieldUpdateOperationsInput
+      | Date
+      | string
+      | null
     images?: imagesUpdateOneRequiredWithoutCommentsNestedInput
   }
 
@@ -7451,22 +9106,38 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     content?: StringFieldUpdateOperationsInput | string
     image_id?: IntFieldUpdateOperationsInput | number
-    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?:
+      | NullableDateTimeFieldUpdateOperationsInput
+      | Date
+      | string
+      | null
   }
 
   export type commentsUncheckedUpdateManyWithoutUsersInput = {
     id?: IntFieldUpdateOperationsInput | number
     content?: StringFieldUpdateOperationsInput | string
     image_id?: IntFieldUpdateOperationsInput | number
-    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?:
+      | NullableDateTimeFieldUpdateOperationsInput
+      | Date
+      | string
+      | null
   }
 
   export type imagesUpdateWithoutUsersInput = {
     title?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
     url?: StringFieldUpdateOperationsInput | string
-    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?:
+      | NullableDateTimeFieldUpdateOperationsInput
+      | Date
+      | string
+      | null
+    updated_at?:
+      | NullableDateTimeFieldUpdateOperationsInput
+      | Date
+      | string
+      | null
     comments?: commentsUpdateManyWithoutImagesNestedInput
     saved_images?: saved_imagesUpdateManyWithoutImagesNestedInput
   }
@@ -7476,8 +9147,16 @@ export namespace Prisma {
     title?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
     url?: StringFieldUpdateOperationsInput | string
-    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?:
+      | NullableDateTimeFieldUpdateOperationsInput
+      | Date
+      | string
+      | null
+    updated_at?:
+      | NullableDateTimeFieldUpdateOperationsInput
+      | Date
+      | string
+      | null
     comments?: commentsUncheckedUpdateManyWithoutImagesNestedInput
     saved_images?: saved_imagesUncheckedUpdateManyWithoutImagesNestedInput
   }
@@ -7487,8 +9166,16 @@ export namespace Prisma {
     title?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
     url?: StringFieldUpdateOperationsInput | string
-    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?:
+      | NullableDateTimeFieldUpdateOperationsInput
+      | Date
+      | string
+      | null
+    updated_at?:
+      | NullableDateTimeFieldUpdateOperationsInput
+      | Date
+      | string
+      | null
   }
 
   export type saved_imagesUpdateWithoutUsersInput = {
@@ -7507,8 +9194,6 @@ export namespace Prisma {
     image_id?: IntFieldUpdateOperationsInput | number
     saved_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
-
-
 
   /**
    * Batch Payload for updateMany & deleteMany & createMany

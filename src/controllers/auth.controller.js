@@ -22,7 +22,6 @@ export const authController = {
     try {
       const result = await authService.login(req)
 
-      // Tiến hành lưu token vào cookies giống dự án mẫu của bạn
       res.cookie('accessToken', result.accessToken, {
         ...cookieOptions,
         maxAge: 60 * 60 * 1000,

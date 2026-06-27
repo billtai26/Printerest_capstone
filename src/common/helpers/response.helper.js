@@ -18,7 +18,6 @@ export const responseError = (
     status: 'error',
     statusCode: statusCode,
     message: message,
-    // stack la noi hien thi chi tiet cua loi, bao gom cac duong dan den loi, khong co trong moi truong production, chi hien thi trong moi truong development
     stack: stack
   }
 }
