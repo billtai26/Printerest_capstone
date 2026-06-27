@@ -16,7 +16,7 @@ export const authCookie = async (req, res, next) => {
     const decoded = verifyAccessToken(token)
 
     const user = await prisma.users.findUnique({
-      where: { id: decoded.id },
+      where: { id: decoded.userId },
     })
 
     if (!user) {
